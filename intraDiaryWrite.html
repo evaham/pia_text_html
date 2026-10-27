@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	업무일지 입력/수정 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/clCalendar.js"></script></head><body><div id="minical" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" style="background:buttonface; margin:5; padding:5;margin-top:2;border-top:1 solid buttonshadow;border-left: 1 solid buttonshadow;border-right: 1 solid buttonshadow;border-bottom:1 solid buttonshadow;width:230px;display:none;position: absolute; z-index: 99"></div>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+        function jsSaveOK() {
+            if (form1.txtDate.value.length < 10) {
+                alert("업무일을 입력해 주십시오.");
+                form1.txtDate.focus();
+                return false;
+            }
+            if (form1.txtTitle.value.length < 1 || form1.txtTitle.value == "제목") {
+                alert("제목을 입력해 주십시오.");
+                form1.txtTitle.focus();
+                return false;
+            }
+            if (form1.txtContent.value.length < 1 || form1.txtContent.value == "내용") {
+                alert("내용을 입력해 주십시오.");
+                form1.txtContent.focus();
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+
+    <form method="post" action="./intraDiaryWrite.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEyMDU2NzY2NzAPZBYCAgMPZBYSZg8PFgIeBFRleHQFHe2VqOygleyasCDri5jsnZgg7JeF66y07J287KeAZGQCBA8PFgIeB1Zpc2libGVoZGQCBQ8WAh8BaGQCBg8PFgIfAWhkZAIHDxYCHwFoZAIIDw8WAh8BaGRkAgkPFgIfAWhkAgoPDxYCHwAFBuuTseuhnWRkAgwPZBYCAgEPFgIeB29uY2xpY2sFWXJldHVybiBqc1BDSW50cmEoIlZzM3BIS2JabHhTSDUlMmJURDA2U21OcXhhNkNPSTNreXpyYjBPd09jJTJiZkJpSFNlSE1xb3p2dkhGMjFuaGhXaXNNIik7ZGTHs/l8kV9DAXNguP7DP/4XZsh3VSXOSP0W7GlsLXTdfg==">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="55D1AC37">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAX8ukFlY/E2UfFSzKDLweXNQmTnPkxgOAq63YiVY5iwpuc1mskIlEId2KV36fR5IJH8fy/KU6WITf8v1AWFbhmBlliAPKY+KvRmniYVjNuQiM1heEvQU64B5XC1ydVxiV58g0Z6AbZvqyJDB6J9i2D9">
+</div>
+    <div id="warp">
+        <!-- header -->
+        <div id="header">
+            <div class="main_navi">
+                <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+                <h2> <a> 업무일지 작성 </a> </h2>
+            </div>
+        </div>
+        <!-- header end--> 
+	    <!-- container-->
+        <div id="container">
+            <div class="contents">
+                <div class="A">
+                    <div class="divide_typeA">
+                        <table>
+                            <colgroup>
+                                <col>
+                            </colgroup>
+                            <tbody><tr><td> <h3> <span id="lblTitle">함정우 님의 업무일지</span></h3> </td></tr>
+                        </tbody></table>
+                    </div>
+                    <div class="text_data">
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <label> 업무일 </label>
+                                    <input name="txtDate" type="text" value="2026-10-22" id="txtDate" onfocus="this.blur();" style="width: 100px;" data-sharkid="__0"><!--
+                                 --><input type="button" id="btnCal1" onclick="Calendar(this, txtDate);" value="▼" class="btnCalGray1" style="width:25px;height:30px;">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="text_data">
+                        <input name="txtTitle" type="text" id="txtTitle" placeholder="제목" style="color:Gray;width:99%;" data-sharkid="__1">
+                        <textarea name="txtContent" rows="2" cols="1" id="txtContent" placeholder="내용" style="color:Gray;height:340px;width:99%;" data-sharkid="__2"></textarea>
+                        <br>
+                        
+                        &nbsp;
+                        
+                        &nbsp;
+                        
+                        &nbsp;
+                    </div>
+                    <div class="text_data" style="border:0; text-align:right;">
+                        <input type="submit" name="btnSave" value="등록" onclick="javascript:return jsSaveOK();" id="btnSave" class="button_typeB button" style="width:100px;">
+                        <button type="button" name="btnCancel" value="취소" onclick="javascript:history.back();" id="btnCancel" class="button_typeB button" style="width: 100px;">취소</button> 
+                        <br><span id="lblMsg" style="color:Red;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container end--> 
+	    <!-- footer-->
+        
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+        <!-- footer end-->
+    </div>
+    </form>
+
+
+</body></html>

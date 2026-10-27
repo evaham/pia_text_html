@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>
+	휴가 승인내역 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8"><meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"><link href="/Common/intranet.mobile3.css?2014053001" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        col.layout { width: 10px; }
+    </style>
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+    <form method="post" action="./intraAnnualApprovalHistory.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTQ4MTAwMjA3Ng8WAh4IZW1wX2F1dGgFATIWAgIDD2QWCAIDDxBkDxYUZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITFhQQBQQyMDA4BQQyMDA4ZxAFBDIwMDkFBDIwMDlnEAUEMjAxMAUEMjAxMGcQBQQyMDExBQQyMDExZxAFBDIwMTIFBDIwMTJnEAUEMjAxMwUEMjAxM2cQBQQyMDE0BQQyMDE0ZxAFBDIwMTUFBDIwMTVnEAUEMjAxNgUEMjAxNmcQBQQyMDE3BQQyMDE3ZxAFBDIwMTgFBDIwMThnEAUEMjAxOQUEMjAxOWcQBQQyMDIwBQQyMDIwZxAFBDIwMjEFBDIwMjFnEAUEMjAyMgUEMjAyMmcQBQQyMDIzBQQyMDIzZxAFBDIwMjQFBDIwMjRnEAUEMjAyNQUEMjAyNWcQBQQyMDI2BQQyMDI2ZxAFBDIwMjcFBDIwMjdnFgECEmQCBQ8QZA8WBWYCAQICAgMCBBYFEAUILeyDge2DnC1lZxAFBuyKueyduAUDJ0EnZxAFBuy3qOyGjAUHJ0MnLCdCJ2cQBQbrsJjroKQFAydSJ2cQBQbrjIDquLAFAydTJ2cWAWZkAgkPFgIeC18hSXRlbUNvdW50ZmQCCw9kFgICAQ8WAh4Hb25jbGljawVZcmV0dXJuIGpzUENJbnRyYSgiVnMzcEhLYlpseFNINSUyYlREMDZTbU5xeGE2Q09JM2t5enJiME93T2MlMmJmQmlIU2VITXFvenZ2SEYyMW5oaFdpc00iKTtkZCwv03iPNaj2sketJRfubkSUOYFXaVBDUa5q7AgFwFbw">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="2E09DADC">
+</div>
+    <div id="warp">
+    <!-- header -->
+    <div id="header">
+	    <div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+		    <h2> <a> 휴가 </a> </h2>
+	    </div>
+	</div>
+    <!-- header end--> 
+    <div class="sub_navi">
+		<table>
+			<tbody><tr>
+				<td class="tab2"><a class="button_typeA button_right" onclick="location.href='intraAnnualMyHistory.html';">내 휴가 내역</a> </td>
+				<td class="tab2"><a class="button_typeA_on button_left" onclick="location.href='intraAnnualApprovalHistory.html';">휴가 승인, 참조 내역</a> </td>
+			</tr>
+		</tbody></table>
+	</div>
+    <!-- container-->
+    <div id="container">
+        <div class="contents">
+            <div class="A">
+                <div id="divTotal" class="divide_typeA" style="display:block;">
+					<h3>휴가 승인내역</h3>
+                    <a href="./intraAnnualRequest.html?auCode=0&amp;userType=E" id="aAnnualWrite" class="button_typeB button_right">휴가신청</a>
+                </div>
+                <div class="wrap_search">
+                    <table>
+                        <tbody><tr>
+                            <td style="padding-top:5px;padding-bottom:5px; text-align:left">
+                                <select name="ddlDate" onchange="javascript:setTimeout('__doPostBack(\'ddlDate\',\'\')', 0)" id="ddlDate" style="width:70px;" data-sharkid="__0">
+	<option value="2008">2008</option>
+	<option value="2009">2009</option>
+	<option value="2010">2010</option>
+	<option value="2011">2011</option>
+	<option value="2012">2012</option>
+	<option value="2013">2013</option>
+	<option value="2014">2014</option>
+	<option value="2015">2015</option>
+	<option value="2016">2016</option>
+	<option value="2017">2017</option>
+	<option value="2018">2018</option>
+	<option value="2019">2019</option>
+	<option value="2020">2020</option>
+	<option value="2021">2021</option>
+	<option value="2022">2022</option>
+	<option value="2023">2023</option>
+	<option value="2024">2024</option>
+	<option value="2025">2025</option>
+	<option selected="selected" value="2026">2026</option>
+	<option value="2027">2027</option>
+
+</select>
+                                <select name="ddlProgress" onchange="javascript:setTimeout('__doPostBack(\'ddlProgress\',\'\')', 0)" id="ddlProgress" style="width:70px;" data-sharkid="__1">
+	<option selected="selected" value="">-상태-</option>
+	<option value="'A'">승인</option>
+	<option value="'C','B'">취소</option>
+	<option value="'R'">반려</option>
+	<option value="'S'">대기</option>
+
+</select>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div>
+				    <table>
+                        <tbody><tr><td style="padding-bottom:5px;"><span id="lbMsg" style="color:Red;"></span></td></tr>
+					    <tr>
+						    <td style=" border-top : 1px solid rgb(223, 223, 223);"> 
+	                                                            
+						    </td>
+					    </tr>									
+				    </tbody></table>						
+				</div>
+            </div>
+        </div>
+    </div>
+    <!-- container end--> 
+	<!-- footer-->
+    
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+    <!-- footer end-->
+</div>
+    </form>
+
+
+</body></html>

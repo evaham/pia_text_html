@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	회의록 리스트 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="/Common/intranet.mobile3.css?2014053001" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        col.layout { width: 10px; }
+    </style>
+    <script type="text/javascript">
+        function jsGoPage(page) {
+            form1.hdSelPage.value = page;
+            eval("__doPostBack('btnGoPage','')");
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="./intraMeetList.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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YWx1ZT0n7LKY7J2MJyBjbGFzcz0nYnV0dG9uX3BhZ2luZyBidXR0b25fcHJldicgLz4gPGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+ydtOyghCcgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX3ByZXYnIC8+Jm5ic3A7Jm5ic3A7IDxmb250IGNvbG9yPScjI2Q4NzY3Nic+PHN0cm9uZz4xPC9zdHJvbmc+PC9mb250PiAgfCA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDIpOyI+MjwvYT4gfCA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDMpOyI+MzwvYT4gPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSg0KTsiPiZuYnNwOyZuYnNwOzxpbnB1dCB0eXBlPSdidXR0b24nIHZhbHVlPSfri6TsnYwnIGNsYXNzPSdidXR0b25fcGFnaW5nIGJ1dHRvbl9uZXh0JyAvPjwvYT4gPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSgzNTkpOyI+PGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+uBnScgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX25leHQnIC8+PC9hPmRkAhMPZBYCAgEPFgIeB29uY2xpY2sFWXJldHVybiBqc1BDSW50cmEoIlZzM3BIS2JabHhTSDUlMmJURDA2U21OcXhhNkNPSTNreXpyYjBPd09jJTJiZkJpSFNlSE1xb3p2dkhGMjFuaGhXaXNNIik7ZGTNyMw7rRI1Mgddsr9eTHg7KkAZ+bpxddLtTxTqwUTETQ==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/WebResource.axd?d=zWRjo7LPikYhRp5_MTTe46BT5TFhGsVq4tEJ8FTiySKXhzHdUPhwl32QHtciE4ggQjBpzjwtP31I_ZbuEw41Sh2VEfuDlg6BLemZWK7fCTk1&amp;t=638901860248157332" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BAEBD9F0">
+</div>
+
+<div id="warp">
+    <!-- header -->
+    <div id="header">
+        <div class="tab_wrap">
+		    <ul class="tab_list">
+                <li class="tab_1"><a class="tab_btn tab_left" href="./intraMailList.html">메일</a></li>
+                <li class="tab_2"><a class="tab_btn tab_center" href="./intraDiaryList.html">일지</a></li>
+                <li class="tab_3"><a class="tab_btn_on tab_right" href="./intraMeetList.html">회의</a></li>
+		    </ul>
+		</div>
+        <div class="main_navi">
+            <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+            
+        </div>
+    </div>
+    <!-- header end--> 
+    <!-- container-->
+    <div id="container">
+        <div class="contents">
+            <div class="A">
+                <div id="divTotal" class="divide_typeA" style="display:block;">
+					<h3>전체 회의록</h3>
+                </div>
+                <div class="wrap_search">
+                    <table>
+                        <tbody><tr>
+                            <td style="padding-top:5px;">
+                                <select name="ddlPost" onchange="javascript:setTimeout('__doPostBack(\'ddlPost\',\'\')', 0)" id="ddlPost" style="width:115px;" data-sharkid="__0">
+	<option selected="selected" value="">-주관부서-</option>
+	<option value="AA">임원 (주주)</option>
+	<option value="AI">전략기획본부</option>
+	<option value="AF">기술연구소</option>
+	<option value="AN">솔루션본부</option>
+	<option value="AH">사업본부</option>
+	<option value="AS">지원부문</option>
+
+</select>
+					            <input name="txtSearch" type="text" id="txtSearch" title="AND 검색 가능" style="width:40%" data-sharkid="__1">
+                                <input type="submit" name="btnSearch" value="검색" id="btnSearch" class="button_typeB button">
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div>
+				    <table>
+                        <tbody><tr><td style="padding-bottom:5px;"><span id="lblMsg" style="color:Red;"></span></td></tr>
+					    <tr>
+						    <td style=" border-top : 1px solid rgb(223, 223, 223);">
+                                                         
+	                            
+	                                
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7849';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 10월 19일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-10-19
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">64</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7848';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 10월 12일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-10-12
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">96</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7847';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 10월 6일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-10-06
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">73</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7846';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 9월 28일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-09-28
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">75</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7845';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 9월 21일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-09-21
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">70</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7844';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 9월 14일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-09-14
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">79</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7843';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 9월 7일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-09-07
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">76</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7842';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 8월 31일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-08-31
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">92</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7841';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 8월 24일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-08-24
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">64</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7840';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 8월 10일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-08-10
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">54</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7839';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">[주간전략회의] 7월 27일</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-07-27
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">47</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7838';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">투게더데이터 상품 기준정보 구축 논의</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-07-24
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">전략기획본부</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">63</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7837';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;"><b>[주간전략회의] 7월 20일</b></span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-07-20
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">52</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7836';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;"><b>[주간전략회의] 7월 13일</b></span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-07-13
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">37</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7835';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;"><b>[주간전략회의] 7월 7일</b></span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-07-07
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">49</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7834';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;">딜리버리 상품장 스펙 및 운영 협의</span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-07-07
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">기술연구소</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">57</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7833';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;"><b>[주간전략회의] 6월 29일</b></span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-06-29
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">46</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7832';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;"><b>[주간전략회의] 6월 22일</b></span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-06-22
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">39</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7831';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;"><b>[주간전략회의] 6월 15일</b></span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-06-15
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">46</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                        <table width="100%" onclick="location.href='intraMeetRead.html?meet=7830';">
+                                            <tbody><tr>
+									            <td colspan="2" style="padding-left:8px;padding-top:5px;">
+									                <div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+                                                        <nobr><span style="color:#000090;"><b>[주간전략회의] 6월 8일</b></span></nobr>
+                                                    </div>
+									            </td>
+									            <td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;" class="text_right">
+										            2026-06-08
+									            </td>
+								            </tr>								
+								            <tr>
+									            <td colspan="2" width="30%" style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+										            <span class="text_typeS">임원 (주주)</span>
+									            </td>
+                                                <td style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+                                                    <span class="text_red text_typeS">40</span>
+                                                </td>
+								            </tr>                                
+                                        </tbody></table>                              
+                                    
+                                
+                                
+						    </td>
+					    </tr>									
+				    </tbody></table>						
+				</div>
+				<div class="paging">
+					<table class="pagingTable">
+						<tbody>							                      
+                            <tr>
+                                <td colspan="2" style="height:25px; vertical-align:middle;" align="center">
+                                   
+                                            <!--페이징-->
+                                            <input name="hdSelPage" type="hidden" id="hdSelPage">
+                                            <span id="lblpaging" style="color:#8C9C8C;font-size:Medium;"><input type="button" value="처음" class="button_paging button_prev"> <input type="button" value="이전" class="button_paging button_prev">&nbsp;&nbsp; <font color="##d87676"><strong>1</strong></font>  | <a href="JavaScript:jsGoPage(2);">2</a> | <a href="JavaScript:jsGoPage(3);">3</a> <a href="JavaScript:jsGoPage(4);">&nbsp;&nbsp;<input type="button" value="다음" class="button_paging button_next"></a> <a href="JavaScript:jsGoPage(359);"><input type="button" value="끝" class="button_paging button_next"></a></span>
+                                            <div style="display: none;">
+                                                <input type="submit" name="btnGoPage" value="페이지이동" id="btnGoPage">
+                                            </div>
+                                        
+                                </td>
+                            </tr>
+						</tbody>
+					</table>
+				</div>
+            </div>
+        </div>
+    </div>
+    <!-- container end--> 
+	<!-- footer-->
+    
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+    <!-- footer end-->
+</div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+WebForm_AutoFocus('txtSearch');//]]>
+</script>
+</form>
+
+
+</body></html>

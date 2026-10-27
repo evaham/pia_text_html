@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	 사내메일 읽기 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8"><meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"><link href="/Common/intranet.mobile3.css?17020901" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/PopScrap.js?16121201"></script>
+    <style type="text/css">
+    col.layout {width:45px;}
+    col.layout2 {width:50px;}
+        #divContent img
+        {
+            max-width: 100%!important;
+            height: auto!important;
+        }
+        #divContent table
+        {
+            max-width: 100%!important;
+            width: 100%!important;
+            height: auto!important;
+        }
+        #divContent table > tbody > tr > td
+        {
+            width:auto!important;
+            max-width: 100pt!important;
+            height: auto!important;
+            line-height:normal!important;
+            white-space:inherit!important
+        }        
+    </style>
+    <script type="text/javascript">
+        function jsReceiversMore() {
+            var divReceivers = document.getElementById("divReceivers");
+            var divReceiversMore = document.getElementById("divReceiversMore");
+
+            if (divReceivers.style.display == "block") {
+                divReceiversMore.style.display = "block";
+                divReceivers.style.display = "none";                
+            }
+            else {
+                divReceiversMore.style.display = "none";
+                divReceivers.style.display = "block";
+            }
+        }
+
+        function jsForwardClick() {
+            alert("웹에서 작성한 특정 사내메일은 모바일에서 전송이 안될 수 있습니다.\n웹에서 전송해주세요.");
+            return false;
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="./IntraMailRead.html?box=r&amp;mail=175581" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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YXJnaW4tdG9wOiAycHg7IG1hcmdpbi1ib3R0b206IDJweDsgZm9udC1mYW1pbHk6ICZxdW90O01hbGd1biBHb2RpYyZxdW90OywgJnF1b3Q766eR7J2AIOqzoOuUlSZxdW90Oywgc2Fucy1zZXJpZjsiPjxicj48L3A+PHAgc3R5bGU9Im1hcmdpbi10b3A6IDJweDsgbWFyZ2luLWJvdHRvbTogMnB4OyBmb250LWZhbWlseTogJnF1b3Q7TWFsZ3VuIEdvZGljJnF1b3Q7LCAmcXVvdDvrp5HsnYAg6rOg65SVJnF1b3Q7LCBzYW5zLXNlcmlmOyI+PGJyPjwvcD48cCBzdHlsZT0ibWFyZ2luLXRvcDogMnB4OyBtYXJnaW4tYm90dG9tOiAycHg7IGZvbnQtZmFtaWx5OiAmcXVvdDtNYWxndW4gR29kaWMmcXVvdDssICZxdW90O+unkeydgCDqs6DrlJUmcXVvdDssIHNhbnMtc2VyaWY7Ij7quLDtmo3tjIAg7J207Jik65SUIOyeheuLiOuLpC48L3A+PHAgc3R5bGU9Im1hcmdpbi10b3A6IDJweDsgbWFyZ2luLWJvdHRvbTogMnB4OyBmb250LWZhbWlseTogJnF1b3Q7TWFsZ3VuIEdvZGljJnF1b3Q7LCAmcXVvdDvrp5HsnYAg6rOg65SVJnF1b3Q7LCBzYW5zLXNlcmlmOyI+PGJyPjwvcD48cCBzdHlsZT0ibWFyZ2luLXRvcDogMnB4OyBtYXJnaW4tYm90dG9tOiAycHg7IGZvbnQtZmFtaWx5OiAmcXVvdDtNYWxndW4gR29kaWMmcXVvdDssICZxdW90O+unkeydgCDqs6DrlJUmcXVvdDssIHNhbnMtc2VyaWY7Ij48YnI+PC9wPjxwIHN0eWxlPSJtYXJnaW4tdG9wOiAycHg7IG1hcmdpbi1ib3R0b206IDJweDsgZm9udC1mYW1pbHk6ICZxdW90O01hbGd1biBHb2RpYyZxdW90OywgJnF1b3Q766eR7J2AIOqzoOuUlSZxdW90Oywgc2Fucy1zZXJpZjsiPuyduO2KuOudvOuEtyDsmKTrpZjqsbQg6rSA66Co7ZWY7JesIOqzoOqwneyngOybkO2MgOyXkOyEnCDsoITri6ztlbTspIAg7YWM7Iqk7Yq4IOyXkeyFgO2MjOydvCDqs7XsnKDrk5zrpr3ri4jri6QuJm5ic3A7PC9wPjxwIHN0eWxlPSJtYXJnaW4tdG9wOiAycHg7IG1hcmdpbi1ib3R0b206IDJweDsgZm9udC1mYW1pbHk6ICZxdW90O01hbGd1biBHb2RpYyZxdW90OywgJnF1b3Q766eR7J2AIOqzoOuUlSZxdW90Oywgc2Fucy1zZXJpZjsiPjxicj48L3A+PHAgc3R5bGU9Im1hcmdpbi10b3A6IDJweDsgbWFyZ2luLWJvdHRvbTogMnB4OyBmb250LWZhbWlseTogJnF1b3Q7TWFsZ3VuIEdvZGljJnF1b3Q7LCAmcXVvdDvrp5HsnYAg6rOg65SVJnF1b3Q7LCBzYW5zLXNlcmlmOyI+PGJyPjwvcD48cCBzdHlsZT0ibWFyZ2luLXRvcDogMnB4OyBtYXJnaW4tYm90dG9tOiAycHg7IGZvbnQtZmFtaWx5OiAmcXVvdDtNYWxndW4gR29kaWMmcXVvdDssICZxdW90O+unkeydgCDqs6DrlJUmcXVvdDssIHNhbnMtc2VyaWY7Ij7qsJDsgqztlanri4jri6QuPC9wPmRkAhAPFgIfB2hkAhEPD2QWAh8CBRhyZXR1cm4ganNGb3J3YXJkQ2xpY2soKTtkAhIPD2QWAh8CBRhyZXR1cm4ganNGb3J3YXJkQ2xpY2soKTtkAhMPD2QWAh8CBRhyZXR1cm4ganNGb3J3YXJkQ2xpY2soKTtkAhQPD2QWAh8CBTZyZXR1cm4gY29uZmlybSgn66mU7J287J2EIOyCreygnO2VmOyLnOqyoOyKteuLiOq5jD8nKTtkAhUPDxYCHwdoFgIfAgVbcmV0dXJuIGNvbmZpcm0oJ+2YhOyerCDrqZTsnbzsnYQg7J297KeAIOyViuydgCDrsJvripTsgqzrnozrpbwg7IKt7KCc7ZWY7Iuc6rKg7Iq164uI6rmMPycpO2QCFg9kFgICAQ8WAh8CBVlyZXR1cm4ganNQQ0ludHJhKCJWczNwSEtiWmx4U0g1JTJiVEQwNlNtTnF4YTZDT0kza3l6cmIwT3dPYyUyYmZCaUhTZUhNcW96dnZIRjIxbmhoV2lzTSIpO2RkCHkeNkZtG5JJhnzKMEiqZ7+nWXkFKIw49jAXATus6iQ=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1CBB4230">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+<input name="hdEmp" type="hidden" id="hdEmp" value="949">
+<input name="hdEmpName" type="hidden" id="hdEmpName" value="이오디">
+<input name="hdTitle" type="hidden" id="hdTitle" value="[공유] 인트라넷 오류건 공유">
+<input name="hdDate" type="hidden" id="hdDate" value="2026-10-20 오전 11:33:33">
+<div id="warp"> 
+	<!-- header -->
+	<div id="header">
+		<div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+			<h2> <a> 받은 사내메일 </a> </h2>
+		</div>
+	</div>
+	<!-- header end--> 
+	<!-- container-->
+	<div id="container">
+        <div class="contents">
+		    <div class="A">
+                <div class="divide_typeA">
+			        <table>
+				        <tbody><tr>
+					        <td style="min-width:120px">
+						        <h3>받은메일</h3>
+					        </td>
+                            <td style="width:16px;padding-right:3px">
+                                <img src="/images/scrap.png" id="Img1" style="width:15px;height:auto;" onclick="jsScrapTwo(1, 175581);">
+                            </td>
+				        </tr>
+                        <tr>
+                            <td colspan="2"><span id="lblMsg" style="color:Red;"></span></td>
+                        </tr>
+			        </tbody></table>
+			    </div>
+                <div class="text_data" style="padding: 5px;">
+                    <p><span id="lblSender"><span style="color:#555555" class="text_typeS text_gray">&nbsp;보낸사람:&nbsp;&nbsp;&nbsp;이오디&nbsp;&nbsp;  (보낸시각: 2026-10-20 오전 11:33:33 )</span></span></p>
+                </div>
+                <div id="divReceivers" class="text_data" style="display:block; text-overflow:ellipsis; overflow:hidden;">
+                    <nobr>
+                        <span id="lblReceiver" style="font-size:12px;">받은사람:</span>
+                        <img id="imgReceivers" alt="" src="../images/arrow_more.gif" onclick="return jsReceiversMore();" style="cursor:pointer;">
+                        
+                                <a href="./IntraMailWrite.html?to=172" title="2026-10-20 11:35"> <span style="color:blue; font-size:12px;">함정우</span></a>   
+                            
+                                <a href="./IntraMailWrite.html?to=232" title="2026-10-20 11:40"> <span style="color:blue; font-size:12px;">정은정</span></a>   
+                            
+                                <a href="./IntraMailWrite.html?to=810" title="미확인"> <span style="color:black; font-size:12px;">김태일</span></a>   
+                            
+                                <a href="./IntraMailWrite.html?to=949" title="2026-10-20 11:34"> <span style="color:blue; font-size:12px;">이오디</span></a>   
+                             
+                    </nobr>
+                </div>
+                <div id="divReceiversMore" class="text_data" style="display:none;">
+                    <span id="lblReceiverMore" style="font-size:12px;">받은사람:</span>
+                    <img id="imgReceiverMore" alt="" src="../images/arrow_less.png" onclick="return jsReceiversMore();" style="cursor:pointer;">
+                    
+                            <a href="./IntraMailWrite.html?to=172" title="2026-10-20 11:35"> <span style="color:blue; font-size:12px;">함정우</span></a>   
+                        
+                            <a href="./IntraMailWrite.html?to=232" title="2026-10-20 11:40"> <span style="color:blue; font-size:12px;">정은정</span></a>   
+                        
+                            <a href="./IntraMailWrite.html?to=810" title="미확인"> <span style="color:black; font-size:12px;">김태일</span></a>   
+                        
+                            <a href="./IntraMailWrite.html?to=949" title="2026-10-20 11:34"> <span style="color:blue; font-size:12px;">이오디</span></a>   
+                        
+                </div>
+                <div class="text_data">
+                    <p><span id="lblTitle" style="color:#400040;font-family:Tahoma;font-size:12pt;font-weight:bold;">[공유] 인트라넷 오류건 공유</span></p>
+                </div>
+                <div class="text_data">
+                    
+                            
+                            <a href="./intraMailFileDown.html?file=202610\M175581\intranetApp.xlsx" id="Repeater_Files_fileAnker_0">
+                                <img id="Repeater_Files_fileicon_0" src="/images/fileicon/xlsx.gif" align="absmiddle">
+                                <span style="color:blue;">
+                                    intranetApp.xlsx</span> (1,932
+                                KB) </a>
+                        
+                    
+                </div>
+                <div id="divContent" class="text_data">                        
+                    <p><span id="lblContent"></span></p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;">안녕하세요.</p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;"><br></p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;"><br></p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;">기획팀 이오디 입니다.</p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;"><br></p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;"><br></p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;">인트라넷 오류건 관련하여 고객지원팀에서 전달해준 테스트 엑셀파일 공유드립니다.&nbsp;</p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;"><br></p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;"><br></p><p style="margin-top: 2px; margin-bottom: 2px; font-family: &quot;Malgun Godic&quot;, &quot;맑은 고딕&quot;, sans-serif;">감사합니다.</p><p></p>
+                    <br>
+                </div>
+            </div>
+
+            <div class="divide_typeA" style="border:0; width:100%; margin-top:10px; margin-bottom:5px; background-color:inherit;">
+                <table style="width:auto;" align="center">
+                    <tbody><tr>                       
+                        
+                        <td>                            
+                            <input type="submit" name="btnResendSingle" value="회신" onclick="return jsForwardClick();" id="btnResendSingle" class="button_typeB button2">
+                        </td>
+                        <td>
+                            <input type="submit" name="btnResendAll" value="전체회신" onclick="return jsForwardClick();" id="btnResendAll" class="button_typeB button2" style="width:90px;">
+                        </td>
+                        <td>
+                            <input type="submit" name="btnForward" value="전달" onclick="return jsForwardClick();" id="btnForward" class="button_typeB button2">
+                        </td>
+					    <td>
+                            <input type="submit" name="btnDelete" value="삭제" onclick="return confirm('메일을 삭제하시겠습니까?');" id="btnDelete" class="button_typeB button2">
+                            
+					    </td>
+                    </tr>
+                </tbody></table>  
+            </div>
+
+        </div>    
+    </div>
+	<!-- container end--> 
+	<!-- footer-->
+    
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+	<!-- footer end--> 
+</div>
+</form>
+
+
+</body></html>

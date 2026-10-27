@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+	<title>
+		내 휴가 내역 - TOGETHERs 모바일 인트라넷
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport"
+		content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<link href="/Common/intranet.mobile3.css?2014053001" type="text/css" rel="stylesheet">
+	<style type="text/css">
+		col.layout {
+			width: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+	</script>
+</head>
+
+<body>
+	<form method="post" action="./intraAnnualMyHistory.html" id="form1">
+		<div class="aspNetHidden">
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+			<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+			<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+				value="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">
+		</div>
+
+		<script type="text/javascript">
+			//<![CDATA[
+			var theForm = document.forms['form1'];
+			if (!theForm) {
+				theForm = document.form1;
+			}
+			function __doPostBack(eventTarget, eventArgument) {
+				if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+					theForm.__EVENTTARGET.value = eventTarget;
+					theForm.__EVENTARGUMENT.value = eventArgument;
+					theForm.submit();
+				}
+			}
+			//]]>
+		</script>
+
+
+		<div class="aspNetHidden">
+
+			<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="207E4E8E">
+		</div>
+		<div id="warp">
+			<!-- header -->
+			<div id="header">
+				<div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a
+						class="button_typeA button_right" href="./Main.html">홈으로</a>
+					<h2> <a> 휴가 </a> </h2>
+				</div>
+			</div>
+			<!-- header end-->
+			<div class="sub_navi">
+				<table>
+					<tbody>
+						<tr>
+							<td class="tab2"> <a class="button_typeA_on button_right"
+									onclick="location.href='intraAnnualMyHistory.html';">내 휴가 내역</a> </td>
+							<td class="tab2"> <a class="button_typeA button_left"
+									onclick="location.href='intraAnnualApprovalHistory.html';">휴가 승인, 참조내역</a> </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- container-->
+			<div id="container">
+				<div class="contents">
+					<div class="A">
+						<div id="divTotal" class="divide_typeA" style="display:flex;">
+							<h3>내 휴가내역</h3>
+							<a href="./intraAnnualRequest.html?auCode=0&amp;userType=E" id="aAnnualWrite"
+								class="button_typeB button_right">휴가신청</a>
+						</div>
+						<div class="wrap_search">
+							<table>
+								<tbody>
+									<tr>
+										<td style="padding-top:5px;padding-bottom:5px; text-align:left">
+											<select name="ddlYear" onchange="javascript:setTimeout('__doPostBack(\'ddlYear\',\'\')', 0)"
+												id="ddlYear" style="width:70px;" data-sharkid="__0">
+												<option value="2008">2008</option>
+												<option value="2009">2009</option>
+												<option value="2010">2010</option>
+												<option value="2011">2011</option>
+												<option value="2012">2012</option>
+												<option value="2013">2013</option>
+												<option value="2014">2014</option>
+												<option value="2015">2015</option>
+												<option value="2016">2016</option>
+												<option value="2017">2017</option>
+												<option value="2018">2018</option>
+												<option value="2019">2019</option>
+												<option value="2020">2020</option>
+												<option value="2021">2021</option>
+												<option value="2022">2022</option>
+												<option value="2023">2023</option>
+												<option value="2024">2024</option>
+												<option value="2025">2025</option>
+												<option selected="selected" value="2026">2026</option>
+
+											</select>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<table cellspacing="0" cellpadding="0" border="0" width="100%">
+								<tbody>
+									<tr>
+										<td>연차/가족</td>
+										<td><span id="lbAnnualDays">23</span><span id="lbFAnnualDays"> / 10</span></td>
+										<td>지급연차</td>
+										<td><span id="lbProvideDays">0</span></td>
+									</tr>
+									<tr>
+										<td>사용(연차/가족)</td>
+										<td><span id="lbUseDays">20</span><span id="lbFUseDays"> / 0</span></td>
+										<td>무급</td>
+										<td><span id="lbFreeDays">0</span></td>
+									</tr>
+									<tr>
+										<td>잔여(연차/가족)</td>
+										<td style="font-weight:bold;">
+											<span id="lbLeftDays" style="color:#0000A0;">3</span>
+											<span id="lbFLeftDays" style="color:#0000A0;"> / 10</span>
+										</td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<table>
+								<tbody>
+									<tr>
+										<td style="padding-bottom:5px;"><span id="lbMsg" style="color:Red;"></span></td>
+									</tr>
+									<tr>
+										<td style=" border-top : 1px solid rgb(223, 223, 223);">
+
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=11080&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_0">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_0" style="color:#000444;">12월 30일 ~ 12월 31일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_0" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_0"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_0" style="font-size:Small;">10월 16일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=11079&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_1">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_1" style="color:#000444;">12월 24일 ~ 12월 24일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_1" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_1"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_1" style="font-size:Small;">10월 16일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=11069&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_2">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_2" style="color:#000444;">10월 30일 ~ 11월 2일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_2" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_2"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_2" style="font-size:Small;">10월 12일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=11068&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_3" style="text-decoration:line-through;">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_3" style="color:#000444;">10월 30일 ~ 10월 30일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_3" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_3"><span style="color:#993333">취소</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_3" style="font-size:Small;">10월 12일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=11067&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_4">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_4" style="color:#000444;">10월 19일 ~ 10월 19일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_4" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_4"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_4" style="font-size:Small;">10월 12일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10961&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_5">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_5" style="color:#000444;">8월 28일 ~ 8월 28일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_5" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_5"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_5" style="font-size:Small;">8월 19일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10926&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_6">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_6" style="color:#000444;">9월 23일 ~ 9월 23일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_6" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_6"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_6" style="font-size:Small;">7월 29일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10925&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_7">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_7" style="color:#000444;">8월 14일 ~ 8월 18일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_7" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_7"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_7" style="font-size:Small;">7월 29일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10924&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_8">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_8" style="color:#000444;">8월 7일 ~ 8월 7일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_8" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_8"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_8" style="font-size:Small;">7월 29일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10884&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_9">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_9" style="color:#000444;">7월 27일 ~ 7월 27일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_9" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_9"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_9" style="font-size:Small;">7월 13일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10847&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_10">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_10" style="color:#000444;">7월 3일 ~ 7월 3일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_10" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_10"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_10" style="font-size:Small;">6월 24일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10796&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_11">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_11" style="color:#000444;">5월 29일 ~ 5월 29일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_11" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_11"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_11" style="font-size:Small;">5월 22일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10676&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_12">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_12" style="color:#000444;">3월 12일 ~ 3월 12일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_12" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_12"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_12" style="font-size:Small;">3월 9일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10675&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_13" style="text-decoration:line-through;">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_13" style="color:#000444;">3월 9일 ~ 3월 9일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_13" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_13"><span style="color:#993333">취소</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_13" style="font-size:Small;">3월 9일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10657&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_14">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_14" style="color:#000444;">3월 6일 ~ 3월 6일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_14" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_14"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_14" style="font-size:Small;">3월 4일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10656&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_15">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_15" style="color:#000444;">3월 4일 ~ 3월 5일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_15" style="color:#393999;">경조사</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_15"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_15" style="font-size:Small;">3월 4일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10635&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_16">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_16" style="color:#000444;">2월 27일 ~ 2월 27일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_16" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_16"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_16" style="font-size:Small;">2월 23일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10634&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_17" style="text-decoration:line-through;">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_17" style="color:#000444;">2월 26일 ~ 2월 26일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_17" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_17"><span style="color:#993333">취소</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_17" style="font-size:Small;">2월 23일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10614&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_18">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_18" style="color:#000444;">2월 13일 ~ 2월 13일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_18" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_18"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_18" style="font-size:Small;">2월 9일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10568&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_19">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_19" style="color:#000444;">1월 16일 ~ 1월 16일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_19" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_19"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_19" style="font-size:Small;">1월 13일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<table width="100%"
+												onclick="location.href='intraAnnualRequest.html?auCode=10473&amp;userType=E';">
+												<tbody>
+													<tr id="rptList_trDetail_20">
+														<td colspan="2" style="color:#666666;padding-left:8px;padding-bottom:5px;">
+															<span id="rptList_lbAuDate_20" style="color:#000444;">1월 2일 ~ 1월 2일</span>
+														</td>
+														<td style="padding-bottom:5px;padding-right:8px;" class="text_right">
+															<span id="rptList_lbAuType_20" style="color:#393999;">연차</span>
+														</td>
+													</tr>
+
+													<tr>
+														<td colspan="2"
+															style="color:#666666; padding-left:8px;padding-bottom:5px; border-bottom:1px solid rgb(223, 223, 223);">
+															<span id="rptList_lbProgress_20"><span style="color:#399999">승인</span></span>
+														</td>
+														<td
+															style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+															class="text_right">
+															<span id="rptList_lbRdate_20" style="font-size:Small;">12월 3일</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- container end-->
+			<!-- footer-->
+
+			<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+			<!-- footer-->
+			<div id="footer">
+				<div class="foot">
+					<a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right"
+						onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+				</div>
+
+				<address>
+					<a>TOGETHERs</a>
+				</address>
+			</div>
+			<!-- footer end-->
+			<!-- footer end-->
+		</div>
+	</form>
+
+
+</body>
+
+</html>

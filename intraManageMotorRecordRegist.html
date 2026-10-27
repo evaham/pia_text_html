@@ -1,0 +1,370 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	법인차량 입력 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/clCalendar.js"></script></head><body onload="jsMileage(0);"><div id="minical" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" style="background:buttonface; margin:5; padding:5;margin-top:2;border-top:1 solid buttonshadow;border-left: 1 solid buttonshadow;border-right: 1 solid buttonshadow;border-bottom:1 solid buttonshadow;width:230px;display:none;position: absolute; z-index: 99"></div>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        //저장
+        function jsSaveOK() {
+            if (form1.ddlMotorType.value == 0) {
+                alert("차종을 선택해주세요.");
+                form1.ddlMotorType.focus();
+                return false;
+            }
+            if (form1.txtFirstMileage.value.length == 0) {
+                alert("시작 주행누계를 입력해주세요.");
+                form1.txtFirstMileage.focus();
+                return false;
+            }
+            if (form1.txtLastMileage.value.length == 0) {
+                alert("마침 주행누계를 입력해주세요.");
+                form1.txtLastMileage.focus();
+                return false;
+            }
+            if (form1.txtFirstMileage.value * 1 > form1.txtLastMileage.value * 1) {
+                alert("시작 주행누계가 마침 주행누계보다 큽니다.\r\n다시 확인하시고 입력하세요.");
+                form1.txtFirstMileage.focus();
+                return false;
+            }
+            if (form1.txtReportyymmdd.value.length == 0) {
+                alert("신청일을 선택해주세요.");
+                form1.txtReportyymmdd.focus();
+                return false;
+            }
+            if (form1.txtRecordyymmdd.value.length == 0) {
+                alert("운행일을 선택해주세요.");
+                form1.txtRecordyymmdd.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function onlyNumber(){
+           if((event.keyCode<48)||(event.keyCode>57))
+              event.returnValue=false;
+       }
+
+       function showMyImage(fileInput) {
+           var files = fileInput.files;
+           var vFileID = fileInput.getAttribute('id');
+           for (var i = 0; i < files.length; i++) {
+               var file = files[i];
+               var imageType = /image.*/;
+               if (!file.type.match(imageType)) {
+                   continue;
+               }
+               var img = document.getElementById('thumbnil' + vFileID);
+               var Preimg = document.getElementById('lb' + vFileID);
+               img.style.display = "";
+               Preimg.style.display = "none";
+               img.file = file;
+               var reader = new FileReader();
+               reader.onload = (function (aImg) {
+                   return function (e) {
+                       aImg.src = e.target.result;
+                   };
+               })(img);
+               reader.readAsDataURL(file);
+           }
+       }
+
+       //maxlength
+       function jsMaxLength(obj) {
+           var maxlength = parseInt(obj.getAttribute("maxlength"));
+           if (obj.value.length > maxlength) {
+               alert("한글 " + maxlength + "자 이내로 제한됩니다.");
+               obj.value = obj.value.substring(0, maxlength);
+           }
+       }
+
+       //Mileage
+       function jsMileage(obj) {
+           var FirstMileage = document.getElementById("txtFirstMileage");
+           var LastMileage = document.getElementById("txtLastMileage");
+           var Mileage = document.getElementById("txtMileage");
+
+           if (obj == 0) {
+               Mileage.value = LastMileage.value - FirstMileage.value;
+           }
+           else if (obj == 1 && FirstMileage.value != "") {
+               LastMileage.value = parseInt(FirstMileage.value) + parseInt(Mileage.value);
+           }
+       }
+
+       //출발지 
+       function jsDeparture(obj) {
+           if (obj != 3) {
+               document.getElementById("txtDeparture").value = "";
+               document.getElementById("txtDepartureAddress").value = "";
+               document.getElementById("txtDeparture").style.display = "none";
+               document.getElementById("txtDepartureAddress").style.display = "none";
+           }
+           else {
+               document.getElementById("txtDeparture").style.display = "";
+               document.getElementById("txtDepartureAddress").style.display = "";
+           }
+       }
+
+       //도착지 
+       function jsArrival(obj) {
+           if (obj != 3) {
+               document.getElementById("txtArrival").value = "";
+               document.getElementById("txtArrivalAddress").value = "";
+               document.getElementById("txtArrival").style.display = "none";
+               document.getElementById("txtArrivalAddress").style.display = "none";
+           }
+           else {
+               document.getElementById("txtArrival").style.display = "";
+               document.getElementById("txtArrivalAddress").style.display = "";
+           }
+       }
+
+       //방문목적 
+       function jsDestination(obj) {
+           if (obj != 0) {
+               document.getElementById("txtDestination").value = "";
+               document.getElementById("txtDestination").style.display = "none";
+           }
+           else {
+               document.getElementById("txtDestination").style.display = "";
+           }
+       }
+    </script>
+
+
+    <form method="post" action="./intraManageMotorRecordRegist.html" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTEzMTc0MTY5MTUPZBYCAgMPFgIeB2VuY3R5cGUFE211bHRpcGFydC9mb3JtLWRhdGEWHAIDDxBkDxYEZgIBAgICAxYEEAUJ7JeF66y07JqpBQExZxAFCeyJkOyWtOungQUBMmcQBQbstpzqt7wFATNnEAUG7Ye06re8BQE0Z2RkAgUPEGQPFgZmAgECAgIDAgQCBRYGEAUKLSDssKjsooUgLQUBMGcQBQ/slYTrsJjrlrwoNDM0NCkFAjI4ZxAFFe2MsOumrOyEuOydtOuTnCg0MDI1KQUCMzFnEAUP7IaM64KY7YOAKDkwNzUpBQIzM2cQBQ/slYTrsJjrlrwoNDYwMCkFAjM4ZxAFCUc5MCg3MDg2KQUCMzlnFgFmZAIRDxBkDxYJZgIBAgICAwIEAgUCBgIHAggWCRAFDS0g7KO87LCo7Li1IC0FATBnEAUK7KeA7ZWYMey4tQUCLTFnEAUEMey4tQUBMWcQBQQy7Li1BQEyZxAFBDPsuLUFATNnEAUENOy4tQUBNGcQBQQ17Li1BQE1ZxAFBDbsuLUFATZnEAUEN+y4tQUBN2dkZAIdDxBkDxYDZgIBAgIWAxAFBu2ajOyCrAUBMWcQBQbsnpDtg50FATJnEAUJ6rGw656Y7LKYBQEzZ2RkAh8PD2QWAh4Fc3R5bGUFDWRpc3BsYXk6bm9uZTtkAiEPD2QWAh8BBQ1kaXNwbGF5Om5vbmU7ZAIjDxBkDxYDZgIBAgIWAxAFBu2ajOyCrAUBMWcQBQbsnpDtg50FATJnEAUJ6rGw656Y7LKYBQEzZ2RkAiUPD2QWAh8BBQ1kaXNwbGF5Om5vbmU7ZAInDw9kFgIfAQUNZGlzcGxheTpub25lO2QCKQ8QZA8WBmYCAQICAgMCBAIFFgYQBQ/qsbDrnpjsspjrsKnrrLgFATFnEAUf7KCc7KGw7Iuc7ISk65OxIOyCrOyXheyepeuwqeusuAUBMmcQBQztmozsnZjssLjshJ0FATNnEAUM7YyQ7LSJ7Zmc64+ZBQE0ZxAFHOq1kOycoeuTsSDquLDtg4Dsl4XrrLTtmZzrj5kFATVnEAUU6riw7YOAKOyngeygkeyeheugpSkFATBnZGQCKw8PZBYCHwEFDWRpc3BsYXk6bm9uZTtkAjEPDxYCHgRUZXh0BQbsoIDsnqVkZAIzDw8WAh4HVmlzaWJsZWhkZAI3D2QWAgIBDxYCHgdvbmNsaWNrBVlyZXR1cm4ganNQQ0ludHJhKCJWczNwSEtiWmx4U0g1JTJiVEQwNlNtTnF4YTZDT0kza3l6cmIwT3dPYyUyYmZCaUhTZUhNcW96dnZIRjIxbmhoV2lzTSIpO2Rk3X/nIFFX/X1ReFRtc/daSy5b/A9tJVi/89UL3enUa80=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F7CA3C36">
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+
+    <div id="warp">
+        <!-- header -->
+        <div id="header">
+            <div class="main_navi">
+                <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+                <h2> <a> 법인차량 운행일지 </a> </h2>
+            </div>
+        </div>
+        <!-- header end-->
+        <!-- container-->
+        <div id="container">
+            <div class="contents">
+                <div class="A">
+                    <div class="text_data">
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <label> 구 &nbsp;&nbsp;분 </label>
+                                    <select name="ddlType" id="ddlType" style="height:35px;width:50%;" data-sharkid="__0">
+	<option value="1">업무용</option>
+	<option value="2">쉐어링</option>
+	<option value="3">출근</option>
+	<option value="4">퇴근</option>
+
+</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 차 &nbsp;&nbsp;종 </label>
+                                    <select name="ddlMotorType" onchange="javascript:setTimeout('__doPostBack(\'ddlMotorType\',\'\')', 0)" id="ddlMotorType" style="height:35px;width:50%;" data-sharkid="__1">
+	<option selected="selected" value="0">- 차종 -</option>
+	<option value="28">아반떼(4344)</option>
+	<option value="31">팰리세이드(4025)</option>
+	<option value="33">소나타(9075)</option>
+	<option value="38">아반떼(4600)</option>
+	<option value="39">G90(7086)</option>
+
+</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 신청일 </label>
+                                    <input name="txtReportyymmdd" type="text" value="2026-10-20" id="txtReportyymmdd" onfocus="this.blur();" style="width: 100px;" data-sharkid="__2"><!--
+                                 --><input type="button" id="Button1" onclick="Calendar(this, txtReportyymmdd);" value="▼" class="btnCalGray1" style="width:25px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 운행일 </label>
+                                    <input name="txtRecordyymmdd" type="text" value="2026-10-20" id="txtRecordyymmdd" onfocus="this.blur();" style="width:100px;" data-sharkid="__3"><!--
+                                 --><input type="button" id="btnCal1" onclick="Calendar(this, txtRecordyymmdd);" value="▼" class="btnCalGray1" style="width:25px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 시작 주행누계&nbsp; </label>
+                                    <input name="txtFirstMileage" type="text" maxlength="8" id="txtFirstMileage" pattern="[0-9]*" onkeypress="if ((event.keyCode&lt;48) || (event.keyCode&gt;57)) event.returnValue=false;" onkeyup="return jsMileage(0)" style="width:40%;border-radius: 3px 3px 3px 3px; border:1px solid rgb(223, 223, 223); text-align: left; ime-mode: disabled;" data-sharkid="__4"> km
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 마침 주행누계&nbsp; </label> 
+                                    <input name="txtLastMileage" type="text" maxlength="8" id="txtLastMileage" pattern="[0-9]*" onkeypress="if ((event.keyCode&lt;48) || (event.keyCode&gt;57)) event.returnValue=false;" onkeyup="return jsMileage(0)" style="width:40%;border-radius: 3px 3px 3px 3px; border:1px solid rgb(223, 223, 223); text-align: left; ime-mode: disabled;" data-sharkid="__5"> km
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 주행거리&nbsp; </label> 
+                                    <input name="txtMileage" type="text" maxlength="8" id="txtMileage" pattern="[0-9]*" onkeypress="if ((event.keyCode&lt;48) || (event.keyCode&gt;57)) event.returnValue=false;" onkeyup="return jsMileage(1)" style="width:40%;border-radius: 3px 3px 3px 3px; border:1px solid rgb(223, 223, 223); text-align: left; ime-mode: disabled; background:#ddd" data-sharkid="__6"> km
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 주차층&nbsp; </label>
+                                    <select name="ddlParkingFloor" id="ddlParkingFloor" style="height:30px;width:50%;" data-sharkid="__7">
+	<option value="0">- 주차층 -</option>
+	<option value="-1">지하1층</option>
+	<option value="1">1층</option>
+	<option value="2">2층</option>
+	<option value="3">3층</option>
+	<option value="4">4층</option>
+	<option value="5">5층</option>
+	<option value="6">6층</option>
+	<option value="7">7층</option>
+
+</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 주유량&nbsp; </label>
+                                    
+                                    <input name="txtFuelingLiter" type="text" maxlength="7" id="txtFuelingLiter" onkeypress="if (event.keyCode == 46) {if (document.getElementById('txtFuelingLiter').value.indexOf('.') &gt; -1) event.returnValue = false;} if ((event.keyCode != 46 &amp;&amp; event.keyCode &lt; 48) || event.keyCode &gt; 57) event.returnValue = false;" style="width:40%;border-radius: 3px 3px 3px 3px; border:1px solid rgb(223, 223, 223); text-align: left; ime-mode: disabled;" data-sharkid="__8"> 리터
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>            
+                    <div class="text_data" style="text-align:center;">
+                        시작계기판<br>
+                        <img id="thumbnilImg1" style="width:50%; border:0; display:none;" src="" alt=""><br><span id="lbImg1"></span>
+                        <input name="Img1" type="file" id="Img1" accept="image/*" onchange="showMyImage(this)" style="margin-top:5px;">
+                    </div>     
+                    <div class="text_data" style="text-align:center;">
+                        마침계기판<br>
+                        <img id="thumbnilImg2" style="width:50%; border:0; display:none;" src="" alt=""><br><span id="lbImg2"></span>
+                        <input name="Img2" type="file" id="Img2" accept="image/*" onchange="showMyImage(this)" style="margin-top:5px;">
+                    </div>
+                    <div class="text_data">
+                        출발지 <select name="ddlDeparture" id="ddlDeparture" class="ddlBlue1" onchange="jsDeparture(this.value);" style="height:30px;width:70%;" data-sharkid="__9">
+	<option value="1">회사</option>
+	<option value="2">자택</option>
+	<option value="3">거래처</option>
+
+</select><br>
+                        <input name="txtDeparture" type="text" maxlength="25" id="txtDeparture" placeholder="출발지" style="color:Gray;height:24px;width:95%;display:none;">
+                        <input name="txtDepartureAddress" type="text" maxlength="50" id="txtDepartureAddress" placeholder="출발주소" style="color:Gray;height:24px;width:95%;display:none;">
+                    </div>
+                    <div class="text_data">
+                        도착지 <select name="ddlArrival" id="ddlArrival" class="ddlBlue1" onchange="jsArrival(this.value);" style="height:30px;width:70%;" data-sharkid="__10">
+	<option value="1">회사</option>
+	<option value="2">자택</option>
+	<option value="3">거래처</option>
+
+</select><br>
+                        <input name="txtArrival" type="text" maxlength="25" id="txtArrival" placeholder="도착지" style="color:Gray;height:24px;width:95%;display:none;">
+                        <input name="txtArrivalAddress" type="text" maxlength="50" id="txtArrivalAddress" placeholder="도착주소" style="color:Gray;height:24px;width:95%;display:none;">
+                    </div>
+                    <div class="text_data">
+                        방문목적 <select name="ddlDestination" id="ddlDestination" class="ddlBlue1" onchange="jsDestination(this.value);" style="height:30px;width:70%;" data-sharkid="__11">
+	<option value="1">거래처방문</option>
+	<option value="2">제조시설등 사업장방문</option>
+	<option value="3">회의참석</option>
+	<option value="4">판촉활동</option>
+	<option value="5">교육등 기타업무활동</option>
+	<option value="0">기타(직접입력)</option>
+
+</select><br>
+                        <input name="txtDestination" type="text" maxlength="50" id="txtDestination" placeholder="방문목적" style="color:Gray;height:24px;width:95%;display:none;">
+                    </div>
+                    <div class="text_data">
+                        <textarea name="txtWork" id="txtWork" class="txtAreaGray1" style="width:95%; height:80px; margin-bottom:5px;" maxlength="100" placeholder="상세" data-sharkid="__12"></textarea>
+                    </div>    
+                    <div class="text_data" style="border:0; text-align:right;">
+                        <span id="lbRegist"></span>
+                    </div>
+                    <div class="text_data" style="border:0; text-align:right;"><br>
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <input type="submit" name="btnSave" value="저장" onclick="javascript:return jsSaveOK();" id="btnSave" class="button_typeB button" style="width:25%;">&nbsp;
+                                    
+                                    <a class="button_typeB button" style="width: 25%;" href="javascript:history.back();">취소</a>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                        <br><span id="lblMsg" style="color:Red;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container end-->
+        <!-- footer-->
+        
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+        <!-- footer end-->
+        <input name="hdCode" type="hidden" id="hdCode" value="0">
+        <input type="hidden" name="hdimgPath1" id="hdimgPath1">
+        <input type="hidden" name="hdimgName1" id="hdimgName1">
+        <input type="hidden" name="hdimgPath2" id="hdimgPath2">
+        <input type="hidden" name="hdimgName2" id="hdimgName2">
+    </div>
+    </form>
+
+
+</body></html>

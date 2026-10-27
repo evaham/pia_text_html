@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	일정표 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"><link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        col.layout {width:50px;}
+    </style>
+    <script type="text/javascript">
+
+        //전날
+        function jsPrevDay() {
+            var spanDate = document.getElementById("spanDate").innerHTML.split(/[.]/);
+            var date = new Date(spanDate[0], spanDate[1] - 1, spanDate[2] - 1);
+            var spanDay = document.getElementById("spanDay");
+
+            var week = new Array("일", "월", "화", "수", "목", "금", "토");
+            var hdCode = document.getElementById("hdCode");
+            var hdDate = document.getElementById("hdDate");
+            var hdDay = document.getElementById("hdDay");
+
+            spanDate.innerHTML = date.format("yyyy.MM.dd");
+            spanDay.innerHTML = week[date.getDay()];
+
+            hdDate.value = spanDate.innerHTML;
+            hdDay.value = spanDay.innerHTML;
+            hdCode.value = "1";
+            eval("__doPostBack('btnGo','')");
+        }
+
+        //다음날
+        function jsAfterDay() {
+            var spanDate = document.getElementById("spanDate").innerHTML.split(/[.]/);
+            var date = new Date(spanDate[0], spanDate[1] - 1, spanDate[2]);
+            var spanDay = document.getElementById("spanDay");
+
+            var week = new Array("일", "월", "화", "수", "목", "금", "토");
+            var hdCode = document.getElementById("hdCode");
+            var hdDate = document.getElementById("hdDate");
+            var hdDay = document.getElementById("hdDay");
+
+            date.setDate(date.getDate() + 1);
+
+            spanDate.innerHTML = date.format("yyyy.MM.dd");
+            spanDay.innerHTML = week[date.getDay()];
+
+            hdDate.value = spanDate.innerHTML;
+            hdDay.value = spanDay.innerHTML;
+            hdCode.value = "1";
+            eval("__doPostBack('btnGo','')");
+        }
+
+        //읽기
+        function jsMotorScheduleRead(code, veauCode) {
+            var spanDate = document.getElementById("spanDate");
+            location.href = "/intra_Manage/intraManageMotorRecordRegist.html?mr_code=" + code + "&schDate=" + spanDate.innerHTML + "&where=diary";
+        }
+
+        //쓰기
+        function jsPopMotorScheduleAdd() {
+            var hdDate = document.getElementById("hdDate").value.split(/[.]/);
+            var date = new Date(hdDate[0], hdDate[1] - 1, hdDate[2]);
+
+            hdDate.value = date.format("yyyy-MM-dd ddd");
+            location.href = "/intra_Manage/intraManageMotorRecordRegist.html?date=" + hdDate.value + "&where=diary";
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="./intraMotorScheduleDaily.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjEzMDk0OTczNQ9kFgICAw9kFgwCAw8WAh4JaW5uZXJodG1sBQoyMDI2LjEwLjIwZAIFDxYCHwAFA+2ZlGQCCQ8WAh4HVmlzaWJsZWgWAmYPZBYCZg8PFgIeBFRleHRlZGQCDQ8WAh8BaGQCDw8WAh4LXyFJdGVtQ291bnQCARYCZg9kFgJmDxUCBTE1NTEyXTxpbWcgc3JjPScvaW1hZ2VzL2ljb25fcGluX2JsdWUuZ2lmJyBib3JkZXI9JzAnIGFsaWduPSdhYnNtaWRkbGUnPiDsiZDslrTrp4E6IOyVhOuwmOuWvCg0MzQ0KWQCEQ9kFgICAQ8WAh4Hb25jbGljawVZcmV0dXJuIGpzUENJbnRyYSgiVnMzcEhLYlpseFNINSUyYlREMDZTbU5xeGE2Q09JM2t5enJiME93T2MlMmJmQmlIU2VITXFvenZ2SEYyMW5oaFdpc00iKTtkZLUPyX2p1zpOcClmuEB5fzmN8Odfa4B3d1vxBtAWF72L">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="1682F47F">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+<div id="warp"> 
+	<!-- header -->
+	<div id="header">
+        <div class="tab_wrap">
+		    <ul class="tab_list">
+                <li class="tab_4"><a class="tab_btn tab_left2" href="./intraScheduleMonth.html">일정표</a></li>
+                <li class="tab_5"><a class="tab_btn_on tab_right2" href="./intraMotorScheduleMonth.html">차량일정표</a></li>
+		    </ul>
+		</div>	
+	    <div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a></div>
+	</div>
+	<!-- header end--> 
+    <div class="sub_navi">
+		<table>
+			<tbody><tr>
+				<td class="tab3"> <a class="button_typeA_on button_right" href="./intraMotorScheduleDaily.html">일간</a> </td>
+				<td class="tab3"> <a class="button_typeA button_left" href="./intraMotorScheduleMonth.html">월간</a> </td>
+                <td class="tab3"> <a class="button_typeA button_left"  href="./intraManageMotorRecordRegist.html">쓰기</a> </td>
+			</tr>
+		</tbody></table>
+	</div>
+	<!-- container-->
+	<div id="container">
+		<div class="contents">
+			<div class="A">
+                <div class="divide_typeA">
+					<table>
+                        <colgroup>
+                            <col class="layout">
+                            <col>
+                            <col class="layout">
+						</colgroup>
+						<tbody><tr>
+                            <td style="text-align: center;padding-left:6px;padding-top:2px;">
+								<a class="button_typeB button" href="./intraMotorScheduleDaily.html" style="width:45px;">오늘</a>
+							</td>
+							<td style="text-align: center;padding-top:2px;">
+								<img alt="" src="/images/btn_arr_left.png" onclick="jsPrevDay();" style="width:35px;text-align: center;vertical-align:middle;cursor:pointer;">
+                                <span id="spanDate" style="text-align: center;font-weight:bold;">2026.10.20</span>
+                                <span id="spanDay" style="text-align: center;font-weight:bold;">화</span>
+                                <img alt="" src="/images/btn_arr_right.png" onclick="jsAfterDay();" style="width:35px;text-align: center;vertical-align:middle;cursor:pointer;">
+							</td>
+                            <td style="text-align: center;padding-left:6px;padding-top:4px;">
+							</td>
+						</tr>
+					</tbody></table>
+				</div>
+                <div style="display: none;">
+                    <input type="submit" name="btnGo" value="" id="btnGo">
+                </div>
+                <div>
+				<table>
+                    
+                    <tbody><tr><td><span id="lblMsg" style="color:Red;"></span></td></tr>
+                    
+					<tr>
+						<td>  
+	                        
+                                    <table width="100%" onclick="jsMotorScheduleRead(15512)" style="cursor:pointer;">
+                                        <tbody><tr>
+									        <td style="padding-left:8px;padding-top:7px;padding-bottom:-1px;white-space: nowrap;border-bottom : 1px solid rgb(223, 223, 223);">                                           
+									            <div style="width:260px; height:31px; text-overflow:ellipsis; overflow:hidden;">
+                                                    <nobr><img src="/images/icon_pin_blue.gif" border="0" align="absmiddle"> 쉐어링: 아반떼(4344)</nobr>
+                                                </div>
+									        </td>
+									        <td style="padding-right:8px;color: #666666;border-bottom : 1px solid rgb(223, 223, 223);" class="text_right">
+										        <img alt="" src="../images/arrow_navi_03.png">
+									        </td>
+								        </tr>                               
+                                    </tbody></table>                              
+                                
+						</td>
+					</tr>									
+				</tbody></table>						
+				</div>			
+			</div>
+		</div>
+	</div>
+	<!-- container end--> 
+	<!-- footer-->
+    
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+	<!-- footer end-->
+    <input name="hdCode" type="hidden" id="hdCode" value="0">
+    <input name="hdDate" type="hidden" id="hdDate" value="2026.10.20">
+    <input name="hdDay" type="hidden" id="hdDay">
+</div>
+</form>
+
+
+</body></html>

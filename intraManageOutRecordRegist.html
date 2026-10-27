@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	외근경비 입력 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/clCalendar.js"></script></head><body><div id="minical" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" style="background:buttonface; margin:5; padding:5;margin-top:2;border-top:1 solid buttonshadow;border-left: 1 solid buttonshadow;border-right: 1 solid buttonshadow;border-bottom:1 solid buttonshadow;width:230px;display:none;position: absolute; z-index: 99"></div>
+    <style type="text/css">
+        col.layout { width: 60px; }
+    </style>
+    <script type="text/javascript">
+        //저장
+        function jsSaveOK() {
+            if (form1.ddlStartTime.value * 1 > form1.ddlEndTime.value * 1) {
+                alert("외근시간 설정이 잘못되었습니다.");
+                ddlStartTime.focus();
+                return false;
+            }
+            if (form1.txtDate.value.length == 0) {
+                alert("외근일을 선택해주세요.");
+                form1.txtDate.focus();
+                return false;
+            }
+            if (form1.txtContents.value.length == 0 || form1.txtContents.value == "내용") {
+                alert("외근내용를 입력해주세요.");
+                form1.txtContents.focus();
+                return false;
+            }
+            return true;
+        }
+        //구분 당일출장시 시간 숨기기
+        function jsDivisionChange() {
+            if (form1.ddlDivision.value == "0") document.getElementById("divTime").style.display = "block";
+            else document.getElementById("divTime").style.display = "none";
+        }
+    </script>
+
+
+    <form method="post" action="./intraManageOutRecordRegist.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTM1NjI1NjgyNQ9kFgICAw9kFggCAQ8QD2QWAh4Ib25jaGFuZ2UFGnJldHVybiBqc0RpdmlzaW9uQ2hhbmdlKCk7DxYCZgIBFgIQBQbsmbjqt7wFATBnEAUM64u57J287Lac7J6lBQExZ2RkAgMPD2QWAh4IcmVhZG9ubHkFBHRydWVkAgcPZBYIAgEPEGQPFhhmAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMAg0CDgIPAhACEQISAhMCFAIVAhYCFxYYEAUCMDAFAjAwZxAFAjAxBQIwMWcQBQIwMgUCMDJnEAUCMDMFAjAzZxAFAjA0BQIwNGcQBQIwNQUCMDVnEAUCMDYFAjA2ZxAFAjA3BQIwN2cQBQIwOAUCMDhnEAUCMDkFAjA5ZxAFAjEwBQIxMGcQBQIxMQUCMTFnEAUCMTIFAjEyZxAFAjEzBQIxM2cQBQIxNAUCMTRnEAUCMTUFAjE1ZxAFAjE2BQIxNmcQBQIxNwUCMTdnEAUCMTgFAjE4ZxAFAjE5BQIxOWcQBQIyMAUCMjBnEAUCMjEFAjIxZxAFAjIyBQIyMmcQBQIyMwUCMjNnZGQCAw8QZA8WBmYCAQICAgMCBAIFFgYQBQIwMAUCMDBnEAUCMTAFAjEwZxAFAjIwBQIyMGcQBQIzMAUCMzBnEAUCNDAFAjQwZxAFAjUwBQI1MGdkZAIFDxBkDxYYZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINAg4CDwIQAhECEgITAhQCFQIWAhcWGBAFAjAwBQIwMGcQBQIwMQUCMDFnEAUCMDIFAjAyZxAFAjAzBQIwM2cQBQIwNAUCMDRnEAUCMDUFAjA1ZxAFAjA2BQIwNmcQBQIwNwUCMDdnEAUCMDgFAjA4ZxAFAjA5BQIwOWcQBQIxMAUCMTBnEAUCMTEFAjExZxAFAjEyBQIxMmcQBQIxMwUCMTNnEAUCMTQFAjE0ZxAFAjE1BQIxNWcQBQIxNgUCMTZnEAUCMTcFAjE3ZxAFAjE4BQIxOGcQBQIxOQUCMTlnEAUCMjAFAjIwZxAFAjIxBQIyMWcQBQIyMgUCMjJnEAUCMjMFAjIzZxYBAhJkAgcPEGQPFgdmAgECAgIDAgQCBQIGFgcQBQIwMAUCMDBnEAUCMTAFAjEwZxAFAjIwBQIyMGcQBQIzMAUCMzBnEAUCNDAFAjQwZxAFAjUwBQI1MGcQBQI1OQUCNTloFgFmZAIPD2QWAgIBDxYCHgdvbmNsaWNrBVlyZXR1cm4ganNQQ0ludHJhKCJWczNwSEtiWmx4U0g1JTJiVEQwNlNtTnF4YTZDT0kza3l6cmIwT3dPYyUyYmZCaUhTZUhNcW96dnZIRjIxbmhoV2lzTSIpO2Rk5rNCl/yYGjWrCWRVWopDb3Xe3O2Pq52WR5Y8kCD3TxU=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="DA37E50E">
+</div>
+    <div id="warp">
+        <!-- header -->
+        <div id="header">
+            <div class="main_navi">
+                <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a>                 <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+                <h2> <a> 외근경비 사용내역 </a> </h2>
+            </div>
+        </div>
+        <!-- header end-->
+        <!-- container-->
+        <div id="container">
+            <div class="contents">
+                <div class="A">
+                    <div class="text_data">
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <label> 구 &nbsp;&nbsp;분 </label>&nbsp;<select name="ddlDivision" onchange="return jsDivisionChange();setTimeout('__doPostBack(\'ddlDivision\',\'\')', 0)" id="ddlDivision" style="height:35px;width:40%;" data-sharkid="__0">
+	<option value="0">외근</option>
+	<option value="1">당일출장</option>
+
+</select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 외근일 </label>&nbsp;<input name="txtDate" type="text" value="2026-10-22" id="txtDate" onfocus="this.blur();" readonly="true" style="width: 100px;" data-sharkid="__1"><!--
+                                 --><input type="button" id="btnCal1" onclick="Calendar(this, txtDate);" value="▼" class="btnCalGray1" style="width:25px;height:30px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 교통비 </label>&nbsp;<input name="txtAmount" type="text" maxlength="9" id="txtAmount" pattern="[0-9]*" onkeypress="if ((event.keyCode&lt;48) || (event.keyCode&gt;57)) event.returnValue=false;" style="width:40%;text-align: left; ime-mode: disabled;" data-sharkid="__2"> 원
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="divTime" style="display: block;">
+                                        <select name="ddlStartTime" id="ddlStartTime" class="ddlBlue1" style="height:30px;width:19%;" data-sharkid="__3">
+	<option value="00">00</option>
+	<option value="01">01</option>
+	<option value="02">02</option>
+	<option value="03">03</option>
+	<option value="04">04</option>
+	<option value="05">05</option>
+	<option value="06">06</option>
+	<option value="07">07</option>
+	<option value="08">08</option>
+	<option value="09">09</option>
+	<option selected="selected" value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+
+</select>
+                                        <select name="ddlStartSec" id="ddlStartSec" class="ddlBlue1" style="height:30px;width:19%;" data-sharkid="__4">
+	<option value="00">00</option>
+	<option value="10">10</option>
+	<option value="20">20</option>
+	<option value="30">30</option>
+	<option value="40">40</option>
+	<option value="50">50</option>
+
+</select> ~
+                                        <select name="ddlEndTime" onchange="javascript:setTimeout('__doPostBack(\'ddlEndTime\',\'\')', 0)" id="ddlEndTime" class="ddlBlue1" style="height:30px;width:19%;" data-sharkid="__5">
+	<option value="00">00</option>
+	<option value="01">01</option>
+	<option value="02">02</option>
+	<option value="03">03</option>
+	<option value="04">04</option>
+	<option value="05">05</option>
+	<option value="06">06</option>
+	<option value="07">07</option>
+	<option value="08">08</option>
+	<option value="09">09</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option selected="selected" value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+	<option value="21">21</option>
+	<option value="22">22</option>
+	<option value="23">23</option>
+
+</select>
+                                        <select name="ddlEndSec" id="ddlEndSec" class="ddlBlue1" style="height:30px;width:19%;" data-sharkid="__6">
+	<option selected="selected" value="00">00</option>
+	<option value="10">10</option>
+	<option value="20">20</option>
+	<option value="30">30</option>
+	<option value="40">40</option>
+	<option value="50">50</option>
+
+</select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="text_data">
+                        <textarea name="txtContents" rows="2" cols="1" id="txtContents" placeholder="내용" style="color:Gray;height:140px;width:95%;" data-sharkid="__7"></textarea>
+                    </div>
+                    <div class="text_data" style="border:0; text-align:right;"><br>
+                        <input type="submit" name="btnSave" value="저장" onclick="javascript:return jsSaveOK();" id="btnSave" class="button_typeB button" style="width:100px;">
+                        <button type="button" name="btnCancel" value="취소" onclick="location.href='/intra_Diary/IntraDiaryList.html';" id="btnCancel" class="button_typeB button" style="width: 100px;">취소</button> 
+                        <br><span id="lblMsg" style="color:Red;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container end-->
+        <!-- footer-->
+        
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+        <!-- footer end-->
+    </div>
+    </form>
+
+
+</body></html>

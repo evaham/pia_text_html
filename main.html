@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+    <title>
+        메인 - TOGETHERs 모바일 인트라넷
+    </title>
+    <meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+
+    <style type="text/css">
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 400px;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            position: relative;
+        }
+        .navigation li {
+            display: flex;
+            justify-content: center;
+            width: calc(33% - 24px);
+            min-width: 80px;
+            padding: 0;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="./Main.html" id="form1">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+                value="/wEPDwUKLTY2OTA3MDE5MQ8WAh4MZW1wX2Z1bmNhdXRoBQEwFgICAw9kFgoCBw9kFgICAQ8WAh4Fc3R5bGUFDWRpc3BsYXk6bm9uZTtkAgkPZBYCAgEPFgIfAQUNZGlzcGxheTpub25lO2QCEw9kFgICAQ8WAh8BBQ1kaXNwbGF5Om5vbmU7ZAIVDxYCHgdWaXNpYmxlaGQCHQ9kFgICAQ8WAh4Hb25jbGljawVZcmV0dXJuIGpzUENJbnRyYSgiVnMzcEhLYlpseFNINSUyYlREMDZTbU5xeGE2Q09JM2t5enJiME93T2MlMmJmQmlIU2VITXFvenZ2SEYyMW5oaFdpc00iKTtkZMkhrgEYgZv5aq+gqJ1zhmMhux1uD6wB6WqG7blcpud1">
+        </div>
+
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="202EA31B">
+        </div>
+        <div id="warp">
+            <!-- header -->
+            <div id="header" style="height:45px;">
+                <div class="main_navi">
+                    <h2>Intranet</h2>
+                </div>
+            </div>
+            <!-- header end-->
+            <!-- container-->
+            <table>
+                <tbody>
+                    <tr>
+                        <td style="padding-bottom:30px;">
+                            <div id="main_menu" style="padding-top:30px;">
+
+                                <ul class="navigation">
+                                    <li id="liMenu_MartList">
+                                        <div><a class="button_typeB button" href="./iamMartList.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="가맹점"
+                                                        src="images/martlist.png"></span>가맹점</a></div>
+                                    </li>
+                                    <li id="liMenu_EmpList">
+                                        <div><a class="button_typeB button" href="./intraAdminEmpList.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="연락처"
+                                                        src="images/address.png"></span>연락처</a></div>
+                                    </li>
+                                    <li id="liMenu_CallList">
+                                        <div style="position:relative;">
+                                            <a class="button_typeB button" href="./iamMartCallList.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="콜리스트"
+                                                        src="images/calllist.png"></span>콜리스트
+                                                <span id="spanView" class="nav-counter" style="display:none;"><span
+                                                        id="lblMyCallCount">88</span></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li id="liMenu_MailList">
+                                        <div style="position:relative;">
+                                            <a class="button_typeB button" href="./intraMailList.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="사내메일"
+                                                        src="images/intra_mail.png"></span>사내메일
+                                                <span id="spanMail" class="nav-counter2" style="display:none;"><span
+                                                        id="lblUnReadMailCount"></span></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li id="liMenu_DiaryList">
+                                        <div><a class="button_typeB button" href="./intraDiaryList.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="업무일지"
+                                                        src="images/diary.png"></span>업무일지</a></div>
+                                    </li>
+                                    <li id="liMenu_MeetList">
+                                        <div><a class="button_typeB button" href="./intraMeetList.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="회의록"
+                                                        src="images/conference.png"></span>회의록</a></div>
+                                    </li>
+                                    <li id="liMenu_ScheduleMonth">
+                                        <div><a class="button_typeB button" href="./intraScheduleMonth.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="일정표"
+                                                        src="images/calender.png"></span>일정표</a></div>
+                                    </li>
+                                    <li id="liMenu_MotorScheduleMonth">
+                                        <div><a class="button_typeB button" href="./intraMotorScheduleMonth.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="일정표"
+                                                        src="images/car.png"></span>차량일정표</a></div>
+                                    </li>
+                                    <li id="liMenu_AnnualMyHistory">
+                                        <div style="position:relative;">
+                                            <a class="button_typeB button" href="./intraAnnualMyHistory.html"
+                                                style="cursor:pointer;"><span class="icon"><img alt="휴가내역"
+                                                        src="images/intra_annual.jpg"></span>휴가
+                                                <span id="spanAnnual" class="nav-counter" style="display:none;"><span
+                                                        id="lblUnAnnualApprovalCount"></span></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- container end-->
+            <!-- footer-->
+
+            <!-- footer-->
+            <div id="footer">
+                <div class="foot">
+                    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" >PC화면</a>
+                </div>
+
+                <address>
+                    <a>TOGETHERs</a>
+                </address>
+            </div>
+            <!-- footer end-->
+            <!-- footer end-->
+        </div>
+    </form>
+
+
+</body>
+
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	업무일지 리스트 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8"><meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"><link href="/Common/intranet.mobile3.css?17021401" type="text/css" rel="stylesheet">
+
+    <script type="text/javascript" src="../Common/jquery.min.js"></script>
+    <script type="text/javascript" src="../Common/jquery-latest.js"></script>
+    <script type="text/javascript">
+        function jsGoPage(page) {
+            form1.hdSelPage.value = page;
+            eval("__doPostBack('btnGoPage','')");
+        }
+
+        function jsRegist(type) {
+            var win;
+            if (type == "Motor") {                
+                if ($("#hdAuthMotor").val() != 2) alert("법인차량 운행 등록 권한이 없습니다.");
+                else window.open("/intra_Manage/intraManageMotorRecordRegist.html", "_self");
+            } else if (type == "Card") {
+                if ($("#hdAuthCard").val() != 2) alert("법인카드 사용 등록 권한이 없습니다.");
+                else win = window.open("/intra_Manage/intraManageCardRecordRegist.html", "_self");
+            } else if (type == "Out") {
+                if ($("#hdAuthOut").val() != 2) alert("외근경비 등록 권한이 없습니다.");
+                else win = window.open("/intra_Manage/intraManageOutRecordRegist.html", "_self");
+            }
+            win.focus();
+            return false;
+        }
+    </script>
+</head>
+<body style="zoom: 1;">
+    <form method="post" action="./intraDiaryList.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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6rOg64+E7JiBAjI0ZAINDw8WAh8CBYsEPGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+yymOydjCcgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX3ByZXYnIC8+IDxpbnB1dCB0eXBlPSdidXR0b24nIHZhbHVlPSfsnbTsoIQnIGNsYXNzPSdidXR0b25fcGFnaW5nIGJ1dHRvbl9wcmV2JyAvPiZuYnNwOyZuYnNwOyA8Zm9udCBjb2xvcj0nIyNkODc2NzYnPjxzdHJvbmc+MTwvc3Ryb25nPjwvZm9udD4gIHwgPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSgyKTsiPjI8L2E+IHwgPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSgzKTsiPjM8L2E+IDxhIGhyZWY9IkphdmFTY3JpcHQ6anNHb1BhZ2UoNCk7Ij4mbmJzcDsmbmJzcDs8aW5wdXQgdHlwZT0nYnV0dG9uJyB2YWx1ZT0n64uk7J2MJyBjbGFzcz0nYnV0dG9uX3BhZ2luZyBidXR0b25fbmV4dCcgLz48L2E+IDxhIGhyZWY9IkphdmFTY3JpcHQ6anNHb1BhZ2UoMTUpOyI+PGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+uBnScgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX25leHQnIC8+PC9hPmRkAhcPZBYCAgEPFgIeB29uY2xpY2sFWXJldHVybiBqc1BDSW50cmEoIlZzM3BIS2JabHhTSDUlMmJURDA2U21OcXhhNkNPSTNreXpyYjBPd09jJTJiZkJpSFNlSE1xb3p2dkhGMjFuaGhXaXNNIik7ZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQULY2hrX0NvbW1lbnTsX7Ws3wnu+zpBj9JLUJ95FgUixa3JUKE6LdwLptaaDg==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="6674445F">
+</div>
+    <div id="warp">
+        <!-- header -->
+        <div id="header">
+            <div class="tab_wrap">
+		        <ul class="tab_list">
+                    <li class="tab_1"><a class="tab_btn tab_left" href="./intraMailList.html">메일</a></li>
+                    <li class="tab_2"><a class="tab_btn_on tab_center" href="./intraDiaryList.html">일지</a></li>
+                    <li class="tab_3"><a class="tab_btn tab_right" href="./intraMeetList.html">회의</a></li>
+		        </ul>
+		    </div>
+            <div class="main_navi">
+                <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+            </div>            	 
+        </div>
+        <!-- header end--> 
+        <!-- container-->
+        <div id="container">
+            <div class="contents">
+                <div class="A">
+                    <div id="divTotal" class="divide_typeA" style="top:3px;">
+                        <table>
+                            <tbody><tr>
+                                <td style="text-align: center;">
+                                    <a href="./intraDiaryWrite.html" id="aDiaryWrite" class="button_typeB button" style="margin:0 auto;">작성</a>
+                                </td>
+                                <td style="text-align: center;">                                    
+                                    <input type="button" id="btnNewMotor" onclick="jsRegist('Motor');" class="button_typeB button" style="margin: 0 auto;" value="차량">
+                                </td>
+                                <td style="text-align: center;">
+                                    <input type="button" id="btnNewCard" onclick="jsRegist('Card');" class="button_typeB button" style="margin: 0 auto;" value="카드">
+                                </td>
+                                <td style="text-align: center;">
+                                    <input type="button" id="btnNewOut" onclick="jsRegist('Out');" class="button_typeB button" style="margin: 0 auto;" value="외근">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="wrap_search">
+                        <table>
+                            <tbody><tr>
+                                <td style="text-align: left;">
+                                    <table id="rbtType">
+	<tbody><tr>
+		<td><input id="rbtType_0" type="radio" name="rbtType" value="" onclick="javascript:setTimeout('__doPostBack(\'rbtType$0\',\'\')', 0)" data-sharkid="__0"><label for="rbtType_0">전체</label></td><td><input id="rbtType_1" type="radio" name="rbtType" value="1" checked="checked" data-sharkid="__1"><label for="rbtType_1">읽음</label></td><td><input id="rbtType_2" type="radio" name="rbtType" value="0" onclick="javascript:setTimeout('__doPostBack(\'rbtType$2\',\'\')', 0)" data-sharkid="__2"><label for="rbtType_2">안읽음</label></td>
+	</tr>
+</tbody></table>
+                                </td>
+                                <td style="text-align: left;">
+                                    <input name="chk_Comment" type="checkbox" id="chk_Comment" onclick="jsGoPage(1);" data-sharkid="__3"><label for="chk_Comment">댓글</label>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div>
+                        <table>
+                            <tbody><tr>
+                                <td style="padding-bottom: 5px;">
+                                    <span id="lblMsg" style="color:Red;"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128291';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">레포트관리 장부재고액 문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;김민정</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">21</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128290';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">이익액 마이너스 문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;강유나</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">21</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128289';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">엑셀저장 오류</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;김동인</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">25</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128288';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">일레포트 생성 안됨 문의 외</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;고도영</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">24</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128287';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">간편결제 설정 관련 문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;심기용</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">22</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128286';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">투게더PDA 바코드전송문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;정유진</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">22</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128285';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">업데이트 후 데이터베이스 연결 안 됨 문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;권용훈</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">21</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128284';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">DT970 포트열기 실패 문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;배주휘</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">22</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128283';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">핸드터미널 데이터 송신 확장바코드 누락</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>19</b> (<span style="color:#555555"><b>월</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;이슬기</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">24</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128278';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">카드 승인창 닫기 문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>17</b> (<span style="color:#8888ee"><b>토</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;강유나</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">29</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128277';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">기타 응답데이터 오류 문의</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>17</b> (<span style="color:#8888ee"><b>토</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;심기용</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">29</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128282';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">[주간업무] 토스</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;황예지</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">35</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128281';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">[주간업무] 라이트 정비 등</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;윤석근</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">31</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128280';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">[주간업무]</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;김태일</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">34</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128279';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">[주간업무] AI이미지 UI 변경 작업</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;함정우</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">33</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128276';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">[주간업무] 투게더딜리버리 첫 오픈</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;이선희</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">41</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128275';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">[주간업무] 파트너사 포럼 준비 외</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;이경수</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">32</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128274';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">[주간업무] 투게더클럽 판매자계약종료 외</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;허준수</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">31</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128273';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">DLL 오류 다수 문의 외</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;김동인</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">30</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                            <div onclick="location.href='intraDiaryRead.html?diary=128272';" onmouseover="style.backgroundColor='#EAEAEA';style.cursor='pointer';" onmouseout="style.backgroundColor='#ffffff';" style="border-top: 1px solid rgb(223, 223, 223);">
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell;">
+                                                            <div style="width: 90%;text-overflow:ellipsis;overflow:hidden;white-space:nowrap; padding-top:5px;">
+                                                                    &nbsp;<span style="color:#000090;">매입전표 내 상품 삭제 후 저장 안됨 문의 외</span>
+                                                                </div><table style="width: 100%; table-layout: fixed;">
+                                                                
+                                                            </table>
+                                                        </div>
+                                                        <div style="display:table-cell; width:90px; text-align:right; color: #006699;">
+                                                            <b>10</b> / <b>16</b> (<span style="color:#555555"><b>금</b></span>)&nbsp;
+                                                        </div>
+                                                    </div>
+                                                </div>                                            
+                                                <div style="display:table; table-layout: fixed; width:100%;">
+                                                    <div style="display:table-row;">
+                                                        <div style="display:table-cell; color: #666666; padding-bottom:5px;">
+                                                            <span class="text_typeS">&nbsp;&nbsp;고도영</span>
+                                                        </div>
+                                                        <div style="display:table-cell; width:25px;">
+                                                            <span class="text_blue text_typeS">24</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+                                            </div>
+                                        
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="paging">
+					<table class="pagingTable">
+						<tbody>							                      
+                            <tr>
+                                <td colspan="2" style="height:25px; vertical-align:middle;" align="center">
+                                    <!--페이징-->
+                                    <input name="hdSelPage" type="hidden" id="hdSelPage" value="1">
+                                    <span id="lblpaging" style="color:#8C9C8C;font-size:Medium;"><input type="button" value="처음" class="button_paging button_prev"> <input type="button" value="이전" class="button_paging button_prev">&nbsp;&nbsp; <font color="##d87676"><strong>1</strong></font>  | <a href="JavaScript:jsGoPage(2);">2</a> | <a href="JavaScript:jsGoPage(3);">3</a> <a href="JavaScript:jsGoPage(4);">&nbsp;&nbsp;<input type="button" value="다음" class="button_paging button_next"></a> <a href="JavaScript:jsGoPage(15);"><input type="button" value="끝" class="button_paging button_next"></a></span>
+                                    <div style="display: none;">
+                                        <input type="submit" name="btnGoPage" value="페이지이동" id="btnGoPage">
+                                    </div>
+                                </td>
+                            </tr>
+						</tbody>
+					</table>
+                        <input name="hdAuthCard" type="hidden" id="hdAuthCard" value="2">   
+                        <input name="hdAuthMotor" type="hidden" id="hdAuthMotor" value="2">   
+                        <input name="hdAuthOut" type="hidden" id="hdAuthOut" value="2">
+				    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container end--> 
+	    <!-- footer-->
+        
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+        <!-- footer end-->
+    </div>
+    </form>
+
+
+</body></html>

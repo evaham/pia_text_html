@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+    <title>
+        가맹점 리스트 - TOGETHERs 모바일 인트라넷
+    </title>
+    <meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="./Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript">
+        function jsGoPage(page) {
+            document.getElementById("hdSelPage").value = page;
+            __doPostBack('btnGoPage', '');
+        }
+
+        $(function () {
+            var hSales = $('#hdSalesCode').val();
+            var hOper = $('#hdOperCode').val();
+            var hMartSet = $('#hdMartSetCode').val();
+
+            if (hSales != '' || hOper != '' || hMartSet != '') $('#dvSearchDetail').show();
+            else $('#dvSearchDetail').hide();
+        });
+
+        function jsShowSearchDetail() {
+            var state = $('#dvSearchDetail').css('display');
+
+            if (state == "none") $('#dvSearchDetail').show();
+            else $('#dvSearchDetail').hide();
+        }
+
+        function jsSelEmp(type) {
+            if (type == 1) jsPopSelEmp('DoSelectedToEmp', 0, 0, 0, 0, 1);
+            else if (type == 2) jsPopSelEmp('DoSelectedApEmp', 0, 0, 0, 0, 1);
+            else jsPopSelMartSet('DoSelectedMartWo');
+        }
+
+        //영업자 선택팝업창에서 호출
+        function DoSelectedToEmp(empcode, empname) {
+            form1.hdSalesCode.value = empcode;
+            form1.txtSalesName.value = empname;
+        }
+
+        //담당자 선택팝업창에서 호출
+        function DoSelectedApEmp(empcode, empname) {
+            form1.hdOperCode.value = empcode;
+            form1.txtOperName.value = empname;
+        }
+
+        //가맹점집합 선택팝업창에서 호출
+        function DoSelectedMartWo(setcode, setname) {
+            form1.hdMartSetCode.value = setcode;
+            form1.txtMartSetName.value = setname;
+        }
+
+        //선택한 영업자, 담당자 지우기
+        function jsDelSelEmp(type) {
+            if (type == 1) {
+                form1.hdSalesCode.value = '';
+                form1.txtSalesName.value = '';
+            } else if (type == 2) {
+                form1.hdOperCode.value = '';
+                form1.txtOperName.value = '';
+            } else {
+                form1.hdMartSetCode.value = '';
+                form1.txtMartSetName.value = '';
+            }
+        }
+    </script>
+</head>
+
+<body style="zoom: 1;">
+    <form method="post" action="./iamMartList.html" id="form1">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+                value="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IzAwMDA5MDsiPjxiPuyjvOyLne2ajOyCrCDsm5Trk5zshLHrgqjsnKDthrU8L2I+PC9zcGFuPjxicj48c3BhbiBzdHlsZT0iY29sb3I6IzY2OTljYzsiPuyjvOyLne2ajOyCrCDsm5Trk5zshLHrgqjsnKDthrU8L3NwYW4+ZGQCBQ8PFgQfAQVP6rK96riwIOyEseuCqOyLnCDspJHsm5Dqtawg7IKw7ISx64yA66GcMzcy67KI6ri4IDEwIOuLqOuMgOyLnOyepSDsp4DsuLU0Myw0NO2YuB8DBRrqsr3quLAg7ISx64Ko7IucIOykkeybkOq1rGRkAgYPFQQTdGVsOjAwMC0wMDAtMDAwMCAgIA8wMDAtMDAwLTAwMDAgICATdGVsOiAgICAgICAgICAgICAgIA8gICAgICAgICAgICAgICBkAhMPZBYMZg8VAQYxMDUwMjJkAgEPDxYCHwMFBjEwNTAyMmRkAgIPFQEGMTA1MDIyZAIDDw8WAh8DBWs8c3BhbiBzdHlsZT0iY29sb3I6IzAwMDA5MDsiPjxiPuy9lOyCrOuniO2KuDwvYj48L3NwYW4+PGJyPjxzcGFuIHN0eWxlPSJjb2xvcjojNjY5OWNjOyI+7L2U7IKs66eI7Yq4PC9zcGFuPmRkAgUPDxYEHwEFHuyduOyynCDqsoDri6jqtawg7JmE7KCV66GcIDIyNh8DBRrsnbjsspwg6rKA64uo6rWsIOyZhOygleuhnGRkAgYPFQQTdGVsOjAzMi0wMDAtMDAwMCAgIA8wMzItMDAwLTAwMDAgICATdGVsOiAgICAgICAgICAgICAgIA8gICAgICAgICAgICAgICBkAhkPZBYCZg9kFgICAw8PFgIfAwWMBDxpbnB1dCB0eXBlPSdidXR0b24nIHZhbHVlPSfsspjsnYwnIGNsYXNzPSdidXR0b25fcGFnaW5nIGJ1dHRvbl9wcmV2JyAvPiA8aW5wdXQgdHlwZT0nYnV0dG9uJyB2YWx1ZT0n7J207KCEJyBjbGFzcz0nYnV0dG9uX3BhZ2luZyBidXR0b25fcHJldicgLz4mbmJzcDsmbmJzcDsgPGZvbnQgY29sb3I9JyMjZDg3Njc2Jz48c3Ryb25nPjE8L3N0cm9uZz48L2ZvbnQ+ICB8IDxhIGhyZWY9IkphdmFTY3JpcHQ6anNHb1BhZ2UoMik7Ij4yPC9hPiB8IDxhIGhyZWY9IkphdmFTY3JpcHQ6anNHb1BhZ2UoMyk7Ij4zPC9hPiA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDQpOyI+Jm5ic3A7Jm5ic3A7PGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+uLpOydjCcgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX25leHQnIC8+PC9hPiA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDIzNyk7Ij48aW5wdXQgdHlwZT0nYnV0dG9uJyB2YWx1ZT0n64GdJyBjbGFzcz0nYnV0dG9uX3BhZ2luZyBidXR0b25fbmV4dCcgLz48L2E+ZGQCGw9kFgICAQ8WAh4Hb25jbGljawVZcmV0dXJuIGpzUENJbnRyYSgiVnMzcEhLYlpseFNINSUyYlREMDZTbU5xeGE2Q09JM2t5enJiME93T2MlMmJmQmlIU2VITXFvenZ2SEYyMW5oaFdpc00iKTtkZL572xisX1sgsZfILN8BrOEnhrtHCQPtJSpgfwV4a5wX">
+        </div>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            var theForm = document.forms['form1'];
+            if (!theForm) {
+                theForm = document.form1;
+            }
+            function __doPostBack(eventTarget, eventArgument) {
+                if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                    theForm.__EVENTTARGET.value = eventTarget;
+                    theForm.__EVENTARGUMENT.value = eventArgument;
+                    theForm.submit();
+                }
+            }
+            //]]>
+        </script>
+
+
+        <script
+            src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332"
+            type="text/javascript"></script>
+
+
+        <script
+            src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825"
+            type="text/javascript"></script>
+        <script
+            src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825"
+            type="text/javascript"></script>
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5917714E">
+        </div>
+        <script type="text/javascript">
+            //<![CDATA[
+            Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', ['tUP1', 'UP1', 'tUP2', 'UP2'], ['btnGoPage', 'btnGoPage'], [], 90, '');
+            //]]>
+        </script>
+
+        <div id="warp">
+            <div id="header">
+                <div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a
+                        class="button_typeA button_right" href="./Main.html">홈으로</a>
+                    <h2> <a> 가맹점리스트 </a> </h2>
+                </div>
+            </div>
+            <!-- header end-->
+            <!-- container-->
+            <div id="container">
+                <div class="contents">
+                    <div class="A">
+                        <div class="wrap_search">
+                            <select name="ddlKeyword" id="ddlKeyword" data-sharkid="__0">
+                                <option selected="selected" value="MartName">점포명</option>
+                                <option value="MartCode">점포코드</option>
+                                <option value="MartTel">전화번호</option>
+                                <option value="EmpName">인명</option>
+                                <option value="ASMan">AS담당자</option>
+                            </select>
+                            <input name="txtKeyword" type="text" id="txtKeyword" title="AND 검색 가능"
+                                onkeypress="if (event.keyCode==13) {__doPostBack('btnSearch','');return false;}"
+                                style="height:24px; width:40%;" data-sharkid="__1">
+                            <input type="submit" name="btnSearch" value="검색" id="btnSearch" class="button_typeB button">
+
+                        </div>
+                        <!--상세조회 조건-->
+                        <div id="dvSearchDetail" class="wrap_search" style="text-align:left; display:none;">
+                            <!--영업자, 담당자-->
+                            <div>
+                                <input name="txtSalesName" type="text" id="txtSalesName" onfocus="this.blur();"
+                                    placeholder="영업자" style="background-color:#F0F0F0;height:24px;width:60px;"><!--
+                     --><input type="button" id="btnSelSales" class="button_typeB button" onclick="jsSelEmp(1);"
+                                    title="영업자를 선택합니다" value="선택"><!--
+                     --><input type="button" id="btnSalesCancel" class="button_typeB button" style="width:30px;"
+                                    onclick="jsDelSelEmp(1);" value="X">
+                                <input name="hdSalesCode" type="hidden" id="hdSalesCode">&nbsp;
+                                <input name="txtOperName" type="text" id="txtOperName" onfocus="this.blur();"
+                                    placeholder="담당자" style="background-color:#F0F0F0;height:24px;width:60px;"><!--
+                     --><input type="button" id="btnSelOper" class="button_typeB button" onclick="jsSelEmp(2);"
+                                    title="담당자를 선택합니다" value="선택"><!--
+                     --><input type="button" id="btnOperCancel" class="button_typeB button" style="width:30px;"
+                                    onclick="jsDelSelEmp(2);" value="X">
+                                <input name="hdOperCode" type="hidden" id="hdOperCode">
+                            </div>
+                            <!--가맹점집합-->
+                            <div style="padding-top:5px;">
+                                <input name="txtMartSetName" type="text" id="txtMartSetName" onfocus="this.blur();"
+                                    placeholder="가맹점집합" style="background-color:#F0F0F0;height:23px;width:210px;"><!--
+                     --><input type="button" id="btnSelMartSet" class="button_typeB button" onclick="jsSelEmp(3);"
+                                    title="가맹점집합을 선택합니다" value="선택"><!--
+                     --><input type="button" id="btnMartSetCancel" class="button_typeB button" style="width:30px;"
+                                    onclick="jsDelSelEmp(3);" value="X">
+                                <input name="hdMartSetCode" type="hidden" id="hdMartSetCode">
+                            </div>
+                        </div>
+                        <!--상세조회 조건-->
+
+                        <!--조회 결과-->
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span id="lblMsg" style="padding-bottom:5px; color:Red;"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-top:1px solid rgb(223, 223, 223);">
+                                            <div id="UP1">
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%" 
+                                                                onclick="location.href='iamMartInfoView.html?martcode=991970';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_0" style="color:#BCBCBC;">123456789</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=991970&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_0"><span
+                                                                                style="color:#000090;"><b>아침마당</b></span><br><span
+                                                                                style="color:#6699cc;">아침마당</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_0"
+                                                                        title="경기 수원시 장안구 송원로 113 ,1층5호 조원빌딩"
+                                                                        style="color:#BCBCBC;">경기 수원시 장안구</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:031-244-2112   "
+                                                                    style="color:#aa0000;">031-244-2112 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105039';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_1"
+                                                                        style="color:#BCBCBC;">908039</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105039&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_1"><span
+                                                                                style="color:#000090;"><b>프리미엄
+                                                                                    정육</b></span><br><span
+                                                                                style="color:#6699cc;">프리미엄
+                                                                                정육</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_1"
+                                                                        title="경북 경산시 경산로7길 12, 101호, 102호"
+                                                                        style="color:#BCBCBC;">경북 경산시
+                                                                        경산로7길</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:053-241-1277   "
+                                                                    style="color:#aa0000;">053-241-1277 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105038';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_2"
+                                                                        style="color:#BCBCBC;">108</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105038&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_2"><span
+                                                                                style="color:#000090;"><b>(주)나무인터비즈</b></span><br><span
+                                                                                style="color:#6699cc;">(주)나무인터비즈</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_2"
+                                                                        title="서울 동대문구 홍릉로 13 동관1층 79호 외60개호(청량리현대코아)"
+                                                                        style="color:#BCBCBC;">서울 동대문구 홍릉로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:02-962-8935    "
+                                                                    style="color:#aa0000;">02-962-8935 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105037';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_3"
+                                                                        style="color:#BCBCBC;">105037</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105037&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_3"><span
+                                                                                style="color:#000090;"><b>(주)청주테크노유통</b></span><br><span
+                                                                                style="color:#6699cc;">(주)청주테크노유통</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_3"
+                                                                        title="충북 청주시 흥덕구 직지대로 530 청주 테크노 S타워 1동 101~106호"
+                                                                        style="color:#BCBCBC;">충북 청주시 흥덕구</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:043-000-0000   "
+                                                                    style="color:#aa0000;">043-000-0000 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105036';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_4"
+                                                                        style="color:#BCBCBC;">105036</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105036&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_4"><span
+                                                                                style="color:#000090;"><b>캠퍼트리
+                                                                                    스토어</b></span><br><span
+                                                                                style="color:#6699cc;">캠퍼트리
+                                                                                스토어</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_4"
+                                                                        title="제주특별자치도 제주시 해안마을서4길 100"
+                                                                        style="color:#BCBCBC;">제주특별자치도 제주시
+                                                                        해안마을서4길</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:010-8930-7226  "
+                                                                    style="color:#aa0000;">010-8930-7226 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105035';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_5"
+                                                                        style="color:#BCBCBC;">105035</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105035&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_5"><span
+                                                                                style="color:#000090;"><b>(주)에프엠마트</b></span><br><span
+                                                                                style="color:#6699cc;">(주)에프엠마트</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_5"
+                                                                        title="전남광주통합특별시 광산구 목련로 75"
+                                                                        style="color:#BCBCBC;">전남광주통합특별시 광산구
+                                                                        목련로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:010-8511-3688  "
+                                                                    style="color:#aa0000;">010-8511-3688 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105034';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_6"
+                                                                        style="color:#BCBCBC;">105034</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105034&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_6"><span
+                                                                                style="color:#000090;"><b>여수케이마트</b></span><br><span
+                                                                                style="color:#6699cc;">여수케이마트</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_6"
+                                                                        title="전남광주통합특별시 여수시 웅천로 190 여수웅천사랑으로부영5차아파트"
+                                                                        style="color:#BCBCBC;">전남광주통합특별시 여수시
+                                                                        웅천로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:010-5681-8115  "
+                                                                    style="color:#aa0000;">010-5681-8115 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105033';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_7"
+                                                                        style="color:#BCBCBC;">105033</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105033&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_7"><span
+                                                                                style="color:#000090;"><b>주식회사
+                                                                                    정진유통</b></span><br><span
+                                                                                style="color:#6699cc;">제이제이
+                                                                                아울렛</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_7"
+                                                                        title="전남광주통합특별시 북구 빛고을대로 650"
+                                                                        style="color:#BCBCBC;">전남광주통합특별시 북구
+                                                                        빛고을대로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:062-000-0000   "
+                                                                    style="color:#aa0000;">062-000-0000 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105032';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_8"
+                                                                        style="color:#BCBCBC;">105032</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105032&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_8"><span
+                                                                                style="color:#000090;"><b>(주)수정유통</b></span><br><span
+                                                                                style="color:#6699cc;">(주)수정유통</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_8"
+                                                                        title="경기 평택시 안중읍 포승장안로 11"
+                                                                        style="color:#BCBCBC;">경기 평택시 안중읍</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:010-7744-4228  "
+                                                                    style="color:#aa0000;">010-7744-4228 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105031';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_9"
+                                                                        style="color:#BCBCBC;">105031</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105031&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_9"><span
+                                                                                style="color:#000090;"><b>현대홈마트</b></span><br><span
+                                                                                style="color:#6699cc;">현대홈마트</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_9"
+                                                                        title="경기 군포시 대야2로143번길 26 현대프라자,1층 105호"
+                                                                        style="color:#BCBCBC;">경기 군포시
+                                                                        대야2로143번길</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:031-000-0000   "
+                                                                    style="color:#aa0000;">031-000-0000 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105030';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_10"
+                                                                        style="color:#BCBCBC;">105030</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105030&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_10"><span
+                                                                                style="color:#000090;"><b>파주식자재마트</b></span><br><span
+                                                                                style="color:#6699cc;">파주식자재마트</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_10"
+                                                                        title="경기 파주시 법원읍 술이홀로 896"
+                                                                        style="color:#BCBCBC;">경기 파주시 법원읍</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:031-1234-1234  "
+                                                                    style="color:#aa0000;">031-1234-1234 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105029';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_11"
+                                                                        style="color:#BCBCBC;">105029</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105029&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_11"><span
+                                                                                style="color:#000090;"><b>주식회사에스엠케이
+                                                                                    월계지점</b></span><br><span
+                                                                                style="color:#6699cc;">오케이마트
+                                                                                월계지점</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_11"
+                                                                        title="서울 노원구 초안산로1길 15, 7701동 1호 월계주공1단지아파트"
+                                                                        style="color:#BCBCBC;">서울 노원구
+                                                                        초안산로1길</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:02-1234-1234   "
+                                                                    style="color:#aa0000;">02-1234-1234 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105028';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_12"
+                                                                        style="color:#BCBCBC;">105028</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105028&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_12"><span
+                                                                                style="color:#000090;"><b>(주)더아리랑</b></span><br><span
+                                                                                style="color:#6699cc;">(주)더아리랑</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_12"
+                                                                        title="대전 동구 홍도로 11, 1층"
+                                                                        style="color:#BCBCBC;">대전 동구 홍도로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:041-1111-2222  "
+                                                                    style="color:#aa0000;">041-1111-2222 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=901000';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_13"
+                                                                        style="color:#BCBCBC;">901000</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=901000&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_13"><span
+                                                                                style="color:#000090;"><b>투게더포스
+                                                                                    라이트</b></span><br><span
+                                                                                style="color:#6699cc;">투게더포스
+                                                                                라이트</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_13"
+                                                                        title="인천 부평구 부평대로 301 남광센트렉스, 901호"
+                                                                        style="color:#BCBCBC;">인천 부평구 부평대로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:1577-4550      "
+                                                                    style="color:#aa0000;">1577-4550 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105027';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_14"
+                                                                        style="color:#BCBCBC;">105027</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105027&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_14"><span
+                                                                                style="color:#000090;"><b>주식회사
+                                                                                    서원서플라이</b></span><br><span
+                                                                                style="color:#6699cc;">주식회사
+                                                                                서원서플라이</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_14"
+                                                                        title="인천 연수구 해돋이로 107 송도 더샵 퍼스트월드"
+                                                                        style="color:#BCBCBC;">인천 연수구 해돋이로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:031-408-8989   "
+                                                                    style="color:#aa0000;">031-408-8989 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105026';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_15"
+                                                                        style="color:#BCBCBC;">105026</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105026&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_15"><span
+                                                                                style="color:#000090;"><b>(유)보원</b></span><br><span
+                                                                                style="color:#6699cc;">(유)보원 마트데이
+                                                                                모현점</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_15"
+                                                                        title="전북특별자치도 익산시 선화로 91 마트데이"
+                                                                        style="color:#BCBCBC;">전북특별자치도 익산시
+                                                                        선화로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:063-854-4343   "
+                                                                    style="color:#aa0000;">063-854-4343 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105025';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_16"
+                                                                        style="color:#BCBCBC;">105025</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105025&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_16"><span
+                                                                                style="color:#000090;"><b>주식회사
+                                                                                    투헤븐</b></span><br><span
+                                                                                style="color:#6699cc;">원삼매점A점</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_16"
+                                                                        title="경기 용인시 처인구 원삼면 백원로 60"
+                                                                        style="color:#BCBCBC;">경기 용인시 처인구</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:010-9592-4900  "
+                                                                    style="color:#aa0000;">010-9592-4900 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105024';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_17"
+                                                                        style="color:#BCBCBC;">105024</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105024&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_17"><span
+                                                                                style="color:#000090;"><b>다
+                                                                                    마트</b></span><br><span
+                                                                                style="color:#6699cc;">다
+                                                                                마트</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_17"
+                                                                        title="경기 김포시 봉화로181번길 31-14 한국아파트,1층 운동시설 그린시설 (감정동)"
+                                                                        style="color:#BCBCBC;">경기 김포시
+                                                                        봉화로181번길</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:031-000-0000   "
+                                                                    style="color:#aa0000;">031-000-0000 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105023';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_18"
+                                                                        style="color:#BCBCBC;">105023</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105023&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_18"><span
+                                                                                style="color:#000090;"><b>주식회사
+                                                                                    월드성남유통</b></span><br><span
+                                                                                style="color:#6699cc;">주식회사
+                                                                                월드성남유통</span></span></span></p>
+                                                                <span><span id="rptList_lblAddress_18"
+                                                                        title="경기 성남시 중원구 산성대로372번길 10 단대시장 지층43,44호"
+                                                                        style="color:#BCBCBC;">경기 성남시 중원구</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:000-000-0000   "
+                                                                    style="color:#aa0000;">000-000-0000 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <table width="100%" style="background-color: #ffffff;"
+                                                    onmouseover="style.backgroundColor='#FFFFBB';style.cursor='pointer';"
+                                                    onmouseout="style.backgroundColor='#ffffff';">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="18%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105022';"
+                                                                style=" border-bottom:1px solid rgb(223, 223, 223);padding-left:8px;padding-right:6px;">
+                                                                <span><span id="rptList_lblMartCode_19"
+                                                                        style="color:#BCBCBC;">105022</span></span>
+                                                            </td>
+                                                            <td width="53%"
+                                                                onclick="location.href='iamMartInfoView.html?martcode=105022&amp;page=';"
+                                                                style="padding-left:1px;padding-top:5px;padding-bottom:5px;border-bottom:1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <p style="line-height:125%;"><span><span
+                                                                            id="rptList_lblMartName_19"><span
+                                                                                style="color:#000090;"><b>코사마트</b></span><br><span
+                                                                                style="color:#6699cc;">코사마트</span></span></span>
+                                                                </p>
+                                                                <span><span id="rptList_lblAddress_19"
+                                                                        title="인천 검단구 완정로 226" style="color:#BCBCBC;">인천
+                                                                        검단구 완정로</span></span>
+                                                            </td>
+
+                                                            <td
+                                                                style="padding-right:8px;padding-top:5px;padding-bottom:5px; border-bottom : 1px solid rgb(223, 223, 223);letter-spacing:-1px;">
+                                                                <a href="tel:032-000-0000   "
+                                                                    style="color:#aa0000;">032-000-0000 </a>
+                                                                <p>
+                                                                    <a href="tel:               "
+                                                                        style="color:#aa0000; line-height:120%;"> </a>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+
+
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="paging">
+                            <table class="pagingTable">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" style="height:25px; vertical-align:middle;" align="center">
+                                            <div id="UP2">
+
+                                                <!--페이징-->
+                                                <input name="hdSelPage" type="hidden" id="hdSelPage" value="1">
+                                                <span id="lblpaging" style="color:#8C9C8C;font-size:Medium;"><input
+                                                        type="button" value="처음" class="button_paging button_prev">
+                                                    <input type="button" value="이전"
+                                                        class="button_paging button_prev">&nbsp;&nbsp; <font
+                                                        color="##d87676"><strong>1</strong></font> | <a
+                                                        href="JavaScript:jsGoPage(2);">2</a> | <a
+                                                        href="JavaScript:jsGoPage(3);">3</a> <a
+                                                        href="JavaScript:jsGoPage(4);">&nbsp;&nbsp;<input type="button"
+                                                            value="다음" class="button_paging button_next"></a> <a
+                                                        href="JavaScript:jsGoPage(237);"><input type="button" value="끝"
+                                                            class="button_paging button_next"></a></span>
+                                                <div style="display:none;">
+                                                    <input type="submit" name="btnGoPage" value="페이지이동" id="btnGoPage">
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- container end-->
+            <!-- footer-->
+
+            <script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+            <!-- footer-->
+            <div id="footer">
+                <div class="foot">
+                    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right"
+                        onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+                </div>
+
+                <address>
+                    <a>TOGETHERs</a>
+                </address>
+            </div>
+            <!-- footer end-->
+            <!-- footer end-->
+        </div>
+    </form>
+
+
+</body>
+
+</html>

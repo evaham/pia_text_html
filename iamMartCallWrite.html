@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+	<title>
+		콜 입력/수정 - TOGETHERs 모바일 인트라넷
+	</title>
+	<meta charset="utf-8">
+	<!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+	<!-- 자동화면 크기조절 -->
+	<meta name="viewport"
+		content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="../Common/TimePicker/jquery.timepicker.css">
+
+	<script type="text/javascript" src="/Common/clCalendar.js"></script>
+</head>
+
+<body style="zoom: 1;">
+	<div id="minical" oncontextmenu="return false" ondragstart="return false" onselectstart="return false"
+		style="background:buttonface; margin:5; padding:5;margin-top:2;border-top:1 solid buttonshadow;border-left: 1 solid buttonshadow;border-right: 1 solid buttonshadow;border-bottom:1 solid buttonshadow;width:230px;display:none;position: absolute; z-index: 99">
+	</div>
+	<script type="text/javascript" src="/Common/PopEmp.js"></script>
+	<script type="text/javascript" src="/Common/PopMartInfo.js"></script>
+	<script type="text/javascript" src="../Common/jquery.min.js"></script>
+	<script type="text/javascript" src="../Common/jquery-latest.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="../Common/TimePicker/jquery.timepicker.js"></script>
+	<script type="text/javascript" src="Common/MartCall.js?202509"></script>
+
+	<style type="text/css">
+		col.layout {
+			width: 60px;
+		}
+
+		.time {
+			width: 65px;
+			height: 15px;
+			background-color: #f0f0f0;
+			color: #404040;
+		}
+	</style>
+	<script type="text/javascript">
+		function jsSelEmp() {
+			var chkSecurity = $('#chkSecurity').prop('checked');
+			var emptype = $('#hEmpType').val();
+
+			if (chkSecurity) jsPopSelEmp('DoSelectedToEmp', 0, 0, 0, 1); //보안콜은 어차피 본사직원만 보이니까 emptype 분기 필요없음.
+			else {
+				if (emptype == 0) jsPopSelEmp('DoSelectedToEmp', 0, 0, 0, 0);
+				else jsPopSelEmp('DoSelectedToEmp', 0, 0, 0, 0, 1); //파사, 자대리점은 직원선택 시 파사탭이 먼저 열리도록 함.
+			}
+		}
+
+		function jsSelNextEmp() {
+			var chkSecurity = $('#chkSecurity').prop('checked');
+			var emptype = $('#hEmpType').val();
+
+			if (chkSecurity) jsPopSelEmp('DoSelectedApEmp', 0, 0, 0, 1);
+			else {
+				if (emptype == 0) jsPopSelEmp('DoSelectedApEmp', 0, 0, 0, 0);
+				else jsPopSelEmp('DoSelectedApEmp', 0, 0, 0, 0, 1);
+			}
+		}
+
+		//콜등록 직원선택팝업창에서 호출
+		function DoSelectedToEmp(empcode, empname) {
+			form1.hdCallEmpCode.value = empcode;
+			form1.txtCallEmpName.value = empname;
+		}
+
+		//처리 직원선택팝업창에서 호출 - 토스용
+		function DoSelectedApEmp(empcode, empname) {
+			form1.hdNextAsEmpCode.value = empcode;
+			form1.txtNextAsEmpName.value = empname;
+		}
+
+		//매장선택팝업창에서 호출
+		function DoSelectedMartWork(martcode, martname) {
+			form1.txtMartCode.value = martcode;
+			form1.txtMartName1.value = martname;
+		}
+	</script>
+
+
+	<form method="post" action="./iamMartCallWrite.html?martcode=103320&amp;call=879275" id="form1"
+		enctype="multipart/form-data">
+		<div class="aspNetHidden">
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+			<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+			<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+				value="/wEPDwUKLTk2MzkwODE3Ng9kFgICAw8WAh4HZW5jdHlwZQUTbXVsdGlwYXJ0L2Zvcm0tZGF0YRYSAgEPDxYCHgRUZXh0BQrsvZwg7IiY7KCVZGQCBw8PFgIfAQUKMjAyNi0xMC0yMGRkAgoPZBYCZg9kFgQCAQ8QDxYGHg5EYXRhVmFsdWVGaWVsZAUDa2V5Hg1EYXRhVGV4dEZpZWxkBQV2YWx1ZR4LXyFEYXRhQm91bmRnZBAVDAnsvZzsnKDtmJUP7IKs7Jqp67KV66y47J2YE+yLoOyaqey5tOuTnC/tmITsmIEM6riw6riw7J6l7JWgDOyjvOusuOyEpOy5mBLsnbjspp3smpTquIjspp3ruZkM7JiB7JeF7KCc7Zy0DOuyhOq3uOyLoOqzoBLtlITroZzqt7jrnqjqsJzshKAS642w7J207YSw67Kg7J207IqkEOyatOyYgeyytOygnChPUykG6riw7YOAFQwBMAExATIBMwE0ATUBNgE3ATgBOQIxMAI5ORQrAwxnZ2dnZ2dnZ2dnZ2cWAQIBZAIDDxAPFgYfAgUDa2V5HwMFBXZhbHVlHwRnZBAVDQnsvZzrtoTslbwDTUdSA09QUgNQT1ACTVMDUFRSEu2IrOqyjOuNlOuNsOydtO2EsBLrnbzrlJTsmKTtiKzqsozrjZQRV0VCL+uqqOuwlOydvChNMikM64+Z64Sk7IKs656RD+2VuOuTnO2EsOuvuOuEkA/rnbzrsqjtlITrprDthLAG6riw7YOAFQ0BMAExATIBMwE0ATUBNgE3ATgBOQIxMQIxMgI5ORQrAw1nZ2dnZ2dnZ2dnZ2dnZGQCCw8QZA8WAmYCARYCEAUCSW4FATFnEAUDT3V0BQEyZ2RkAgwPEA8WBh8CBQNrZXkfAwUFdmFsdWUfBGdkEBUFBuuwqeusuAbsoITtmZQJ7J247YSw64S3A01ncgNQdHIVBQExATIBMwIxMQIxMhQrAwVnZ2dnZ2RkAhMPEA8WBh8CBQNrZXkfAwUFdmFsdWUfBGdkEBUFBuyDge2DnAnrr7jsspjrpqwM67aA67aE7LKY66asBuyZhOujjAbrs7TrpZgVBQABMQEyATMBNBQrAwVnZ2dnZ2RkAhYPDxYCHwEFATBkZAIXDxYCHgtfIUl0ZW1Db3VudGZkAiUPZBYCAgEPFgIeB29uY2xpY2sFWXJldHVybiBqc1BDSW50cmEoIlZzM3BIS2JabHhTSDUlMmJURDA2U21OcXhhNkNPSTNreXpyYjBPd09jJTJiZkJpSFNlSE1xb3p2dkhGMjFuaGhXaXNNIik7ZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WAQULY2hrU2VjdXJpdHkm6E2UZZi9kG2cE45MWZkIjmYN6c9kOx2rAq12N/jwUg==">
+		</div>
+
+		<script type="text/javascript">
+			//<![CDATA[
+			var theForm = document.forms['form1'];
+			if (!theForm) {
+				theForm = document.form1;
+			}
+			function __doPostBack(eventTarget, eventArgument) {
+				if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+					theForm.__EVENTTARGET.value = eventTarget;
+					theForm.__EVENTARGUMENT.value = eventArgument;
+					theForm.submit();
+				}
+			}
+			//]]>
+		</script>
+
+
+		<script
+			src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332"
+			type="text/javascript"></script>
+
+
+		<script
+			src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825"
+			type="text/javascript"></script>
+		<script
+			src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825"
+			type="text/javascript"></script>
+		<div class="aspNetHidden">
+
+			<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="B78DACBE">
+		</div>
+		<script type="text/javascript">
+			//<![CDATA[
+			Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', ['tUP1', 'UP1'], ['ddlCallType', 'ddlCallType'], [], 90, '');
+			//]]>
+		</script>
+
+
+		<div id="warp">
+			<!-- header -->
+			<div id="header">
+				<div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a
+						class="button_typeA button_right" href="./Main.html">홈으로</a>
+					<h2> <a> 늘푸레 </a> </h2>
+				</div>
+			</div>
+			<!-- header end-->
+			<!-- container-->
+			<div id="container">
+				<div class="contents">
+					<div class="A">
+						<div class="divide_typeA">
+							<table>
+								<colgroup>
+									<col>
+									<col class="layout">
+									<col class="layout">
+								</colgroup>
+								<tbody>
+									<tr>
+										<td>
+											<h3><span id="lblPageTitle">콜 수정</span></h3>
+										</td>
+										<td>
+											<button type="button" name="btnCallCancel" value="취소"
+												onclick="javascript:jsCancel('103320','879275')" id="btnCallCancel"
+												class="button_typeB button">취소</button>
+										</td>
+										<td>
+											<input type="submit" name="btnCallSave" value="콜 저장" onclick="javascript:return jsSaveOK();"
+												id="btnCallSave" class="button_typeB button">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3"><span id="lblMsg" style="color:Red;"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="text_data">
+							<table>
+								<tbody>
+									<tr>
+										<td>
+											<label class="text_typeM text_gray">점포&nbsp;&nbsp;|&nbsp;&nbsp;</label>
+											<input name="txtMartCode" type="text" value="103320" maxlength="4" id="txtMartCode"
+												onfocus="this.blur();" style="background-color:#F0F0F0;width:65px;" data-sharkid="__0"><!--
+                             --><input name="txtMartName1" type="text" value="늘푸레" id="txtMartName1"
+												onfocus="this.blur();" style="background-color:#F0F0F0;width:45%;" data-sharkid="__1"><!--
+                             --><input type="button" id="Button2" class="button_typeB button" title="콜접수 가맹점을 선택합니다"
+												onclick="jsPopSelMart('DoSelectedMartWork');" value="선택">
+											<input name="hdCallCode" type="hidden" id="hdCallCode" value="879275">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="text_typeM text_gray">접수&nbsp;&nbsp;|&nbsp;&nbsp;</label>
+											<span id="lbiDate" onfocus="this.blur();" style="width:100px;">2026-10-20</span>&nbsp;
+											<input name="txtCallEmpName" type="text" value="심기용" id="txtCallEmpName" onfocus="this.blur();"
+												style="background-color:#F0F0F0;width:80px;" data-sharkid="__2"><!--
+                             --><input type="button" id="btnSelEmp" class="button_typeB button" onclick="jsSelEmp();"
+												title="콜접수 직원을 선택합니다" value="선택">
+											<input name="hdCallEmpCode" type="hidden" id="hdCallEmpCode" value="928">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div id="UP1">
+
+												<label class="text_typeM text_gray">분류&nbsp;&nbsp;|&nbsp;&nbsp;</label>
+												<select name="ddlCallType"
+													onchange="javascript:setTimeout('__doPostBack(\'ddlCallType\',\'\')', 0)" id="ddlCallType"
+													style="height:30px;width:120px;" data-sharkid="__3">
+													<option value="0">콜유형</option>
+													<option selected="selected" value="1">사용법문의</option>
+													<option value="2">신용카드/현영</option>
+													<option value="3">기기장애</option>
+													<option value="4">주문설치</option>
+													<option value="5">인증요금증빙</option>
+													<option value="6">영업제휴</option>
+													<option value="7">버그신고</option>
+													<option value="8">프로그램개선</option>
+													<option value="9">데이터베이스</option>
+													<option value="10">운영체제(OS)</option>
+													<option value="99">기타</option>
+												</select>
+												<select name="ddlCallField" id="ddlCallField" style="height:30px;width:120px;"
+													data-sharkid="__4">
+													<option value="0">콜분야</option>
+													<option selected="selected" value="1">MGR</option>
+													<option value="2">OPR</option>
+													<option value="3">POP</option>
+													<option value="4">MS</option>
+													<option value="5">PTR</option>
+													<option value="6">투게더데이터</option>
+													<option value="7">라디오투게더</option>
+													<option value="8">WEB/모바일(M2)</option>
+													<option value="9">동네사랑</option>
+													<option value="11">핸드터미널</option>
+													<option value="12">라벨프린터</option>
+													<option value="99">기타</option>
+
+												</select>
+
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="text_typeM text_gray">방식&nbsp;&nbsp;|&nbsp;&nbsp;</label>
+											<select name="ddlCallBound" id="ddlCallBound" style="height:30px;width:65px;" data-sharkid="__5">
+												<option selected="selected" value="1">In</option>
+												<option value="2">Out</option>
+
+											</select>&nbsp;
+											<select name="ddlCallMethod" id="ddlCallMethod" style="height:30px;width:85px;"
+												data-sharkid="__6">
+												<option value="1">방문</option>
+												<option selected="selected" value="2">전화</option>
+												<option value="3">인터넷</option>
+												<option value="11">Mgr</option>
+												<option value="12">Ptr</option>
+
+											</select>&nbsp;&nbsp;
+											<input id="chkSecurity" type="checkbox" name="chkSecurity" data-sharkid="__7"><label
+												for="chkSecurity"> 내부</label>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class="text_typeM text_gray">요청&nbsp;&nbsp;|&nbsp;&nbsp;</label>
+											<input name="txtCaller" type="text" value="김주경" id="txtCaller" style="width:80px;"
+												data-sharkid="__8">&nbsp;
+											<label>연락처</label>
+											<input name="txtCallTel" type="text" value="010-5417-3843" id="txtCallTel"
+												onkeyup="autoHypenTel(this.id)" style="width:110px;" data-sharkid="__9">
+										</td>
+									</tr>
+									<tr id="trTime" style="display:none;">
+										<td>
+											<label>시작</label>
+											<input name="txtCallStart" type="text" id="txtCallStart" style="width:80px;font-size:11pt;"
+												class="ui-timepicker-input" autocomplete="off"><!--
+                             --><input type="button" id="btnCallStartCurr" class="button_typeB button"
+												style="min-width:35px;" value="≫">&nbsp;
+											<label>마침</label>
+											<input name="txtCallFinish" type="text" id="txtCallFinish" style="width:80px;font-size:11pt;"
+												class="ui-timepicker-input" autocomplete="off"><!--                                    
+                             --><input type="button" id="btnCallFinishCurr" class="button_typeB button"
+												style="min-width:35px;" value="≫">
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+						<div class="text_data" style="padding-bottom:0;">
+							<input name="txtCallTitle" type="text" value="부재중" id="txtCallTitle" style="width:95%;"
+								data-sharkid="__10">
+						</div>
+						<div class="text_data" style="border-top:0;">
+							<textarea name="txtCallWork" rows="2" cols="1" id="txtCallWork" style="height:140px;width:95%;"
+								data-sharkid="__11">ㅇㅇ</textarea>
+						</div>
+						<div class="text_data">
+							<select name="ddlCallStatus" id="ddlCallStatus" style="height:30px;width:90px;" data-sharkid="__12">
+								<option value="">상태</option>
+								<option selected="selected" value="1">미처리</option>
+								<option value="2">부분처리</option>
+								<option value="3">완료</option>
+								<option value="4">보류</option>
+
+							</select>
+							&nbsp;&nbsp;다음처리자&nbsp;
+							<input name="txtNextAsEmpName" type="text" value="김예지" id="txtNextAsEmpName" onfocus="this.blur();"
+								style="background-color:#F0F0F0;width:70px;" data-sharkid="__13"><!--
+                 --><input type="button" id="btnNextASEmp" class="button_typeB button" onclick="jsSelNextEmp();"
+								title="다음처리자를 선택합니다" value="선택">
+							<input name="hdNextAsEmpCode" type="hidden" id="hdNextAsEmpCode" value="973">
+						</div>
+					</div>
+					<div class="B">
+						<div class="divide_typeA">
+							<table>
+								<colgroup>
+									<col>
+									<col class="layout">
+									<col class="layout">
+								</colgroup>
+								<tbody>
+									<tr>
+										<td>
+											<h4>첨부파일 ( <span class="text_red"><span id="lblFileCount">0</span></span> )</h4>
+										</td>
+										<td><input type="button" id="btnFileAdd" class="button_typeB button" value="파일추가"
+												onmouseover="style.cursor='pointer'" onclick="jsAddAttach();"></td>
+										<td><input type="button" id="btnFileDel" class="button_typeB button" value="파일취소"
+												onmouseover="style.cursor='pointer'" onclick="jsRemoveAttach();"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="list">
+							<table>
+								<!----------- 기존첨부파일 ---------->
+
+								<!----------- 기존첨부파일 ---------->
+							</table>
+							<input name="hdDelCmCode" type="hidden" id="hdDelCmCode">
+							<input name="hdDelFileCode" type="hidden" id="hdDelFileCode">
+							<input type="submit" name="btnDelAttach" value="" id="btnDelAttach" style="display:none;">
+						</div>
+						<div class="list">
+							<table>
+								<tbody>
+									<tr class="table_ul">
+										<td class="table_li">
+											<input name="AttachFile1" type="file" id="AttachFile1" class="txtGray2"
+												style="width: 90%; display:block;">
+											<input name="AttachFile2" type="file" id="AttachFile2" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile3" type="file" id="AttachFile3" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile4" type="file" id="AttachFile4" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile5" type="file" id="AttachFile5" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile6" type="file" id="AttachFile6" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile7" type="file" id="AttachFile7" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile8" type="file" id="AttachFile8" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile9" type="file" id="AttachFile9" class="txtGray2"
+												style="width: 90%; display:none;">
+											<input name="AttachFile10" type="file" id="AttachFile10" class="txtGray2"
+												style="width: 95%; display:none;">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- container end-->
+			<!-- footer-->
+
+			<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+			<!-- footer-->
+			<div id="footer">
+				<div class="foot">
+					<a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right"
+						onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+				</div>
+
+				<address>
+					<a>TOGETHERs</a>
+				</address>
+			</div>
+			<!-- footer end-->
+			<input name="hCallCode" type="hidden" id="hCallCode" value="879275">
+			<input name="hEmpType" type="hidden" id="hEmpType" value="0">
+			<!-- footer end-->
+		</div>
+	</form>
+
+
+</body>
+
+</html>

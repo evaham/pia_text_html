@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	콜 상세보기 - Togethers 모바일 인트라넷
+</title><meta charset="utf-8"><meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"><link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/PopScrap.js"></script>
+    <style type="text/css">
+    col.layout {width:60px;}
+    col.layout2 {width:15px;}
+    </style>
+    <script type="text/javascript">
+        //콜처리 삭제
+        function jsDelAsCall(cmcode, cmascode) {
+            if (confirm("등록된 콜처리내용을 삭제하고 콜상태를 미처리로 변경하시겠습니까?")) {
+                document.getElementById("hdDelCmCode").value = cmcode;
+                document.getElementById("hdDelCmAsCode").value = cmascode;
+                eval("__doPostBack('btnDelAs','')");
+            }
+            return false;
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="./iamMartCallView.html?mart=105040&amp;call=879398" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5NTU3MzQ0NDkPFgIeDGVtcF9mdW5jYXV0aAUBMBYCAgMPZBYoAgUPFgIeBXN0eWxlBQ1kaXNwbGF5Om5vbmU7FgICBA8WAh8BBQ1kaXNwbGF5Om5vbmU7ZAIGD2QWAgIDDxYCHwEFDWRpc3BsYXk6bm9uZTtkAgkPDxYCHgRUZXh0BSTshJzruYTsiqTtmITtmakg7IiY7KeRIOyViOuQqCDrrLjsnZhkZAIKDxYCHgdvbmNsaWNrBRlqc1NjcmFwVHdvKDUsIDg3OTM5OCwgMCk7ZAILDw8WAh8CBQYxMDUwNDBkZAIMDw8WAh8CBRfrgpjrgpjrp4jtirgo7Jqp7ZiE64+ZKWRkAg0PFgIfAgUUMjYtMTAtMjEgKOyImCkgMTQ6MjJkAg4PDxYCHwIFCeqzoOuPhOyYgWRkAg8PDxYCHwIFBuyghO2ZlGRkAhAPDxYCHwIFAkluZGQCEQ8PFgIfAgUP7IKs7Jqp67KV66y47J2YZGQCEg8PFgIfAgUDTUdSZGQCEw8PFgIfAgUM67C064yA66as7KCQZGQCFA8PFgIfAgUNMDEwLTczODQtMDkyNhYCHwMFIWxvY2F0aW9uLmhyZWY9J3RlbDowMTAtNzM4NC0wOTI2J2QCFg8PFgIfAgWpClvrj4zroKTrsJvsnYxdPGJyPuyLoOq3nCDrk7HroZ0g66ek7J6lLCDsvZTrk5zrp4wg642u7Ja07IScIOq4sOyhtCBEQuulvCDqt7jrjIDroZwg7IKs7Jqp7ZWY64qU642wIOyEnOu5hOyKpO2YhO2ZqSDsiJjsp5Eg7JWI65CoPGJyPj0g7KCQ7Y+s6riw67O47J2AIOuTseuhneuQmOyWtCDsnojripQg7IOB7YOcPGJyPj0g7ISc67KEIOybkOqyqSDsl7DqsrAg7ZuEIOunpOy2nCDsobDtmowg7IucIOy1nOq3vCDrp6Tstpwg7JeG7J2MPGJyPj0g7Jik656r64+Z7JWIIOyCrOyaqe2VmOyngCDslYrslZjri6Qg7ZWY7IusPGJyPj0g7ISc67KEIOyZuOu2gOyVhOydtO2UvOuhnCDsmbjrtoAgdGNwaW5nIOyLnCDtj6ztirjripQg7Je066awIOyDge2DnDxicj49IOunpOy2nCDrsJzsg53tlbTslbwg7ISc67mE7Iqk7ZiE7ZmpIOyImOynkeuQqCDslYjrgrQ8YnI+PSDqs4TsgrDrjIAgMuuMgCDsm5Dqsqkg7Jew6rKwLCDsl7DqsrDsoJXrs7Qg7Jm467aA7JWE7J207ZS8IOyEnOuyhOyZgCDri6TrpoQ8YnI+PSDshJzrsoQg7Jm467aA7JWE7J207ZS866GcIOuzgOqyvSDtm4Qg7KCV7IOBIOyXsOqysCwg66eI7Iqk7YSwIOyImOyLoDxicj49IOyYpO2UhOudvOyduCDqsbDrnpgg6rG0IDbqsbQg7J6I7Ja0IOyGoeyLoDxicj49IO2VuOuTnO2EsOuvuOuEkOuPhCDtmZXsnbjtlZzri6Qg7ZWY7IusLCDsoITri6zrsJvsnYAg6rOE7KCVIOyeiOuLpCDtlZjrqbAgTUdSIOuniOyKpO2EsCDqs4TsoJXsnLzroZwg66Gc6re47J247ZWY7IusPGJyPj0gRFQtOTcwLCBEVC05MzAgMuqwnCDsnojri6Qg7ZWY7IusLCBEVC05NzDsnYAg7ZWY7J207Y+s7IqkIO2ZlOuptCDrnKjripTspJE8YnI+PSDsg4jroZwg7ISk7LmY7ZW0IOyCrOyaqSDtlYTsmpQ8YnI+PSBEVC05MzDsnYAg6riw7KG0IOyCrOyaqe2VmOuNmCDquLDquLDrnbwg7ZWY7Iuc7Ja0IOyghOyytCDrp4jsiqTthLAg7IiY7IugIOynhO2WiSwg7KCV7IOBIOyImOyLoCDtmZXsnbg8YnI+PSDqs4TsgrDrjIAgMeuMgCDrjZQg7ISk7LmY7ZW07JW8IO2VnOuLpCDtlZjsi6wsIE9QUiDrr7jshKTsuZjrkJjslrQg7J6I7Ja0IO2UhOuhnOq3uOueqCDshKTsuZjripQg6rSA66as7JeF7LK066GcIOusuOydmCDslYjrgrQ8YnI+PSDrp6Tstpwg67Cc7IOdIOychO2VtCBPUFIg66Gc6re47J24IO2VhOyalO2VmOuCmCDqtIDrpqzsnpAg7KeB7JuQIOyVlO2YuCDrqqjrpbTsi6w8YnI+PSDtlbTri7kg67aA67aE64+EIOq0gOumrOyXheyytCDthrXtlbQg66y47J2YPGJyPj0g66ek7LacIOuwnOyDnSDtm4QgTUdSIOyLpO2Wie2VmOuptCDshJzruYTsiqTtmITtmakg7IiY7KeR65CgIOqyg+yehCDslYjrgrRkZAIaDxYCHgtfIUl0ZW1Db3VudGZkAhsPDxYCHwIFJzxzcGFuIHN0eWxlPSJjb2xvcjpncmF5OyI+7JmE66OMPC9zcGFuPmRkAhwPDxYCHwIFCeqzoOuPhOyYgWRkAh0PFgIfBGZkAiEPZBYCAgEPFgIfAwVZcmV0dXJuIGpzUENJbnRyYSgiVnMzcEhLYlpseFNINSUyYlREMDZTbU5xeGE2Q09JM2t5enJiME93T2MlMmJmQmlIU2VITXFvenZ2SEYyMW5oaFdpc00iKTtkZE+1pb/Xr0iYXAIcXw0MYDFfRjgdQkfUTtRGOE6ql6Ia">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="8E6C2969">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+<input name="hdEmp" type="hidden" id="hdEmp" value="939">
+<input name="hdEmpName" type="hidden" id="hdEmpName" value="고도영">
+<input name="hdTitle" type="hidden" id="hdTitle" value="서비스현황 수집 안됨 문의">
+<input name="hdDate" type="hidden" id="hdDate" value="2026-10-21 오후 2:22:31">
+<div id="warp"> 
+	<!-- header -->
+	<div id="header">
+		<div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+			<h2> <a> 나나마트(용현동) </a> </h2>
+		</div>
+	</div>
+	<!-- header end--> 
+	<!-- container-->
+	<div id="container">
+		<div class="sub_navi">
+			<table>
+				<tbody><tr id="trTab4" style="display:none;">
+	<td class="tab4"><a class="button_typeA button_right" href="./iamMartInfoView.html?martcode=105040">등록정보</a></td>
+	<td class="tab4"><a class="button_typeA button_left" href="./iamMartCallListByMart.html?martcode=105040">콜리스트</a></td>
+	<td class="tab4"><a class="button_typeA button_left" href="./iamVisitListByMart.html?martcode=105040">방문</a></td>
+	<td id="tdMemoCS1" class="tab4"><a class="button_typeA button_left" href="./iamMartInfoMemoView.html?martcode=105040">메모(CS)</a></td>
+	<td id="tdMemoPA1" class="tab4" style="display:none;"><a class="button_typeA button_left" href="./iamMartInfoMemoViewPA.html?martcode=105040">메모</a></td>
+</tr>
+
+				<tr id="trTab3">
+	<td class="tab3"><a class="button_typeA button_right" href="./iamMartInfoView.html?martcode=105040">등록정보</a></td>
+	<td class="tab3"><a class="button_typeA button_left" href="./iamMartCallListByMart.html?martcode=105040">콜리스트</a></td>
+	<td id="tdMemoCS2" class="tab3"><a class="button_typeA button_left" href="./iamMartInfoMemoView.html?martcode=105040">메모(CS)</a></td>
+	<td id="tdMemoPA2" class="tab3" style="display:none;"><a class="button_typeA button_left" href="./iamMartInfoMemoViewPA.html?martcode=105040">메모</a></td>
+</tr>
+
+                <tr><td colspan="4"><span id="lblMsg" style="color:Red;"></span></td></tr>
+			</tbody></table>
+		</div>
+		<div class="contents">
+			<div class="A">
+				<div class="divide_typeA">
+					<table>
+						<colgroup>
+						    <col>
+						    <col class="layout">
+						    <col class="layout">
+						    <col class="layout">
+						</colgroup>
+						<tbody><tr>
+							<td><h3>콜 세부내역</h3></td>                            
+							<td>
+                                
+							</td>
+							<td>
+								<input type="button" name="btnCallSave" value="콜수정" onclick="location.href='iamMartCallWrite.html?martcode=105040&amp;call=879398';" id="btnCallSave" class="button_typeB button">
+							</td>
+                            <td>
+                                <input type="button" id="btnAppPush" value="앱푸시" onclick="location.href='/intra_App/AppPushSend.html?call=879398';" class="button_typeB button">
+							</td>
+						</tr>
+					</tbody></table>
+				</div>
+				<div class="text_data">
+					<div>
+                        <table style="width:100%">
+                            <tbody><tr>
+                                <td><h3><span id="lblCallTitle">서비스현황 수집 안됨 문의</span></h3></td>
+                                <td style="width:30px; text-align:right; padding-right:5px;"><img src="/images/scrap.png" id="scrap" style="width:15px;height:auto;" onclick="jsScrapTwo(5, 879398, 0);"></td>
+                            </tr>
+                        </tbody></table>
+                    </div> 
+                    <div>
+                        <table style="width:100%">
+                            <tbody><tr>     
+                                <td>
+                                    <p><span class="text_typeM text_gray">점포&nbsp;&nbsp;|&nbsp;&nbsp;<span id="lblMartCode">105040</span>&nbsp;&nbsp;<span id="lblMartName1">나나마트(용현동)</span></span></p>
+                                    <p><span class="text_typeM text_gray">접수&nbsp;&nbsp;|&nbsp;&nbsp;
+                                            26-10-21 (수) 14:22&nbsp;&nbsp;
+                                            <span id="lblCallEmpName">고도영</span>&nbsp;&nbsp;
+                                            <span id="lblCallMethod" style="color:#FF9900;">전화</span>&nbsp;&nbsp;
+                                            <span id="lblCallBound">In</span>&nbsp;&nbsp;
+					                    </span></p>
+                                    <p><span class="text_typeM text_gray">유형&nbsp;&nbsp;|&nbsp;&nbsp;<span id="lblCallType">사용법문의</span>&nbsp;&nbsp;/&nbsp;&nbsp;<span id="lblCallField">MGR</span></span></p>
+					                <p><span class="text_typeM text_gray">요청&nbsp;&nbsp;|&nbsp;&nbsp;<span id="lblCaller">밴대리점</span>&nbsp;&nbsp;/&nbsp;&nbsp;연락처&nbsp;&nbsp;
+                                        <b><span id="lblCallTel" onclick="location.href='tel:010-7384-0926'" style="color:#003366;font-size:12pt;">010-7384-0926</span></b></span></p>	
+                                </td>
+                                <td><span id="lbSecurity" style="display:none; font-size:15pt; color:red; font-weight:bold;">[내부]</span></td>
+                            </tr>
+                        </tbody></table>
+                    </div>    
+					<hr>
+					<p><span id="lblCallWork">[돌려받음]<br>신규 등록 매장, 코드만 덮어서 기존 DB를 그대로 사용하는데 서비스현황 수집 안됨<br>= 점포기본은 등록되어 있는 상태<br>= 서버 원격 연결 후 매출 조회 시 최근 매출 없음<br>= 오랫동안 사용하지 않았다 하심<br>= 서버 외부아이피로 외부 tcping 시 포트는 열린 상태<br>= 매출 발생해야 서비스현황 수집됨 안내<br>= 계산대 2대 원격 연결, 연결정보 외부아이피 서버와 다름<br>= 서버 외부아이피로 변경 후 정상 연결, 마스터 수신<br>= 오프라인 거래 건 6건 있어 송신<br>= 핸드터미널도 확인한다 하심, 전달받은 계정 있다 하며 MGR 마스터 계정으로 로그인하심<br>= DT-970, DT-930 2개 있다 하심, DT-970은 하이포스 화면 뜨는중<br>= 새로 설치해 사용 필요<br>= DT-930은 기존 사용하던 기기라 하시어 전체 마스터 수신 진행, 정상 수신 확인<br>= 계산대 1대 더 설치해야 한다 하심, OPR 미설치되어 있어 프로그램 설치는 관리업체로 문의 안내<br>= 매출 발생 위해 OPR 로그인 필요하나 관리자 직원 암호 모르심<br>= 해당 부분도 관리업체 통해 문의<br>= 매출 발생 후 MGR 실행하면 서비스현황 수집될 것임 안내</span></p>
+                    <input name="hdCallEmpCode" type="hidden" id="hdCallEmpCode" value="939">
+                    <input name="hdCallCode" type="hidden" id="hdCallCode" value="879398">
+                    <input name="hdMartCode" type="hidden" id="hdMartCode" value="105040">
+				</div>
+				<div class="filelist">
+                    <table>
+                    <!----------- 기존첨부파일 ---------->
+                    
+                    <!----------- 기존첨부파일 ---------->
+                    </table>
+				</div>
+				<div class="text_data">
+					<table>
+					<colgroup>
+					<col class="layout">
+					<col>
+					</colgroup>
+						<tbody><tr>
+							<td><span class="text_red"><span id="lblCallStatus"><span style="color:gray;">완료</span></span></span></td>
+							<td>다음처리자: <span id="lblNextAsEmpName">고도영</span></td>
+						</tr>
+					</tbody></table>
+				</div>				
+			</div>
+
+			<div class="C">
+				<div class="divide_typeA">
+					<table>						
+						<tbody><tr>
+							<td><h4>콜 처리내역</h4></td>
+							<td><input type="button" class="button_typeB button_center" onclick="location.href='iamMartCallAsWrite.html?martcode=105040&amp;call=879398&amp;callas=0&amp;security=0';" value="콜처리 추가"></td>
+						</tr>
+					</tbody></table>
+				</div>
+                
+                <input name="hdDelCmCode" type="hidden" id="hdDelCmCode">
+                <input name="hdDelCmAsCode" type="hidden" id="hdDelCmAsCode">
+                
+			</div>			
+
+		</div>
+	</div>
+	<!-- container end--> 
+	<!-- footer-->
+    
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+	<!-- footer end--> 
+</div>
+</form>
+
+
+</body></html>

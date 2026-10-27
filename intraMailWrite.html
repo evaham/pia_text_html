@@ -1,0 +1,246 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	 사내메일 쓰기 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"><link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/PopEmp.js?16121201"></script>
+    <script type="text/javascript" src="/Common/PopMartInfo.js"></script>
+    <style type="text/css">
+        col.layout {width:60px;}
+    </style>
+    <script type="text/javascript">
+        //받는사람 선택팝업창에서 호출
+        function DoSelectedEmpAuth(empcode, empname) {
+            form1.txtSelEmpName.value = empname;
+            form1.hdSelEmpCode.value = empcode;
+        }
+        //내게 쓰기
+        function jsSendForMe() {
+            if (form1.chkSendForMe.checked != true) {
+                form1.hdSelEmpCode.value = '';
+                form1.txtSelEmpName.value = '';
+                return;
+            }
+
+            form1.hdSelEmpCode.value = '172';
+            form1.txtSelEmpName.value = '함정우';
+            return true;
+        }
+        function jsSendOK() {
+            if (form1.txtSelEmpName.value.length < 1) {
+                alert("받는사람을 선택해 주십시오.");
+                form1.txtSelEmpName.focus();
+                return false;
+            }
+            if (form1.txtTitle.value.length < 1 || form1.txtTitle.value == "제목") {
+                alert("제목을 입력해 주십시오.");
+                form1.txtTitle.focus();
+                return false;
+            }
+            if (form1.txtContent.value.length < 1 || form1.txtContent.value == "내용") {
+                alert("내용을 입력해 주십시오.");
+                form1.txtContent.focus();
+                return false;
+            }
+            return true;
+        }
+
+        //첨부파일 보임[2011.09.26]
+        function jsAddAttach() {
+            for (k = 1; k <= 10; k++) {
+                var elem = document.getElementById("AttachFile" + k);
+                if (elem != null && elem.style.display == "none") {
+                    elem.style.display = "block";
+                    break;
+                }
+            }
+
+            return false;
+        }
+
+        //첨부파일 숨김[2011.09.26]
+        function jsRemoveAttach() {
+            for (k = 10; k >= 1; k--) {
+                var elem = document.getElementById("AttachFile" + k);
+                if (elem != null && elem.style.display == "block") {
+                    elem.style.display = "none";
+                    break;
+                }
+            }
+
+            return false;
+        }
+
+        //기존 첨부파일 삭제(전달시 기존 메일 첨부파일)
+        function jsRemoveAttachOld(idx, filepath) {
+            var elem = document.getElementById("attatchold_" + idx);
+            if (elem != null) {
+                elem.style.display = 'none';
+                if (form1.hdDelFileCode.value.length > 0) form1.hdDelFileCode.value += "<";
+                form1.hdDelFileCode.value += filepath;
+            }
+        }
+    </script>
+</head>
+<body>
+<form method="post" action="./intraMailWrite.html" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2MDQ1OTI5MDUPZBYCAgMPFgIeB2VuY3R5cGUFE211bHRpcGFydC9mb3JtLWRhdGEWCAIDDw9kFgIeB29uY2xpY2sFHGphdmFzY3JpcHQ6cmV0dXJuIGpzU2VuZE9LKClkAgcPD2QWAh4IcmVhZG9ubHkFBHRydWVkAgkPEA9kFgIfAQUgamF2YXNjcmlwdDpyZXR1cm4ganNTZW5kRm9yTWUoKTtkZGQCKQ9kFgICAQ8WAh8BBVlyZXR1cm4ganNQQ0ludHJhKCJWczNwSEtiWmx4U0g1JTJiVEQwNlNtTnF4YTZDT0kza3l6cmIwT3dPYyUyYmZCaUhTZUhNcW96dnZIRjIxbmhoV2lzTSIpO2QYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgEFDGNoa1NlbmRGb3JNZcXlKRcT0hMT29spWiwL4Ea6eP0Hrf+Az5C1inUDGND4">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/WebResource.axd?d=zWRjo7LPikYhRp5_MTTe46BT5TFhGsVq4tEJ8FTiySKXhzHdUPhwl32QHtciE4ggQjBpzjwtP31I_ZbuEw41Sh2VEfuDlg6BLemZWK7fCTk1&amp;t=638901860248157332" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="003B9CE3">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+<div id="warp"> 
+	<!-- header -->
+	<div id="header">
+		<div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+			<h2> <a> 사내메일 </a> </h2>
+		</div>
+	</div>
+	<!-- header end--> 
+	<!-- container-->
+	<div id="container">
+        <div class="contents">
+			    <div class="A">
+                    <div class="divide_typeA">
+					<table>
+						<colgroup>
+						<col>
+						<col class="layout">
+						<col class="layout">
+						</colgroup>
+						<tbody><tr>
+							<td>
+								<h3>새 메일쓰기</h3>
+							</td>
+							<td>
+								<button type="button" name="btnCancel" value="취소" onclick="location.href='/intra_Mail/IntraMailList.html';" id="btnCancel" class="button_typeB button">취소</button>
+							</td>
+							<td>
+                                <input type="submit" name="btnSend" value="보내기" onclick="javascript:return jsSendOK();javascript:return jsSendOK();" id="btnSend" class="button_typeB button">
+							</td>
+						</tr>
+                        <tr><td colspan="3"><span id="lblMsg" style="color:Red;"></span></td></tr>
+					</tbody></table>
+				    </div>
+                    <div class="text_data">
+                        <input name="txtSelEmpName" type="text" id="txtSelEmpName" readonly="true" style="color:Gray;background-color:#F0F0F0;width:50%;" data-sharkid="__0"><!--
+                     --><input type="button" class="button_typeB button" onclick="jsPopSelEmp('DoSelectedEmpAuth', 1, hdSelEmpCode.value, 0);" value="선택"> 
+                        <span style="color:Gray;"><input id="chkSendForMe" type="checkbox" name="chkSendForMe" onclick="javascript:return jsSendForMe();" data-sharkid="__1"><label for="chkSendForMe">내게 쓰기</label></span>
+                        <input name="txtTitle" type="text" id="txtTitle" placeholder="제목" style="color:Gray;width:99%;" data-sharkid="__2">
+                        <textarea name="txtContent" rows="2" cols="1" id="txtContent" placeholder="내용" style="color:Gray;height:140px;width:99%;" data-sharkid="__3"></textarea>
+                    </div>
+                </div>
+                <div class="B">
+				<div class="divide_typeA">					
+                    <table>
+						<colgroup>
+						<col>
+						<col class="layout">
+						<col class="layout">
+						</colgroup>
+						<tbody><tr>
+							<td>
+								<h4>첨부파일</h4>
+							</td>
+							<td>
+								<input type="button" id="btnFileAdd" class="button_typeB button" value="파일추가" onmouseover="style.cursor='pointer'" onclick="jsAddAttach();">
+							</td>
+							<td>
+								<input type="button" id="btnFileDel" class="button_typeB button" value="파일취소" onmouseover="style.cursor='pointer'" onclick="jsRemoveAttach();">
+							</td>
+						</tr>                        
+					</tbody></table>
+				</div>
+				<div class="list">
+                    <!----------- 기존첨부파일 ---------->
+                    
+                    <!----------- 기존첨부파일 ---------->  			
+                    <input name="hdDelCmCode" type="hidden" id="hdDelCmCode">
+                    <input name="hdDelFileCode" type="hidden" id="hdDelFileCode">
+				</div>
+                <div class="list">
+                    <table>
+                        <tbody><tr class="table_ul">
+                            <td class="table_li">
+                                <input name="AttachFile1" type="file" id="AttachFile1" class="txtGray2" style="width: 90%; display:block;">
+                                <input name="AttachFile2" type="file" id="AttachFile2" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile3" type="file" id="AttachFile3" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile4" type="file" id="AttachFile4" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile5" type="file" id="AttachFile5" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile6" type="file" id="AttachFile6" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile7" type="file" id="AttachFile7" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile8" type="file" id="AttachFile8" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile9" type="file" id="AttachFile9" class="txtGray2" style="width: 90%; display:none;">
+                                <input name="AttachFile10" type="file" id="AttachFile10" class="txtGray2" style="width: 95%; display:none;">
+                            </td>                            
+                        </tr>
+                    </tbody></table>
+                </div>
+			</div>
+        </div>    
+    </div>
+	<!-- container end--> 
+	<!-- footer-->
+    
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+	<!-- footer end--> 
+    <input name="hdSelEmpCode" type="hidden" id="hdSelEmpCode">
+</div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+WebForm_AutoFocus('txtTitle');//]]>
+</script>
+</form>
+
+
+</body></html>

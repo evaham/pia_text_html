@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+	<title>
+		콜리스트 - TOGETHERs 모바일 인트라넷
+	</title>
+	<meta charset="utf-8">
+	<!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+	<!-- 자동화면 크기조절 -->
+	<meta name="viewport"
+		content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+	<style type="text/css">
+		col.layout {
+			width: 90px;
+		}
+
+		col.layout2 {
+			width: 15px;
+		}
+	</style>
+	<script type="text/javascript">
+		function jsGoPage(page) {
+			document.getElementById("hdSelPage").value = page;
+			__doPostBack('btnGoPage', '');
+		}
+		function jsToggleCall() {
+			var objTotalCall = document.getElementById("objTotalCall");
+			var objMyCall = document.getElementById("objMyCall");
+			var divTotal = document.getElementById("divTotal");
+			var divMy = document.getElementById("divMy");
+			var vTab = document.getElementById("hTab");
+
+			if (objTotalCall.style.display == "none") {
+				objTotalCall.style.display = "flex";
+				objMyCall.style.display = "none";
+				divTotal.style.display = "flex";
+				divMy.style.display = "none";
+				vTab.value = "1";
+			} else {
+				objTotalCall.style.display = "none";
+				objMyCall.style.display = "flex";
+				divTotal.style.display = "none";
+				divMy.style.display = "flex";
+				vTab.value = "0";
+			}
+			__doPostBack('btnSearch', '');
+		}
+	</script>
+</head>
+
+<body>
+	<form method="post" action="./iamMartCallList.html" id="form1">
+		<div class="aspNetHidden">
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+			<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+				value="/wEPDwUJNzI3NjI4MTUzDxYCHghlbXBfYXV0aAUBMhYCAgMPZBYSAgMPFgIeBXN0eWxlBQ1kaXNwbGF5Om5vbmU7ZAIFDxYCHwEFDmRpc3BsYXk6YmxvY2s7ZAIHDxYCHwEFDmRpc3BsYXk6YmxvY2s7ZAIJDxYCHwEFDWRpc3BsYXk6bm9uZTtkAhMPEGQPFgVmAgECAgIDAgQWBRAFDeygnOuqqSvrgrTsmqkFATFnEAUM7KCQ7Y+s7L2U65OcBQEyZxAFCeygkO2PrOuqhQUBM2cQBQnsmpTssq3snpAFATRnEAUJ7Jew65297LKYBQE1Z2RkAhUPD2QWAh4Kb25rZXlwcmVzcwVDaWYgKGV2ZW50LmtleUNvZGU9PTEzKSB7X19kb1Bvc3RCYWNrKCdidG5TZWFyY2gnLCcnKTtyZXR1cm4gZmFsc2U7fWQCHQ9kFgJmD2QWAgIBDxYCHgtfIUl0ZW1Db3VudAIUFihmD2QWCGYPFQIEMjgxNAY4NzkyNDNkAgIPFQEW7ZW465Oc7YSw66+464SQIOusuOydmGQCAw8WAh4EVGV4dAU0PHNwYW4gY2xhc3M9J3RleHRfdHlwZVMnPjI2LTEwLTIwICjtmZQpIDE1OjExPC9zcGFuPmQCBA8VAwnquYDrr7zsoJUZ7ZiE64yA7ZmI66eI7Yq4IOuwmOq1rOygkDA8c3BhbiBzdHlsZT0iY29sb3I6IzAwMDBmZjsiPuu2gOu2hOyymOumrDwvc3Bhbj5kAgEPZBYIZg8VAgYxMDMzOTcGODc5MjQyZAICDxUBHeusuOyekOyEnOu5hOyKpCDsi6Dssq0g66y47J2YZAIDDxYCHwQFNDxzcGFuIGNsYXNzPSd0ZXh0X3R5cGVTJz4yNi0xMC0yMCAo7ZmUKSAxNToxMDwvc3Bhbj5kAgQPFQMJ7J207J2A7JiBDOyCvOu0iey2leyCsDA8c3BhbiBzdHlsZT0iY29sb3I6IzAwMDBmZjsiPuu2gOu2hOyymOumrDwvc3Bhbj5kAgIPZBYKZg8VAgYxMDQ2MDcGODc5MjE4ZAIBDw9kFgIfAQUkZGlzcGxheTo7Y29sb3I6cmVkO2ZvbnQtd2VpZ2h0OmJvbGQ7ZAICDxUBIOuPmeydvOyjvOyGjCDsi6Dqt5zrk7HroZ0g7JqU7LKtZAIDDxYCHwQFNDxzcGFuIGNsYXNzPSd0ZXh0X3R5cGVTJz4yNi0xMC0yMCAo7ZmUKSAxNDoyMTwvc3Bhbj5kAgQPFQMJ7Zmp7YOc7JewFeuMgOumvOyLneyekOyerOuniO2KuDA8c3BhbiBzdHlsZT0iY29sb3I6IzAwMDBmZjsiPuu2gOu2hOyymOumrDwvc3Bhbj5kAgMPZBYIZg8VAgQ5OTk5Bjg3OTIwOGQCAg8VARAyMDI2LTEwLTIwICjsm5QpZAIDDxYCHwQFNDxzcGFuIGNsYXNzPSd0ZXh0X3R5cGVTJz4yNi0xMC0yMCAo7ZmUKSAxNDowNjwvc3Bhbj5kAgQPFQMJ6rmA64+Z7J24DO2IrOqyjOuNlOyKpDA8c3BhbiBzdHlsZT0iY29sb3I6IzAwMDBmZjsiPuu2gOu2hOyymOumrDwvc3Bhbj5kAgQPZBYIZg8VAgYxMDQ5NDEGODc5MTk1ZAICDxUBD+qwgOunueygkO2VtOyngGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTM6MjM8L3NwYW4+ZAIEDxUDCe2Zqe2DnOyXsBXrtoDqsJXtm4TroIjsiazrp4jtirgwPHNwYW4gc3R5bGU9ImNvbG9yOiMwMDAwZmY7Ij7rtoDrtoTsspjrpqw8L3NwYW4+ZAIFD2QWCGYPFQIENzc3MgY4NzkxOTRkAgIPFQEa7ZSE66Gc6re4656oIOyEpOy5mCDrrLjsnZhkAgMPFgIfBAU0PHNwYW4gY2xhc3M9J3RleHRfdHlwZVMnPjI2LTEwLTIwICjtmZQpIDEzOjIyPC9zcGFuPmQCBA8VAwnquYDrj5nsnbgS7JiB7KeE7Jis67CU7Iqk7LyTLTxzcGFuIHN0eWxlPSJjb2xvcjojZmYwMDAwOyI+66+47LKY66asPC9zcGFuPmQCBg9kFghmDxUCBDgxMzEGODc5MTkxZAICDxUBG+yduOymneykkeyngOyalOyyrV8yNi8xMS8zMGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTM6MTc8L3NwYW4+ZAIEDxUDCe2Zqe2DnOyXsA/sobDslYTrnbzrp4jtirgwPHNwYW4gc3R5bGU9ImNvbG9yOiMwMDAwZmY7Ij7rtoDrtoTsspjrpqw8L3NwYW4+ZAIHD2QWCGYPFQIGMTAxNDM3Bjg3OTE4NWQCAg8VARkxMC8yMCDsnbjspp3rp4zro4wg7JqU7LKtZAIDDxYCHwQFNDxzcGFuIGNsYXNzPSd0ZXh0X3R5cGVTJz4yNi0xMC0yMCAo7ZmUKSAxMzowNjwvc3Bhbj5kAgQPFQMJ7Ius6riw7JqpESjso7wp67aA6rK97Jyg7Ya1MDxzcGFuIHN0eWxlPSJjb2xvcjojMDAwMGZmOyI+67aA67aE7LKY66asPC9zcGFuPmQCCA9kFghmDxUCBDE1ODkGODc5MTgxZAICDxUBCeqwkOyXtOyngGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTI6MTQ8L3NwYW4+ZAIEDxUDCeq5gOyynO2YuBfsm7DruZnrp4jtirgo66eM7IiY7KCQKS08c3BhbiBzdHlsZT0iY29sb3I6I2ZmMDAwMDsiPuuvuOyymOumrDwvc3Bhbj5kAgkPZBYIZg8VAgYxMDMwODQGODc5MTgwZAICDxUBCeqwkOyXtOyngGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTI6MTM8L3NwYW4+ZAIEDxUDCeq5gOyynO2YuAzsm7DruZnrp4jtirgtPHNwYW4gc3R5bGU9ImNvbG9yOiNmZjAwMDA7Ij7rr7jsspjrpqw8L3NwYW4+ZAIKD2QWCGYPFQIENDg5NwY4NzkxNzdkAgIPFQEn7Lm07Yah7LGE64SQIOyGjOyLneuTseuhnSDrsKnrspUg66y47J2YZAIDDxYCHwQFNDxzcGFuIGNsYXNzPSd0ZXh0X3R5cGVTJz4yNi0xMC0yMCAo7ZmUKSAxMTo1Mjwvc3Bhbj5kAgQPFQMJ7J207J2A7JiBFuyjvOyLne2ajOyCrCDrjIDsoITtlYQwPHNwYW4gc3R5bGU9ImNvbG9yOiMwMDAwZmY7Ij7rtoDrtoTsspjrpqw8L3NwYW4+ZAILD2QWCGYPFQIGMTAzMTI1Bjg3OTE3MWQCAg8VAR3tiKzqsozrjZQg65Sc66as67KE66asIOusuOydmGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTE6NDQ8L3NwYW4+ZAIEDxUDCeuwsOyjvO2cmBntlZjrqqjri4jrp4jtirgg6rO87LKc7KCQLTxzcGFuIHN0eWxlPSJjb2xvcjojZmYwMDAwOyI+66+47LKY66asPC9zcGFuPmQCDA9kFghmDxUCBjEwMzk1MwY4NzkxNjVkAgIPFQEh7Y+s7Iqk7IKs7Jqp66OMIOuvuOuCqV80OTUsMDAw7JuQZAIDDxYCHwQFNDxzcGFuIGNsYXNzPSd0ZXh0X3R5cGVTJz4yNi0xMC0yMCAo7ZmUKSAxMTozMjwvc3Bhbj5kAgQPFQMJ6rmA7ISc656AFuuvuOuLiOyImOuniOy8kyDrs7jsoJAwPHNwYW4gc3R5bGU9ImNvbG9yOiMwMDAwZmY7Ij7rtoDrtoTsspjrpqw8L3NwYW4+ZAIND2QWCGYPFQIGMTAzNTIxBjg3OTE1MmQCAg8VASHtj6zsiqTsgqzsmqnro4wg66+464KpXzI5NywwMDDsm5BkAgMPFgIfBAU0PHNwYW4gY2xhc3M9J3RleHRfdHlwZVMnPjI2LTEwLTIwICjtmZQpIDExOjE0PC9zcGFuPmQCBA8VAwnquYDshJzrnoAq7KO87Iud7ZqM7IKsIOuLpOyasOumrO2VoOyduOuniO2KuCjqtoHrj5kpMDxzcGFuIHN0eWxlPSJjb2xvcjojMDAwMGZmOyI+67aA67aE7LKY66asPC9zcGFuPmQCDg9kFghmDxUCBDUwMTEGODc5MTQ1ZAICDxUBIe2PrOyKpOyCrOyaqeujjCDrr7jrgqlfMzMwLDAwMOybkGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTA6NTg8L3NwYW4+ZAIEDxUDCeq5gOyEnOuegBXqtb/rqqjri53tlaDsnbjrp4jtirgwPHNwYW4gc3R5bGU9ImNvbG9yOiMwMDAwZmY7Ij7rtoDrtoTsspjrpqw8L3NwYW4+ZAIPD2QWCGYPFQIENTI3OAY4NzkxNDJkAgIPFQEQ7IKs7JeF7J6QIOuzgOqyvWQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTA6NTI8L3NwYW4+ZAIEDxUDCeydtOyKrOq4sBgo7KO8KeuniO2KuO2CuSDsiJjsm5DrjIAwPHNwYW4gc3R5bGU9ImNvbG9yOiMwMDAwZmY7Ij7rtoDrtoTsspjrpqw8L3NwYW4+ZAIQD2QWCGYPFQIEODM2MQY4NzkxMzJkAgIPFQEfOeyblCDsgqzsmqnro4wg6riI7JWhIOyYpOy2nOq4iGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMjAgKO2ZlCkgMTA6MzU8L3NwYW4+ZAIEDxUDCeuwse2YhOyasBDtgbDqt7jrprwg66eI7Yq4MDxzcGFuIHN0eWxlPSJjb2xvcjojMDAwMGZmOyI+67aA67aE7LKY66asPC9zcGFuPmQCEQ9kFgpmDxUCBjEwMzI5OAY4NzkxMjFkAgEPD2QWAh8BBSRkaXNwbGF5Ojtjb2xvcjpyZWQ7Zm9udC13ZWlnaHQ6Ym9sZDtkAgIPFQEg64+Z7J287KO87IaMIOyLoOq3nOuTseuhnSDsmpTssq1kAgMPFgIfBAU0PHNwYW4gY2xhc3M9J3RleHRfdHlwZVMnPjI2LTEwLTIwICjtmZQpIDEwOjMwPC9zcGFuPmQCBA8VAwntmantg5zsl7AT7Jqp7ZiEIO2VoOyduOuniO2KuDA8c3BhbiBzdHlsZT0iY29sb3I6IzAwMDBmZjsiPuu2gOu2hOyymOumrDwvc3Bhbj5kAhIPZBYIZg8VAgYxMDQwNDIGODc5MDg5ZAICDxUBF29wciAyLT4wY29weSDrs4Dqsr0g7Jm4ZAIDDxYCHwQFNDxzcGFuIGNsYXNzPSd0ZXh0X3R5cGVTJz4yNi0xMC0yMCAo7ZmUKSAwODo1OTwvc3Bhbj5kAgQPFQMJ7Zmp7YOc7JewISjso7wp7JeQ7Iqk7Jeg7LyA7J20IOunneybkOyngOygkDA8c3BhbiBzdHlsZT0iY29sb3I6IzAwMDBmZjsiPuu2gOu2hOyymOumrDwvc3Bhbj5kAhMPZBYIZg8VAgYxMDE1ODEGODc5MDc4ZAICDxUBLVvqsJzshKDsmpTssq1dIO2PrOyduO2KuCDshozrqbgg6riw64qlIOusuOydmGQCAw8WAh8EBTQ8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+MjYtMTAtMTkgKOyblCkgMTc6MzM8L3NwYW4+ZAIEDxUDCeydtOyKrOq4sAnsv6jrp4jtirgtPHNwYW4gc3R5bGU9ImNvbG9yOiNmZjAwMDA7Ij7rr7jsspjrpqw8L3NwYW4+ZAIfD2QWAmYPZBYCAgMPDxYCHwQFigQ8aW5wdXQgdHlwZT0nYnV0dG9uJyB2YWx1ZT0n7LKY7J2MJyBjbGFzcz0nYnV0dG9uX3BhZ2luZyBidXR0b25fcHJldicgLz4gPGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+ydtOyghCcgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX3ByZXYnIC8+Jm5ic3A7Jm5ic3A7IDxmb250IGNvbG9yPScjI2Q4NzY3Nic+PHN0cm9uZz4xPC9zdHJvbmc+PC9mb250PiAgfCA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDIpOyI+MjwvYT4gfCA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDMpOyI+MzwvYT4gPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSg0KTsiPiZuYnNwOyZuYnNwOzxpbnB1dCB0eXBlPSdidXR0b24nIHZhbHVlPSfri6TsnYwnIGNsYXNzPSdidXR0b25fcGFnaW5nIGJ1dHRvbl9uZXh0JyAvPjwvYT4gPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSg4KTsiPjxpbnB1dCB0eXBlPSdidXR0b24nIHZhbHVlPSfrgZ0nIGNsYXNzPSdidXR0b25fcGFnaW5nIGJ1dHRvbl9uZXh0JyAvPjwvYT5kZAIhD2QWAgIBDxYCHgdvbmNsaWNrBVlyZXR1cm4ganNQQ0ludHJhKCJWczNwSEtiWmx4U0g1JTJiVEQwNlNtTnF4YTZDT0kza3l6cmIwT3dPYyUyYmZCaUhTZUhNcW96dnZIRjIxbmhoV2lzTSIpO2QYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgQFCmNoa1N0YXR1czEFCmNoa1N0YXR1czIFCmNoa1N0YXR1czMFCmNoa1N0YXR1czTQI5XrvsAy2zNbESgoCbUnkJoxK+s5PouCQLa8IRIClw==">
+		</div>
+
+		<script type="text/javascript">
+			//<![CDATA[
+			var theForm = document.forms['form1'];
+			if (!theForm) {
+				theForm = document.form1;
+			}
+			function __doPostBack(eventTarget, eventArgument) {
+				if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+					theForm.__EVENTTARGET.value = eventTarget;
+					theForm.__EVENTARGUMENT.value = eventArgument;
+					theForm.submit();
+				}
+			}
+			//]]>
+		</script>
+
+
+		<script
+			src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332"
+			type="text/javascript"></script>
+
+
+		<script
+			src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825"
+			type="text/javascript"></script>
+		<script
+			src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825"
+			type="text/javascript"></script>
+		<div class="aspNetHidden">
+
+			<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BB13C766">
+		</div>
+		<script type="text/javascript">
+			//<![CDATA[
+			Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', ['tUP1', 'UP1', 'tUP2', 'UP2'], ['btnSearch', 'btnSearch', 'btnGoPage', 'btnGoPage'], [], 90, '');
+			//]]>
+		</script>
+
+		<div id="warp">
+			<!-- header -->
+			<div id="header">
+				<div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a
+						class="button_typeA button_right" href="./Main.html">홈으로</a>
+					<h2> <a> 가맹점 콜리스트 </a> </h2>
+				</div>
+			</div>
+			<!-- header end-->
+			<div id="objMyCall" class="sub_navi" style="display:none;">
+				<table>
+					<tbody>
+						<tr>
+							<td class="tab2"> <a class="button_typeA button_right" onclick="return jsToggleCall();">전체</a> </td>
+							<td class="tab2"> <a class="button_typeA_on button_left" onclick="return jsToggleCall();">내 콜리스트</a> </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="objTotalCall" class="sub_navi" style="display:flex;">
+				<table>
+					<tbody>
+						<tr>
+							<td class="tab2"> <a class="button_typeA_on button_right" onclick="return jsToggleCall();">전체</a> </td>
+							<td class="tab2"> <a class="button_typeA button_left" onclick="return jsToggleCall();">내 콜리스트</a> </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- container-->
+			<div id="container">
+				<div class="contents">
+					<div class="A">
+						<div id="divTotal" class="divide_typeA" style="display:flex;">
+							<h3>전체 콜리스트</h3>
+							<a class="button_typeB button_right" href="./iamMartCallWrite.html">콜작성</a>
+						</div>
+						<div id="divMy" class="divide_typeA" style="display:none;">
+							<h3>내가 처리할 콜리스트</h3>
+							<a class="button_typeB button_right" href="./iamMartCallWrite.html">콜작성</a>
+						</div>
+						<div class="wrap_search">
+							<table>
+								<tbody>
+									<tr>
+										<td style="text-align:left;">
+											<input id="chkStatus1" type="checkbox" name="chkStatus1" checked="checked"
+												data-sharkid="__0"><label for="chkStatus1">미처리</label>
+											<input id="chkStatus2" type="checkbox" name="chkStatus2" checked="checked"
+												data-sharkid="__1"><label for="chkStatus2">부분처리</label>
+											<input id="chkStatus3" type="checkbox" name="chkStatus3" data-sharkid="__2"><label
+												for="chkStatus3">완료</label>
+											<input id="chkStatus4" type="checkbox" name="chkStatus4" data-sharkid="__3"><label
+												for="chkStatus4">보류</label>&nbsp;
+										</td>
+									</tr>
+									<tr>
+										<td style="padding-top:5px;">
+											<select name="ddlKeyword" id="ddlKeyword" style="width:95px;" data-sharkid="__4">
+												<option selected="selected" value="1">제목+내용</option>
+												<option value="2">점포코드</option>
+												<option value="3">점포명</option>
+												<option value="4">요청자</option>
+												<option value="5">연락처</option>
+
+											</select>
+											<input name="txtSearch" type="text" id="txtSearch" title="AND 검색 가능"
+												onkeypress="if (event.keyCode==13) {__doPostBack('btnSearch','');return false;}"
+												style="width:40%" data-sharkid="__5">
+											<input type="submit" name="btnSearch" value="검색" id="btnSearch" class="button_typeB button">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<input name="hTab" type="hidden" id="hTab" value="1">
+						</div>
+						<div>
+							<table>
+								<tbody>
+									<tr>
+										<td style="padding-bottom:5px;"><span id="lblMsg" style="color:Red;"></span></td>
+									</tr>
+									<tr>
+										<td style=" border-top : 1px solid rgb(223, 223, 223);">
+											<div id="UP1">
+
+
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=2814&amp;call=879243';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_0"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>핸드터미널 문의</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 15:11</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김민정</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>현대홈마트 반구점</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=103397&amp;call=879242';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_1"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>문자서비스 신청 문의</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 15:10</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 이은영</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>삼봉축산</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=104607&amp;call=879218';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_2"
+																		style="display:;color:red;font-weight:bold;">[내부]</span>
+																	<nobr>동일주소 신규등록 요청</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 14:21</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 황태연</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>대림식자재마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=9999&amp;call=879208';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_3"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>2026-10-20 (월)</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 14:06</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김동인</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>투게더스</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=104941&amp;call=879195';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_4"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>가맹점해지</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 13:23</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 황태연</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>부강후레쉬마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=7772&amp;call=879194';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_5"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>프로그램 설치 문의</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 13:22</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김동인</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>영진올바스켓</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#ff0000;">미처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=8131&amp;call=879191';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_6"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>인증중지요청_26/11/30</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 13:17</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 황태연</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>조아라마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=101437&amp;call=879185';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_7"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>10/20 인증만료 요청</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 13:06</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 심기용</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>(주)부경유통</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=1589&amp;call=879181';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_8"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>감열지</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 12:14</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김천호</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>웰빙마트(만수점)</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#ff0000;">미처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=103084&amp;call=879180';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_9"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>감열지</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 12:13</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김천호</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>웰빙마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#ff0000;">미처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=4897&amp;call=879177';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_10"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>카톡채널 소식등록 방법 문의</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 11:52</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 이은영</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>주식회사 대전필</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=103125&amp;call=879171';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_11"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>투게더 딜리버리 문의</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 11:44</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 배주휘</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>하모니마트 과천점</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#ff0000;">미처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=103953&amp;call=879165';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_12"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>포스사용료 미납_495,000원</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 11:32</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김서란</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>미니수마켓 본점</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=103521&amp;call=879152';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_13"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>포스사용료 미납_297,000원</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 11:14</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김서란</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>주식회사 다우리할인마트(궁동)</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=5011&amp;call=879145';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_14"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>포스사용료 미납_330,000원</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 10:58</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 김서란</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>굿모닝할인마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=5278&amp;call=879142';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_15"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>사업자 변경</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 10:52</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 이슬기</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>(주)마트킹 수원대</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=8361&amp;call=879132';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_16"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>9월 사용료 금액 오출금</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 10:35</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 백현우</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>큰그림 마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=103298&amp;call=879121';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_17"
+																		style="display:;color:red;font-weight:bold;">[내부]</span>
+																	<nobr>동일주소 신규등록 요청</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 10:30</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 황태연</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>용현 할인마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=104042&amp;call=879089';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_18"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>opr 2-&gt;0copy 변경 외</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-20 (화) 08:59</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 황태연</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>(주)에스엠케이 망원지점</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#0000ff;">부분처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="location.href='iamMartCallView.html?mart=101581&amp;call=879078';"
+													style="background-color: #ffffff;"
+													onmouseover="style.backgroundColor='#FFFF88';style.cursor='pointer';"
+													onmouseout="style.backgroundColor='#ffffff';">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;">
+																<div style="width:200px; text-overflow:ellipsis; overflow:hidden;">
+																	<span id="rptList_lbSecurity_19"
+																		style="display:none; color:red; font-weight:bold;">[내부]</span>
+																	<nobr>[개선요청] 포인트 소멸 기능 문의</nobr>
+																</div>
+															</td>
+															<td width="37%" style="padding-right:8px;padding-top:5px;color: #006699;"
+																class="text_right">
+																<span class="text_typeS">26-10-19 (월) 17:33</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="30%"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">접수 | 이슬기</span>
+															</td>
+															<td
+																style="color: #000090;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<div style="width:130px; text-overflow:ellipsis; overflow:hidden;" class="text_typeS">
+																	<nobr>쿨마트</nobr>
+																</div>
+															</td>
+															<td
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);"
+																class="text_right">
+																<span class="text_red text_typeS"><span style="color:#ff0000;">미처리</span></span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+
+
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="paging">
+							<table class="pagingTable">
+								<tbody>
+									<tr>
+										<td colspan="2" style="height:25px; vertical-align:middle;" align="center">
+											<div id="UP2">
+
+												<!--페이징-->
+												<input name="hdSelPage" type="hidden" id="hdSelPage" value="1">
+												<span id="lblpaging" style="color:#8C9C8C;font-size:Medium;"><input type="button" value="처음"
+														class="button_paging button_prev"> <input type="button" value="이전"
+														class="button_paging button_prev">&nbsp;&nbsp; <font color="##d87676"><strong>1</strong>
+													</font> | <a href="JavaScript:jsGoPage(2);">2</a> | <a href="JavaScript:jsGoPage(3);">3</a> <a
+														href="JavaScript:jsGoPage(4);">&nbsp;&nbsp;<input type="button" value="다음"
+															class="button_paging button_next"></a> <a href="JavaScript:jsGoPage(8);"><input
+															type="button" value="끝" class="button_paging button_next"></a></span>
+												<div style="display: none;">
+													<input type="submit" name="btnGoPage" value="페이지이동" id="btnGoPage">
+												</div>
+
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- container end-->
+			<!-- footer-->
+
+			<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+			<!-- footer-->
+			<div id="footer">
+				<div class="foot">
+					<a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right"
+						onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+				</div>
+
+				<address>
+					<a>TOGETHERs</a>
+				</address>
+			</div>
+			<!-- footer end-->
+			<!-- footer end-->
+		</div>
+	</form>
+
+
+</body>
+
+</html>

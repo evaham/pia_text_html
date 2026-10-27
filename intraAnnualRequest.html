@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	휴가 신청 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8"><meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"><link href="/Common/intranet.mobile3.css?2021" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/clCalendar.js"></script></head><body><div id="minical" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" style="background:buttonface; margin:5; padding:5;margin-top:2;border-top:1 solid buttonshadow;border-left: 1 solid buttonshadow;border-right: 1 solid buttonshadow;border-bottom:1 solid buttonshadow;width:230px;display:none;position: absolute; z-index: 99"></div>
+    <script type="text/javascript" src="/Common/PopEmp.js?16121201"></script>
+    <script type="text/javascript" src="/Common/jquery-latest.js"></script>
+    <style type="text/css">
+        col.layout { width: 60px; }
+    </style>
+    <script type="text/javascript">        
+        //휴가 승인자
+        function DoSelectedApEmp(empcode, empname) {
+            form1.txtApEmpName.value = empname;
+            form1.hApEmpName.value = empname;
+            form1.hApEmp.value = empcode;
+        }
+        //휴가 참조자
+        function DoSelectedReferEmp(postcode, empcode, empname) {
+            form1.txtReferEmpName.value = empname;
+            form1.hReferEmpName.value = empname;
+            form1.hReferEmp.value = empcode;
+            form1.hReferEmpPost.value = postcode;
+        }
+        function jsViewChange() {
+            var vType = document.getElementById("ddlType");
+            var index = vType.options.selectedIndex;
+            if (vType.options[index].value == "2" || vType.options[index].value == "4" || vType.options[index].value == "6" || vType.options[index].value == "99") {
+                document.getElementById("lblspace").style.display = "none";
+                document.getElementById("txtDateEnd").style.display = "none";
+                document.getElementById("btnCal2").style.display = "none";
+                document.getElementById("ddlHalf").style.display = "";
+            } else {
+                document.getElementById("lblspace").style.display = "";
+                document.getElementById("txtDateEnd").style.display = "";
+                document.getElementById("btnCal2").style.display = "";
+                document.getElementById("ddlHalf").style.display = "none";
+            }
+        }
+        function jsDateChange() {
+            var dateStart = $('#txtDateStart').val();
+            $('#txtDateEnd').val(dateStart);
+
+            //휴가일의 연도가 바뀌면 휴가유형을 재바인딩 한다. 신청할 휴가일이 올해냐 내년이냐에 따라 잔여연차수가 달라지므로 사용할 수 있는 휴가유형도 달라질 수 있다.
+            if (dateStart.substring(0, 4) != $('#hYear').val()) {
+                $('#hYear').val(dateStart.substring(0, 4));
+                $('#btnAnnTypeBind').click();
+            }
+        }
+
+        function jsChkEndDate() {
+            var dateStart = $('#txtDateStart').val();
+            var dateEnd = $('#txtDateEnd').val();
+
+            //연도별로 신청할 수 있는 휴가 유형이 달라질 수 있으므로 끊어서 신청하도록 한다.
+            if (dateStart.substring(0, 4) != dateEnd.substring(0, 4)) {
+                alert("연단위로 끊어서 신청해주세요.");
+                $('#txtDateEnd').val(dateStart);
+                return false;
+            }
+            return true;
+        }
+
+        //저장
+        function jsSaveOK() {
+            if (form1.ddlType.value == 0) {
+                alert("휴가명을 선택해주세요.");
+                form1.ddlType.focus();
+                return false;
+            }
+            if (document.getElementById("txtApEmpName").value.length == 0) {
+                alert("휴가승인자를 선택해주세요");
+                return false;
+            }
+            return true;
+        }
+        function jsDel() {
+            return confirm("신청한 휴가를 삭제하시겠습니까?");
+        }
+        function jsApproval(vReqType) {
+
+            var hAuCode = form1.hAuCode.value;
+            var hAaCode = form1.hAaCode.value;
+
+            if (vReqType == "C") {
+                if (confirm("휴가 승인을 취소하시겠습니까?")) {
+                    PageMethods.AnnualCancel(vReqType, hAuCode, hAaCode, OnAnnualCancelSuccess, OnAnnualCancelFail);
+                    return false;
+                }
+            }
+        }
+        function OnAnnualCancelSuccess(result) {
+            //처리내용 alert
+            alert(result);
+            //검색refresh
+            jsRefresh();
+        }
+        function OnAnnualCancelFail(result) {
+            //실패내용 alert
+            alert(result);
+        }
+    </script>
+
+
+    <form method="post" action="./intraAnnualRequest.html?auCode=0&amp;userType=E" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjA1NDI4ODk4NQ9kFgICAw9kFg4CDQ8QZBAVAgbsmKTsoIQG7Jik7ZuEFQIBMgEzFCsDAmdnZGQCEQ8PFgIeBFRleHQFATNkZAITDw8WAh8ABQIxMGRkAhUPEA8WBh4ORGF0YVZhbHVlRmllbGQFA2tleR4NRGF0YVRleHRGaWVsZAUFdmFsdWUeC18hRGF0YUJvdW5kZxYCHghvbmNoYW5nZQUWcmV0dXJuIGpzVmlld0NoYW5nZSgpOxAVBhItLS3tnLTqsIDsnKDtmJUtLS0G7Jew7LCoBuuwmOywqBvqsIDsobHrj4zrtIQg7Jew7LCoKOustOq4iSkb6rCA7KGx64+M67SEIOuwmOywqCjrrLTquIkpCeqyveyhsOyCrBUGATABMQEyATUBNgE3FCsDBmdnZ2dnZ2RkAh0PDxYCHwBlZGQCIQ8PFgIeB1Zpc2libGVoZGQCKQ9kFgICAQ8WAh4Hb25jbGljawVZcmV0dXJuIGpzUENJbnRyYSgiVnMzcEhLYlpseFNINSUyYlREMDZTbU5xeGE2Q09JM2t5enJiME93T2MlMmJmQmlIU2VITXFvenZ2SEYyMW5oaFdpc00iKTtkZFwDz7dZtByzahilFE5aylMaGdu6RNetBBpTIsenM+qL">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+var PageMethods = function() {
+PageMethods.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+PageMethods.prototype = {
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return PageMethods._staticInstance.get_path();},
+AnnualCancel:function(strReqType,strAuCode,strAaCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AnnualCancel',false,{strReqType:strReqType,strAuCode:strAuCode,strAaCode:strAaCode},succeededCallback,failedCallback,userContext); }}
+PageMethods.registerClass('PageMethods',Sys.Net.WebServiceProxy);
+PageMethods._staticInstance = new PageMethods();
+PageMethods.set_path = function(value) { PageMethods._staticInstance.set_path(value); }
+PageMethods.get_path = function() { return PageMethods._staticInstance.get_path(); }
+PageMethods.set_timeout = function(value) { PageMethods._staticInstance.set_timeout(value); }
+PageMethods.get_timeout = function() { return PageMethods._staticInstance.get_timeout(); }
+PageMethods.set_defaultUserContext = function(value) { PageMethods._staticInstance.set_defaultUserContext(value); }
+PageMethods.get_defaultUserContext = function() { return PageMethods._staticInstance.get_defaultUserContext(); }
+PageMethods.set_defaultSucceededCallback = function(value) { PageMethods._staticInstance.set_defaultSucceededCallback(value); }
+PageMethods.get_defaultSucceededCallback = function() { return PageMethods._staticInstance.get_defaultSucceededCallback(); }
+PageMethods.set_defaultFailedCallback = function(value) { PageMethods._staticInstance.set_defaultFailedCallback(value); }
+PageMethods.get_defaultFailedCallback = function() { return PageMethods._staticInstance.get_defaultFailedCallback(); }
+PageMethods.set_enableJsonp = function(value) { PageMethods._staticInstance.set_enableJsonp(value); }
+PageMethods.get_enableJsonp = function() { return PageMethods._staticInstance.get_enableJsonp(); }
+PageMethods.set_jsonpCallbackParameter = function(value) { PageMethods._staticInstance.set_jsonpCallbackParameter(value); }
+PageMethods.get_jsonpCallbackParameter = function() { return PageMethods._staticInstance.get_jsonpCallbackParameter(); }
+PageMethods.set_path("intraAnnualRequest.html");
+PageMethods.AnnualCancel= function(strReqType,strAuCode,strAaCode,onSuccess,onFailed,userContext) {PageMethods._staticInstance.AnnualCancel(strReqType,strAuCode,strAaCode,onSuccess,onFailed,userContext); }
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C68A551D">
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+    <div id="warp">
+        <!-- header -->
+        <div id="header">
+            <div class="main_navi">
+                <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+                <h2> <a> 휴가신청 </a> </h2>
+            </div>
+        </div>
+        <!-- header end-->
+        <!-- container-->
+        <div id="container">
+            <div class="contents">
+                <div class="A">
+                    <div class="text_data">
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <label> 휴가일 </label>&nbsp;&nbsp; 
+                                    <input name="txtDateStart" type="text" value="2026-10-20" id="txtDateStart" onfocus="jsDateChange();" style="width:85px;" data-sharkid="__0"><!--
+                                 --><input name="btnCal1" type="button" id="btnCal1" onclick="Calendar(this, txtDateStart);" value="▼" class="btnCalGray1" style="width:25px; height:30px;">
+                                    <span id="lblspace"> ~ </span>
+                                    <input name="txtDateEnd" type="text" value="2026-10-20" id="txtDateEnd" onfocus="return jsChkEndDate();" style="width:85px;" data-sharkid="__1"><!--
+                                 --><input name="btnCal2" type="button" id="btnCal2" onclick="Calendar(this, txtDateEnd);" value="▼" class="btnCalGray1" style="width:25px; height:30px;">
+                                    <select name="ddlHalf" id="ddlHalf" style="display:none;">
+	<option selected="selected" value="2">오전</option>
+	<option value="3">오후</option>
+
+</select>
+                                    <input type="submit" name="btnAnnTypeBind" value="" id="btnAnnTypeBind" style="display:none;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 잔여연차 </label>&nbsp; 
+                                    연차 : <span id="lbAnnualDays">3</span>&nbsp;&nbsp; 가족돌봄 : <span id="lbFAnnualDays">10</span>
+                                </td>
+                            </tr>   
+                            <tr>
+                                <td>
+                                    <label> 휴가유형 </label>&nbsp;&nbsp; 
+                                    <select name="ddlType" id="ddlType" onchange="return jsViewChange();" style="height:35px;width:50%;" data-sharkid="__2">
+	<option value="0">---휴가유형---</option>
+	<option value="1">연차</option>
+	<option value="2">반차</option>
+	<option value="5">가족돌봄 연차(무급)</option>
+	<option value="6">가족돌봄 반차(무급)</option>
+	<option value="7">경조사</option>
+
+</select>
+                                </td>
+                            </tr>                            
+                            <tr>
+                                <td>
+                                    <label> 휴가승인자 </label>&nbsp; 
+                                    <input name="txtApEmpName" type="text" id="txtApEmpName" disabled="disabled" class="aspNetDisabled" style="color:Black;width:90px;" data-sharkid="__3"><!--
+                                 --><input type="button" class="button_typeB button" onclick="jsPopSelEmp('DoSelectedApEmp', 0, hApEmp.value, 0);" value="선택">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label> 휴가참조자 </label>&nbsp; <input name="txtReferEmpName" type="text" id="txtReferEmpName" disabled="disabled" class="aspNetDisabled" style="color:Black;width:50%;" data-sharkid="__4"><!--
+                                 --><input type="button" class="button_typeB button" onclick="jsAnnualPopSelEmp('DoSelectedReferEmp', 1, hReferEmp.value, hApEmp.value);" value="선택">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                    <div class="text_data">
+                        <textarea name="txtReason" rows="2" cols="1" id="txtReason" style="color:Gray;height:140px;width:95%;" data-sharkid="__5">개인사유</textarea>
+                    </div>
+                    <div class="text_data" style="border:0; text-align:right;">
+                        <span id="lbMsg" style="color:Red;"></span><br>
+
+                        <input type="submit" name="btnSave" value="휴가신청" onclick="javascript:return jsSaveOK();" id="btnSave" class="button_typeB button" style="width:70px;">
+                        
+                        
+                        
+                        
+                        <button type="button" name="btnCancel" value="취소" onclick="javascript:history.back();" id="btnCancel" class="button_typeB button" style="width:60px;">취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- container end-->
+        <!-- footer-->
+        
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+        <!-- footer end-->
+        <input name="hAuCode" type="hidden" id="hAuCode" value="0">    
+        <input name="hUseEMp" type="hidden" id="hUseEMp"> 
+        <input name="hAaCode" type="hidden" id="hAaCode" value="0">
+        <input name="hUserType" type="hidden" id="hUserType" value="E">
+        <input name="hReferEmp" type="hidden" id="hReferEmp">    
+        <input name="hReferEmpName" type="hidden" id="hReferEmpName">
+        <input name="hReferEmpPost" type="hidden" id="hReferEmpPost">
+        <input name="hApEmp" type="hidden" id="hApEmp">    
+        <input name="hApEmpName" type="hidden" id="hApEmpName">
+        <input name="hYear" type="hidden" id="hYear" value="2026">
+    </div>
+    </form>
+
+
+</body></html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	새 일정등록-TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/Common/clCalendar.js"></script></head><body><div id="minical" oncontextmenu="return false" ondragstart="return false" onselectstart="return false" style="background:buttonface; margin:5; padding:5;margin-top:2;border-top:1 solid buttonshadow;border-left: 1 solid buttonshadow;border-right: 1 solid buttonshadow;border-bottom:1 solid buttonshadow;width:230px;display:none;position: absolute; z-index: 99"></div>
+    <script type="text/javascript" src="/Common/PopEmp.js?16121201"></script>
+    <script type="text/javascript" src="/Common/PopMartInfo.js"></script>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+
+        //참석자 선택팝업창에서 호출
+        function DoSelectedEmpAuth(empcode, empname) {
+            form1.txtAttendanceName.value = empname;
+            form1.hAttendanceCode.value = empcode;
+        }
+
+        function jsSaveOK() {
+            if (form1.txtStartDate.value.length < 10) {
+                alert("일시를 선택해 주십시오.");
+                form1.txtStartDate.focus();
+                return false;
+            }
+            if (form1.txtEndDate.value.length < 10) {
+                alert("일시를 선택해 주십시오.");
+                form1.txtEndDate.focus();
+                return false;
+            }
+            if (form1.txtTitle.value.length < 1) {
+                alert("제목을 입력해 주십시오.");
+                form1.txtTitle.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+
+    <form method="post" action="./IntraScheduleWrite.html?date=2026-10-22&amp;where=month" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="7BC8324E">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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">
+</div>
+    <div id="warp">
+        <!-- header -->
+        <div id="header">
+            <div class="main_navi">
+                <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="../Main.html">홈으로</a>
+                <h2> <a> 새 일정등록 </a> </h2>
+            </div>
+        </div>
+        <!-- header end-->
+        <!-- container-->
+        <div id="container">
+            <div class="contents">
+                <div class="A">
+                    <div class="text_data">
+			            <table>
+			                <tbody><tr> 				
+				                <td colspan="3">
+				                    <label> 제 목 </label><input name="txtTitle" type="text" maxlength="25" id="txtTitle" style="width:70%;" data-sharkid="__0">
+				                </td>
+			                </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <label> 유 형 </label>
+				                    <select name="ddlType" id="ddlType" style="height:30px;width:90px;" data-sharkid="__1">
+	<option value="0">공개일정</option>
+	<option value="1">개인일정</option>
+	<option selected="selected" value="2">사내일정</option>
+	<option value="9">휴일</option>
+
+</select>
+				                </td>
+			                </tr>
+			                <tr>  				
+				                <td colspan="3">
+                                    <label> 일 시 </label>
+                                    <input name="txtStartDate" type="text" value="2026-10-22" id="txtStartDate" readonly="true" style="width:90px;" data-sharkid="__2"><!--
+                                 --><input name="btnCal1" type="button" id="btnCal1" onclick="Calendar(this, txtStartDate);" value="▼" class="btnCalGray1" style="width:25px; height:30px;"> ~ 
+                                    <input name="txtEndDate" type="text" value="2026-10-22" id="txtEndDate" readonly="true" style="width:90px;" data-sharkid="__3"><!--
+                                 --><input name="btnCal2" type="button" id="btnCal2" onclick="Calendar(this, txtEndDate);" value="▼" class="btnCalGray1" style="width:25px; height:30px;">
+				                </td>
+			                </tr>
+                            <tr>   				
+				                <td colspan="3">
+                                    <label> 시 간 </label>
+                                    <select name="ddlStartTime" onchange="javascript:setTimeout('__doPostBack(\'ddlStartTime\',\'\')', 0)" id="ddlStartTime" style="height:30px;" data-sharkid="__4">
+	<option value="오전 12:00">오전 12:00</option>
+	<option value="오전 12:30">오전 12:30</option>
+	<option value="오전 1:00">오전 1:00</option>
+	<option value="오전 1:30">오전 1:30</option>
+	<option value="오전 2:00">오전 2:00</option>
+	<option value="오전 2:30">오전 2:30</option>
+	<option value="오전 3:00">오전 3:00</option>
+	<option value="오전 3:30">오전 3:30</option>
+	<option value="오전 4:00">오전 4:00</option>
+	<option value="오전 4:30">오전 4:30</option>
+	<option value="오전 5:00">오전 5:00</option>
+	<option value="오전 5:30">오전 5:30</option>
+	<option value="오전 6:00">오전 6:00</option>
+	<option value="오전 6:30">오전 6:30</option>
+	<option value="오전 7:00">오전 7:00</option>
+	<option value="오전 7:30">오전 7:30</option>
+	<option value="오전 8:00">오전 8:00</option>
+	<option value="오전 8:30">오전 8:30</option>
+	<option value="오전 9:00">오전 9:00</option>
+	<option value="오전 9:30">오전 9:30</option>
+	<option value="오전 10:00">오전 10:00</option>
+	<option value="오전 10:30">오전 10:30</option>
+	<option value="오전 11:00">오전 11:00</option>
+	<option value="오전 11:30">오전 11:30</option>
+	<option value="오후 12:00">오후 12:00</option>
+	<option value="오후 12:30">오후 12:30</option>
+	<option value="오후 1:00">오후 1:00</option>
+	<option value="오후 1:30">오후 1:30</option>
+	<option value="오후 2:00">오후 2:00</option>
+	<option value="오후 2:30">오후 2:30</option>
+	<option value="오후 3:00">오후 3:00</option>
+	<option selected="selected" value="오후 3:30">오후 3:30</option>
+	<option value="오후 4:00">오후 4:00</option>
+	<option value="오후 4:30">오후 4:30</option>
+	<option value="오후 5:00">오후 5:00</option>
+	<option value="오후 5:30">오후 5:30</option>
+	<option value="오후 6:00">오후 6:00</option>
+	<option value="오후 6:30">오후 6:30</option>
+	<option value="오후 7:00">오후 7:00</option>
+	<option value="오후 7:30">오후 7:30</option>
+	<option value="오후 8:00">오후 8:00</option>
+	<option value="오후 8:30">오후 8:30</option>
+	<option value="오후 9:00">오후 9:00</option>
+	<option value="오후 9:30">오후 9:30</option>
+	<option value="오후 10:00">오후 10:00</option>
+	<option value="오후 10:30">오후 10:30</option>
+	<option value="오후 11:00">오후 11:00</option>
+	<option value="오후 11:30">오후 11:30</option>
+
+</select> ~ 
+                                    <select name="ddlEndTime" id="ddlEndTime" style="height:30px;" data-sharkid="__5">
+	<option value="오전 12:00">오전 12:00</option>
+	<option value="오전 12:30">오전 12:30</option>
+	<option value="오전 1:00">오전 1:00</option>
+	<option value="오전 1:30">오전 1:30</option>
+	<option value="오전 2:00">오전 2:00</option>
+	<option value="오전 2:30">오전 2:30</option>
+	<option value="오전 3:00">오전 3:00</option>
+	<option value="오전 3:30">오전 3:30</option>
+	<option value="오전 4:00">오전 4:00</option>
+	<option value="오전 4:30">오전 4:30</option>
+	<option value="오전 5:00">오전 5:00</option>
+	<option value="오전 5:30">오전 5:30</option>
+	<option value="오전 6:00">오전 6:00</option>
+	<option value="오전 6:30">오전 6:30</option>
+	<option value="오전 7:00">오전 7:00</option>
+	<option value="오전 7:30">오전 7:30</option>
+	<option value="오전 8:00">오전 8:00</option>
+	<option value="오전 8:30">오전 8:30</option>
+	<option value="오전 9:00">오전 9:00</option>
+	<option value="오전 9:30">오전 9:30</option>
+	<option value="오전 10:00">오전 10:00</option>
+	<option value="오전 10:30">오전 10:30</option>
+	<option value="오전 11:00">오전 11:00</option>
+	<option value="오전 11:30">오전 11:30</option>
+	<option value="오후 12:00">오후 12:00</option>
+	<option value="오후 12:30">오후 12:30</option>
+	<option value="오후 1:00">오후 1:00</option>
+	<option value="오후 1:30">오후 1:30</option>
+	<option value="오후 2:00">오후 2:00</option>
+	<option value="오후 2:30">오후 2:30</option>
+	<option value="오후 3:00">오후 3:00</option>
+	<option value="오후 3:30">오후 3:30</option>
+	<option value="오후 4:00">오후 4:00</option>
+	<option selected="selected" value="오후 4:30">오후 4:30</option>
+	<option value="오후 5:00">오후 5:00</option>
+	<option value="오후 5:30">오후 5:30</option>
+	<option value="오후 6:00">오후 6:00</option>
+	<option value="오후 6:30">오후 6:30</option>
+	<option value="오후 7:00">오후 7:00</option>
+	<option value="오후 7:30">오후 7:30</option>
+	<option value="오후 8:00">오후 8:00</option>
+	<option value="오후 8:30">오후 8:30</option>
+	<option value="오후 9:00">오후 9:00</option>
+	<option value="오후 9:30">오후 9:30</option>
+	<option value="오후 10:00">오후 10:00</option>
+	<option value="오후 10:30">오후 10:30</option>
+	<option value="오후 11:00">오후 11:00</option>
+	<option value="오후 11:30">오후 11:30</option>
+
+</select>
+				                </td>             
+                            </tr>
+                            <tr>   				
+				                <td colspan="3">
+                                    <label> 장 소 </label>
+				                    <input name="txtPlace" type="text" maxlength="25" id="txtPlace" style="width:70%;" data-sharkid="__6">
+				                </td>             
+                            </tr>
+                            <tr>
+				                <td colspan="3">
+                                    <label> 참 석 </label>
+					                <input name="txtAttendanceName" type="text" id="txtAttendanceName" readonly="true" style="background-color:#EFEFEF;width:60%;" data-sharkid="__7"><!--
+                                 --><input type="button" class="button_typeB button" onclick="jsPopSelEmp('DoSelectedEmpAuth', 1, hAttendanceCode.value, 0);" value="선택">				    
+				                </td>
+			                </tr>
+			                <tr>  				
+				                <td colspan="3">
+				                    <textarea name="txtContent" rows="8" cols="20" id="txtContent" style="height:150px;width:98%;" data-sharkid="__8"></textarea>
+				                </td>
+			                </tr>
+			                
+			            </tbody></table>
+			        </div>
+		            <div class="text_data" style="border:0; text-align:right;"><br>
+				        <input type="submit" name="btnSave" value="등록" onclick="javascript:return jsSaveOK();" id="btnSave" class="button_typeB button" style="width:100px;">
+                        <button type="button" name="btnCancel" value="취소" onclick="javascript:history.back();" id="btnCancel" class="button_typeB button" style="width: 100px;">취소</button> 
+			        </div>
+		        </div>
+            </div>
+        </div>
+        <!-- container end--> 
+	    <!-- footer-->
+        
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+        <!-- footer end-->
+        <input name="hAttendanceCode" type="hidden" id="hAttendanceCode">
+    </div>
+    </form>
+
+
+</body></html>

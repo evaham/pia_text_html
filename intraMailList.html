@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+	<title>
+		사내메일 - TOGETHERs 모바일 인트라넷
+	</title>
+	<meta charset="utf-8">
+	<!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+	<!-- 자동화면 크기조절 -->
+	<meta name="viewport"
+		content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<link href="/Common/intranet.mobile3.css?2014053001" type="text/css" rel="stylesheet">
+	<style type="text/css">
+		.imgTitle {
+			float: left;
+			width: 25px;
+			height: 25px;
+			margin: -1px 7px -1px 0;
+			background-position: 0 -395px;
+			font-size: 0;
+			color: transparent;
+			line-height: 0;
+			vertical-align: middle;
+		}
+	</style>
+	<script type="text/javascript">
+		function jsGoPage(page) {
+			form1.hdSelPage.value = page;
+			__doPostBack('btnGoPage', '');
+		}
+		function jsToggleCall() {
+			var objTotalCall = document.getElementById("objTotalCall");
+			var objMyCall = document.getElementById("objMyCall");
+			var divTotal = document.getElementById("divTotal");
+			var divMy = document.getElementById("divMy");
+			var vTab = document.getElementById("hTab");
+			//var hdSelPage = document.getElementById("hdSelPage");
+
+			if (objTotalCall.style.display == "none") {
+				objTotalCall.style.display = "flex";
+				objMyCall.style.display = "none";
+				divTotal.style.display = "flex";
+				divMy.style.display = "none";
+				vTab.value = "1";
+				//hdSelPage.value = "1";
+			} else {
+				objTotalCall.style.display = "none";
+				objMyCall.style.display = "flex";
+				divTotal.style.display = "none";
+				divMy.style.display = "flex";
+				vTab.value = "0";
+				//hdSelPage.value = "1";
+			}
+
+			document.getElementById("txtSearch").value = "";
+			__doPostBack('btnGoPage', '');
+		}
+
+		//메일읽기
+		function jsMailRead(mailcode) {
+			if (objTotalCall.style.display == "flex") {
+				location.href = "IntraMailRead.html?box=r&mail=" + mailcode;
+			}
+			else {
+				location.href = "IntraMailRead.html?box=s&mail=" + mailcode;
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<form method="post" action="./intraMailList.html" id="form1">
+		<div class="aspNetHidden">
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+			<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+				value="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BSk8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+6rmA7YOc7J28PC9zcGFuPmQCBw8WAh8CBTc8c3BhbiBjbGFzcz0ndGV4dF90eXBlUyc+OCAvIDE4ICjtmZQpJm5ic3A7MTA6NDI8L3NwYW4+ZAIVD2QWAmYPZBYCAgMPDxYCHwIFjAQ8aW5wdXQgdHlwZT0nYnV0dG9uJyB2YWx1ZT0n7LKY7J2MJyBjbGFzcz0nYnV0dG9uX3BhZ2luZyBidXR0b25fcHJldicgLz4gPGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+ydtOyghCcgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX3ByZXYnIC8+Jm5ic3A7Jm5ic3A7IDxmb250IGNvbG9yPScjI2Q4NzY3Nic+PHN0cm9uZz4xPC9zdHJvbmc+PC9mb250PiAgfCA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDIpOyI+MjwvYT4gfCA8YSBocmVmPSJKYXZhU2NyaXB0OmpzR29QYWdlKDMpOyI+MzwvYT4gPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSg0KTsiPiZuYnNwOyZuYnNwOzxpbnB1dCB0eXBlPSdidXR0b24nIHZhbHVlPSfri6TsnYwnIGNsYXNzPSdidXR0b25fcGFnaW5nIGJ1dHRvbl9uZXh0JyAvPjwvYT4gPGEgaHJlZj0iSmF2YVNjcmlwdDpqc0dvUGFnZSgxNzMpOyI+PGlucHV0IHR5cGU9J2J1dHRvbicgdmFsdWU9J+uBnScgY2xhc3M9J2J1dHRvbl9wYWdpbmcgYnV0dG9uX25leHQnIC8+PC9hPmRkAhcPZBYCAgEPFgIeB29uY2xpY2sFWXJldHVybiBqc1BDSW50cmEoIlZzM3BIS2JabHhTSDUlMmJURDA2U21OcXhhNkNPSTNreXpyYjBPd09jJTJiZkJpSFNlSE1xb3p2dkhGMjFuaGhXaXNNIik7ZGQAU/7qbtIjzY0W98awsP7cOjHkoaLq5ZthK9n8BMnVhg==">
+		</div>
+
+		<script type="text/javascript">
+			//<![CDATA[
+			var theForm = document.forms['form1'];
+			if (!theForm) {
+				theForm = document.form1;
+			}
+			function __doPostBack(eventTarget, eventArgument) {
+				if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+					theForm.__EVENTTARGET.value = eventTarget;
+					theForm.__EVENTARGUMENT.value = eventArgument;
+					theForm.submit();
+				}
+			}
+			//]]>
+		</script>
+
+
+		<script
+			src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332"
+			type="text/javascript"></script>
+
+
+		<script
+			src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825"
+			type="text/javascript"></script>
+		<script
+			src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825"
+			type="text/javascript"></script>
+		<div class="aspNetHidden">
+
+			<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F81E3C0B">
+		</div>
+		<script type="text/javascript">
+			//<![CDATA[
+			Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', ['tUP1', 'UP1', 'tUP2', 'UP2'], ['btnSearch', 'btnSearch', 'btnGoPage', 'btnGoPage'], [], 90, '');
+			//]]>
+		</script>
+
+		<div id="warp">
+			<!-- header -->
+			<div id="header">
+				<div class="tab_wrap">
+					<ul class="tab_list">
+						<li class="tab_1"><a class="tab_btn_on tab_left" href="./intraMailList.html">메일</a></li>
+						<li class="tab_2"><a class="tab_btn tab_center" href="./intraDiaryList.html">일지</a></li>
+						<li class="tab_3"><a class="tab_btn tab_right" href="./intraMeetList.html">회의</a></li>
+					</ul>
+				</div>
+				<div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a
+						class="button_typeA button_right" href="./Main.html">홈으로</a>
+
+				</div>
+			</div>
+			<!-- header end-->
+			<div id="objMyCall" class="sub_navi" style="display:none;">
+				<table>
+					<tbody>
+						<tr>
+							<td class="tab2"> <a class="button_typeA button_right" onclick="return jsToggleCall();">받은 사내메일 </a> </td>
+							<td class="tab2"> <a class="button_typeA_on button_left" onclick="return jsToggleCall();">보낸 사내메일</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="objTotalCall" class="sub_navi" style="display:block;">
+				<table>
+					<tbody>
+						<tr>
+							<td class="tab2"> <a class="button_typeA_on button_right" onclick="return jsToggleCall();">받은 사내메일 </a>
+							</td>
+							<td class="tab2"> <a class="button_typeA button_left" onclick="return jsToggleCall();">보낸 사내메일</a> </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- container-->
+			<div id="container">
+				<div class="contents">
+					<div class="A">
+						<div id="divTotal" class="divide_typeA" style="display:flex;">
+							<h3>받은 사내메일 </h3>
+							<a href="./intraMailWrite.html" id="aMailWrite" class="button_typeB button_right">새 메일쓰기</a>
+						</div>
+						<div id="divMy" class="divide_typeA" style="display:none;">
+							<h3>보낸 사내메일</h3>
+							<a href="./intraMailWrite.html" id="aMailWrite2" class="button_typeB button_right">새 메일쓰기</a>
+						</div>
+						<div class="wrap_search">
+							<table>
+								<tbody>
+									<tr>
+										<td style="padding-top:5px;">
+											<input name="txtSearch" type="text" id="txtSearch" style="width:40%" data-sharkid="__0">
+											<input type="submit" name="btnSearch" value="검색" id="btnSearch" class="button_typeB button">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<input name="hTab" type="hidden" id="hTab" value="1">
+						</div>
+						<div>
+							<table>
+								<tbody>
+									<tr>
+										<td><span id="lblMsg" style="color:Red;"></span></td>
+									</tr>
+									<tr>
+										<td style=" border-top : 1px solid rgb(223, 223, 223);">
+											<div id="UP1">
+												<table width="100%" onclick="jsMailRead(175581)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_0" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_0" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[공유]
+																			인트라넷 오류건 공유</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:1</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">이오디</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">10 / 20 (화)&nbsp;11:33</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(175318)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_1" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_1" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">[우리사주조합] 선거관리위원회 출범 공고</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김태일</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">10 / 14 (수)&nbsp;10:06</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(175253)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_2" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_2" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">Git
+																			및 Jenkins 서버 업데이트(전환) 안내</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">윤정섭</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">10 / 13 (화)&nbsp;11:56</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(174898)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_3" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_3" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">회사
+																			명판 시안 파일 송부드립니다.</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:1</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김수민</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">10 / 2 (금)&nbsp;10:14</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(174597)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_4" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_4" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[요청]
+																			투게더 AI 이미지 점검 미팅 참석 요청</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:1</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김지예</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 23 (수)&nbsp;15:21</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(174538)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_5" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_5" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[공유]
+																			투게더 AI 이미지 UI.UX 개선 화면 기획서 공유 외</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:1</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김지예</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 22 (화)&nbsp;16:04</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(174486)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_6" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_6" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[요청]
+																			모바일전단 스킨 디자인 QA 진행</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:1</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김지예</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 21 (월)&nbsp;16:28</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(174318)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_7" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_7" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[안내]
+																			투게더 멤버십 프로젝트 변경 사항</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김태일</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 17 (목)&nbsp;14:54</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(174256)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_8" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_8" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[공유]
+																			투게더 멤버십 프로젝트 관리용 공용시트</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김태일</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 16 (수)&nbsp;13:25</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(174015)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_9" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_9" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[공유]
+																			모바일전단 스킨 디자인 중간점검 미팅 참석 요청의 건</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:1</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김지예</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 10 (목)&nbsp;14:29</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173985)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_10" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_10" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[Re]
+																			[Fw] 서울장수막걸리 예상 구성 시나리오 제공의 건</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:3</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김수민</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 10 (목)&nbsp;09:27</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173972)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_11" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_11" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[Fw]
+																			서울장수막걸리 예상 구성 시나리오 제공의 건</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:2</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김재윤</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 9 (수)&nbsp;17:31</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173924)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_12" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_12" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">[공유]우리사주 주식 배정 안내</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김서란</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 9 (수)&nbsp;14:52</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173650)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_13" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_13" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">서울장수막걸리 예상 구성 시나리오 제공의 건</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:2</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김재윤</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 3 (목)&nbsp;17:19</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173649)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_14" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_14" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">서울장수막걸리 예상 구성 시나리오 제공의 건</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:2</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김재윤</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 3 (목)&nbsp;17:19</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173594)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_15" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_15" class="imgTitle"
+																			style="display: inline-block;"><span style="color:#000090; margin-top: -1px;">[Fw]
+																			어도비 계정</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">배동민</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 3 (목)&nbsp;09:01</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173523)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_16" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_16" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">[우리사주조합] 우리사주조합 감사 직무대행자 선임 공고</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김태일</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">9 / 1 (화)&nbsp;15:55</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(173017)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_17" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_17" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">[우리사주조합] 2026년 08월 20일(목) 임시 조합원총회 결과
+																			보고</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김태일</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">8 / 21 (금)&nbsp;10:17</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(172983)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_18" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_18" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">[우리사주조합] 주식 매매 내역 안내</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:0</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김태일</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">8 / 20 (목)&nbsp;16:44</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+												<table width="100%" onclick="jsMailRead(172770)">
+													<tbody>
+														<tr>
+															<td colspan="2" style="padding-left:8px;padding-top:5px;white-space: nowrap;">
+																<div style="width:230px; text-overflow:ellipsis; overflow:hidden;">
+																	<nobr><img src="/images/mail_close.png" id="rptList_CloseImage_19" class="imgTitle"
+																			style="display: none;">
+																		<img src="/images/mail_open.png" id="rptList_OpenImage_19" class="imgTitle"
+																			style="display: inline-block;"><span
+																			style="color:#000090; margin-top: -1px;">[우리사주조합] 임시 조합원총회 소집 통지</span>
+																	</nobr>
+																</div>
+															</td>
+															<td style="padding-right:8px;padding-top:5px;color: #666666;" class="text_right">
+																<span class="text_typeS">파일:2</span>
+															</td>
+														</tr>
+														<tr>
+															<td width="50px"
+																style="color: #666666;padding-left:8px;padding-bottom:5px;border-bottom : 1px solid rgb(223, 223, 223);">
+																<span class="text_typeS">김태일</span>
+															</td>
+															<td colspan="2"
+																style="padding-bottom:5px;padding-right:8px;border-bottom : 1px solid rgb(223, 223, 223);color: #006699;"
+																class="text_right">
+																<span class="text_typeS">8 / 18 (화)&nbsp;10:42</span>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+
+
+
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="paging">
+							<table class="pagingTable">
+								<tbody>
+									<tr>
+										<td colspan="2" style="height:25px; vertical-align:middle;" align="center">
+											<div id="UP2">
+
+												<!--페이징-->
+												<input name="hdSelPage" type="hidden" id="hdSelPage" value="1">
+												<span id="lblpaging" style="color:#8C9C8C;font-size:Medium;"><input type="button" value="처음"
+														class="button_paging button_prev"> <input type="button" value="이전"
+														class="button_paging button_prev">&nbsp;&nbsp; <font color="##d87676"><strong>1</strong>
+													</font> | <a href="JavaScript:jsGoPage(2);">2</a> | <a href="JavaScript:jsGoPage(3);">3</a> <a
+														href="JavaScript:jsGoPage(4);">&nbsp;&nbsp;<input type="button" value="다음"
+															class="button_paging button_next"></a> <a href="JavaScript:jsGoPage(173);"><input
+															type="button" value="끝" class="button_paging button_next"></a></span>
+												<div style="display: none;">
+													<input type="submit" name="btnGoPage" value="페이지이동" id="btnGoPage">
+												</div>
+
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- container end-->
+			<!-- footer-->
+
+			<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+			<!-- footer-->
+			<div id="footer">
+				<div class="foot">
+					<a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right"
+						onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+				</div>
+
+				<address>
+					<a>TOGETHERs</a>
+				</address>
+			</div>
+			<!-- footer end-->
+			<!-- footer end-->
+		</div>
+	</form>
+
+
+</body>
+
+</html>

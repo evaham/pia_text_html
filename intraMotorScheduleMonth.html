@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head id="Head1"><title>
+	일정표 - TOGETHERs 모바일 인트라넷
+</title><meta charset="utf-8">
+    <!-- IE호환성 체크 안되도록처리
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />-->
+    <!-- 자동화면 크기조절 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+    <link href="/Common/intranet.mobile3.css" type="text/css" rel="stylesheet">
+
+    <script type="text/javascript" src="../Common/jquery.min.js"></script>
+    <script type="text/javascript" src="../Common/jquery-latest.js"></script>
+    <script type="text/javascript">
+
+        function jsCellClick(date) {
+            //holiday : 1 일 경우 휴일 else 0
+            var spanSelectedDate = document.getElementById("spanSelectedDate");
+            var hdDate = document.getElementById("hdDate");
+            var hdCode = document.getElementById("hdCode");
+
+            spanSelectedDate.innerHTML = date;
+            hdDate.value = date;
+            hdCode.value = "1";
+
+            document.getElementsByTagName("td").className = "whatever";
+
+            eval("__doPostBack('btnGo','')");
+        }
+
+        //읽기
+        function jsMotorScheduleRead(code) {
+            location.href = "/intraManageMotorRecordRegist.html?mr_code=" + code + "&schDate=2026-10-22&where=month";
+        }
+
+        //쓰기
+        function jsPopMotorScheduleAdd() {
+            if ($('#hdAuthMotor').val() != 2) alert("법인차량 운행 등록 권한이 없습니다.");
+            else location.href = "./intraManageMotorRecordRegist.html?date=2026-10-22&where=month";
+        }       
+    </script>
+</head>
+<body style="zoom: 1;">
+<form method="post" action="./intraMotorScheduleMonth.html" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTUxNjA5MTQzNg8WBB4IZW1wX2F1dGgFATIeDGVtcF9mdW5jYXV0aAUBMhYCAgMPZBYKAgMPEGQPFgZmAgECAgIDAgQCBRYGEAUKLSDqtazrtoQgLWVnEAUJ7JeF66y07JqpBQExZxAFCey2nO2HtOq3vAUDMyw0ZxAFBuy2nOq3vAUBM2cQBQbth7Tqt7wFATRnEAUJ7ImQ7Ja066eBBQEyZxYBZmQCBQ8QDxYGHg1EYXRhVGV4dEZpZWxkBQhtbV9tb2RlbB4ORGF0YVZhbHVlRmllbGQFB21tX2NvZGUeC18hRGF0YUJvdW5kZ2QQFSMKLSDssKjsooUgLQzsoJzrhKTsi5zsiqQJ7L2U656A64+ECeyYrOuegOuPhAnshozrgpjtg4AJ7IKw7YOA7Y6YCey5tOuLiOuwnAzslYTsnbTsjajti7AM7ZSE65287J2065OcDOyKpO2MjO2BrOuwtA7roZzssrQo6rCc7J24KQ7qs6jtlIQo6rCc7J24KQ/slYTrsJjrlrwoNDgyMykR7I+Y66CM7YagKOqwnOyduCkR7IaM64KY7YOAKOqwnOyduCkO66qo64udKOqwnOyduCkDUU0zDu2IrOyLvCjqsJzsnbgpD+yVhOuwmOuWvCg5OTQ3KQvsi7ztg4DtjphETRnsubTri4jrsJwg7ZWY7J2066as66y07KeED+yVhOuwmOuWvCgyMzkwKQ/slYTrsJjrlrwoOTg3NSkP7JWE67CY65a8KDQzNDQpDOugiOydtCg5NTg1KQzroIjsnbQoOTU4NCkV7Yyw66as7IS47J2065OcKDQwMjUpCeyCsO2DgO2OmA/shozrgpjtg4AoOTA3NSkM66CI7J20KDU2MzMpD+yFgO2GoOyKpCg0NzYzKQlHOTAoNzA4NikP7LqQ7Iqk7Y28KDg5MTIpD+yVhOuwmOuWvCg0NjAwKQlHOTAoNzA4NikVIwABMQEyATMBNAE1ATYBNwE4ATkCMTACMTECMTICMTMCMTQCMTUCMTYCMTcCMTkCMjECMjQCMjUCMjcCMjgCMjkCMzACMzECMzICMzMCMzQCMzUCMzYCMzcCMzgCMzkUKwMjZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2cWAWZkAgkPFgIeCWlubmVyaHRtbAUQMjAyNi0xMC0yMiAo66qpKWQCDw8WAh4LXyFJdGVtQ291bnRmZAIVD2QWAgIBDxYCHgdvbmNsaWNrBVlyZXR1cm4ganNQQ0ludHJhKCJWczNwSEtiWmx4U0g1JTJiVEQwNlNtTnF4YTZDT0kza3l6cmIwT3dPYyUyYmZCaUhTZUhNcW96dnZIRjIxbmhoV2lzTSIpO2RkF4wLyPEFjxwj1RuRrV2BpofwT/8e5TKSOw0pXPheqcs=">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=yf3BxV_yAvQULhNzjBNaYHZi1AuQA-VWyZo8CqlTnK0UIzM_eRB14ZEVE1fAT3fN-wItOCveewW8FsfoYHVOO9ArJ00UfvtOQYln2Ijr30w1&amp;t=638901860248157332" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=Qu8ZJWQIRWGKjD4ini3ER7kaGcvh3haMoZPe0e8w9dKDucmZAuFbRGkLUxpJ0k5k2oNsReKIb2rV7LaBpUB9mkL3mcdkIKlSLobI-crV00qq9nZ6LYhuDvdm_3lJYuj6GV-CQ1jTP3lbylPYToAqe6ve_O6H0eJnJ9sxjhC1KIw1&amp;t=5c0e0825" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=DH4In_suO_YxlNZdl7Hz30YWadekAWJyGoAYXs0YuwN_crt6sz0Vg6twT_EUrwAdShN4H80cbjLVOrtqlZNvJyo7oyOhTMWkp79M-89rEXbihiA-GsxR0NsZlL8Y4Gpv50rDN7U-X3KpSSubYn_X1DYMqfgcTvajSgsNAfN-2elHH1bo6bQDF3YMxVpBIUy00&amp;t=5c0e0825" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="330F54BE">
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('SM1', 'form1', [], [], [], 90, '');
+//]]>
+</script>
+
+<div id="warp"> 
+	<!-- header -->
+	<div id="header">
+        <div class="tab_wrap">
+		    <ul class="tab_list">
+                <li class="tab_4"><a class="tab_btn tab_left2" href="./intraScheduleMonth.html">일정표</a></li>
+                <li class="tab_5"><a class="tab_btn_on tab_right2" href="./intraMotorScheduleMonth.html">차량일정표</a></li>
+		    </ul>
+		</div>	
+	    <div class="main_navi"> <a class="button_typeA button_left" href="javascript:history.back();">뒤로</a> <a class="button_typeA button_right" href="./Main.html">홈으로</a>
+		    
+	    </div>
+	</div>
+	<!-- header end--> 
+    <div class="sub_navi">
+		<table>
+			<tbody><tr>
+				<td class="tab3"> <a class="button_typeA button_right" href="./intraMotorScheduleDaily.html">일간</a> </td>
+				<td class="tab3"> <a class="button_typeA_on button_left" href="./intraMotorScheduleMonth.html">월간</a> </td>                
+                <td class="tab3"> <a class="button_typeA button_left" href="./intraManageMotorRecordRegist.html">쓰기</a> </td>
+			</tr>
+		</tbody></table>
+	</div>
+	<!-- container-->
+	<div id="container">
+		<div class="contents">
+			<div class="A">
+                <div class="divide_typeA">
+                    <table>
+						<tbody><tr>
+                            <td style="text-align: center;padding-left:6px;padding-top:2px;">
+                                <a class="button_typeB button" href="./intraMotorScheduleMonth.html" style="width:45px;">오늘</a>
+                            </td>
+                            <td style="text-align:right; ">
+                                <select name="ddlType" onchange="javascript:setTimeout('__doPostBack(\'ddlType\',\'\')', 0)" id="ddlType" style="height:25px;width:115px;" data-sharkid="__0">
+	<option selected="selected" value="">- 구분 -</option>
+	<option value="1">업무용</option>
+	<option value="3,4">출퇴근</option>
+	<option value="3">출근</option>
+	<option value="4">퇴근</option>
+	<option value="2">쉐어링</option>
+
+</select>
+                                <select name="ddlModel" onchange="javascript:setTimeout('__doPostBack(\'ddlModel\',\'\')', 0)" id="ddlModel" style="height:25px;width:115px;" data-sharkid="__1">
+	<option selected="selected" value="">- 차종 -</option>
+	<option value="1">제네시스</option>
+	<option value="2">코란도</option>
+	<option value="3">올란도</option>
+	<option value="4">소나타</option>
+	<option value="5">산타페</option>
+	<option value="6">카니발</option>
+	<option value="7">아이써티</option>
+	<option value="8">프라이드</option>
+	<option value="9">스파크밴</option>
+	<option value="10">로체(개인)</option>
+	<option value="11">골프(개인)</option>
+	<option value="12">아반떼(4823)</option>
+	<option value="13">쏘렌토(개인)</option>
+	<option value="14">소나타(개인)</option>
+	<option value="15">모닝(개인)</option>
+	<option value="16">QM3</option>
+	<option value="17">투싼(개인)</option>
+	<option value="19">아반떼(9947)</option>
+	<option value="21">싼타페DM</option>
+	<option value="24">카니발 하이리무진</option>
+	<option value="25">아반떼(2390)</option>
+	<option value="27">아반떼(9875)</option>
+	<option value="28">아반떼(4344)</option>
+	<option value="29">레이(9585)</option>
+	<option value="30">레이(9584)</option>
+	<option value="31">팰리세이드(4025)</option>
+	<option value="32">산타페</option>
+	<option value="33">소나타(9075)</option>
+	<option value="34">레이(5633)</option>
+	<option value="35">셀토스(4763)</option>
+	<option value="36">G90(7086)</option>
+	<option value="37">캐스퍼(8912)</option>
+	<option value="38">아반떼(4600)</option>
+	<option value="39">G90(7086)</option>
+
+</select>
+                                &nbsp;&nbsp;
+                            </td>
+                        </tr>
+                    </tbody></table>
+				</div>
+                <div class="text_data" style="padding:0px;">
+				    <table>                        
+					    <tbody><tr>
+						    <td>
+                                <table id="cal_MotorSchedule" cellspacing="0" cellpadding="0" title="달력" style="border-color:#EAEAEA;border-width:1px;border-style:solid;width:100%;border-collapse:collapse;">
+	<tbody><tr><td colspan="7" style="background-color:White;border-color:#EAEAEA;border-width:1px;border-style:solid;height:35px;"><table cellspacing="0" style="font-size:10pt;font-weight:bold;width:100%;border-collapse:collapse;">
+		<tbody><tr><td style="width:15%;"><a href="javascript:__doPostBack('cal_MotorSchedule','V9740')" style="color:Black" title="이전 달로 이동"><img src="/images/btn_arr_left.png" border="0" style="padding-left:15px;"></a></td><td align="center" style="width:70%;">2026년 10월</td><td align="right" style="width:15%;"><a href="javascript:__doPostBack('cal_MotorSchedule','V9801')" style="color:Black" title="다음 달로 이동"><img src="/images/btn_arr_right.png" border="0" style="padding-right:15px;"></a></td></tr>
+	</tbody></table></td></tr><tr><th align="center" valign="middle" abbr="일요일" scope="col" style="color:#818181;border-color:#EAEAEA;font-size:10pt;font-weight:bold;height:30px;">일</th><th align="center" valign="middle" abbr="월요일" scope="col" style="color:#818181;border-color:#EAEAEA;font-size:10pt;font-weight:bold;height:30px;">월</th><th align="center" valign="middle" abbr="화요일" scope="col" style="color:#818181;border-color:#EAEAEA;font-size:10pt;font-weight:bold;height:30px;">화</th><th align="center" valign="middle" abbr="수요일" scope="col" style="color:#818181;border-color:#EAEAEA;font-size:10pt;font-weight:bold;height:30px;">수</th><th align="center" valign="middle" abbr="목요일" scope="col" style="color:#818181;border-color:#EAEAEA;font-size:10pt;font-weight:bold;height:30px;">목</th><th align="center" valign="middle" abbr="금요일" scope="col" style="color:#818181;border-color:#EAEAEA;font-size:10pt;font-weight:bold;height:30px;">금</th><th align="center" valign="middle" abbr="토요일" scope="col" style="color:#818181;border-color:#EAEAEA;font-size:10pt;font-weight:bold;height:30px;">토</th></tr><tr><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-09-27 (일)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#eca9a9;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">27</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-09-28 (월)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">28<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-09-29 (화)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">29<br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-09-30 (수)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">30<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-01 (목)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">1<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-02 (금)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">2<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-03 (토)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Red;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:#FFEEEE;">3<span style="color:#0000ff;font-size:9px;position:relative;text-overflow:ellipsis;line-height:1.25em;word-wrap:normal;font-weight: normal;font-family: " 나눔고딕',nanumgothic,'맑은="" 고딕','malgun="" gothic','돋움',dotum,'굴림',gulim,helvetica,sans-serif;'=""> 개천절</span><br><span style="color:#32a800;font-size:8px;">+1</span></td></tr><tr><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-04 (일)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Red;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">4</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-05 (월)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Red;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:#FFEEEE;">5<span style="color:#0000ff;font-size:9px;position:relative;text-overflow:ellipsis;line-height:1.25em;word-wrap:normal;font-weight: normal;font-family: " 나눔고딕',nanumgothic,'맑은="" 고딕','malgun="" gothic','돋움',dotum,'굴림',gulim,helvetica,sans-serif;'=""> 대체공휴일</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-06 (화)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">6<br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-07 (수)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">7<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-08 (목)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">8<br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-09 (금)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Red;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:#FFEEEE;">9<span style="color:#0000ff;font-size:9px;position:relative;text-overflow:ellipsis;line-height:1.25em;word-wrap:normal;font-weight: normal;font-family: " 나눔고딕',nanumgothic,'맑은="" 고딕','malgun="" gothic','돋움',dotum,'굴림',gulim,helvetica,sans-serif;'=""> 한글날</span><br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-10 (토)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Blue;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">10</td></tr><tr><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-11 (일)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Red;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">11</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-12 (월)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">12<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-13 (화)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">13<br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-14 (수)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">14<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-15 (목)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">15<br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-16 (금)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">16<br><span style="color:#32a800;font-size:8px;">+5</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-17 (토)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Blue;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">17</td></tr><tr><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-18 (일)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Red;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">18</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-19 (월)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">19<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-20 (화)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">20<br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-21 (수)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">21<br><span style="color:#32a800;font-size:8px;">+2</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-22 (목)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:#FFFFAA;">22</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-23 (금)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">23<br><span style="color:#32a800;font-size:8px;">+1</span></td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-24 (토)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Blue;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">24</td></tr><tr><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-25 (일)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Red;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">25</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-26 (월)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">26</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-27 (화)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">27</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-28 (수)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">28</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-29 (목)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">29</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-30 (금)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">30</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-10-31 (토)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:Blue;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">31</td></tr><tr><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-11-01 (일)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#eca9a9;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">1</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-11-02 (월)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">2</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-11-03 (화)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">3</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-11-04 (수)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">4</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-11-05 (목)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">5</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-11-06 (금)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#909090;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">6</td><td align="left" valign="top" onclick="return jsCellClick(&quot;2026-11-07 (토)&quot;);" style="width:14%;height:40px;font-weight:bold;font-size:10pt;font-family:Tahoma;color:#A0BAED;border-width:1px;border-style:solid;border-color:#CCCCCC;background-color:White;">7</td></tr>
+</tbody></table>
+						    </td>
+					    </tr>									
+				    </tbody></table>						
+				</div>
+                <div class="text_data">&nbsp;
+                    <span id="spanSelectedDate" style="color:#003399; font-weight:bold;">2026-10-22 (목)</span>
+                </div>	
+                <div class="text_data">
+				<table>
+                    <tbody><tr><td><span id="lbMsg" style="color:Red;"></span></td></tr>
+                    <tr id="trnoschedule">
+	<td style="padding-top:10px; text-align:center; vertical-align:middle;"><span id="lblNoneSchedule" style="display:inline-block;color:Gray;height:35px;">일정이 없습니다.</span></td>
+</tr>
+
+					<tr>
+						<td>                      
+	                        
+						</td>
+					</tr>									
+				</tbody></table>
+                    <input name="hdAuthMotor" type="hidden" id="hdAuthMotor" value="2">
+				</div>		
+			</div>
+		</div>
+	</div>
+    <div style="display: none;">
+        <input type="submit" name="btnGo" value="" id="btnGo">
+    </div>
+	<!-- container end--> 
+	<!-- footer-->
+    
+<script type="text/javascript" src="/Common/PopEmp.js?19032500"></script>
+<!-- footer-->
+<div id="footer">
+	<div class="foot">    
+    <a id="Buttom1_link_intra" style="cursor:pointer;" class="button_typeB button_right" onclick="return jsPCIntra(&quot;Vs3pHKbZlxSH5%2bTD06SmNqxa6COI3kyzrb0OwOc%2bfBiHSeHMqozvvHF21nhhWisM&quot;);">PC화면</a>
+    </div>
+	
+	<address>
+	<a>TOGETHERs</a>
+	</address>
+</div>
+<!-- footer end--> 
+	<!-- footer end-->
+    <input name="hdCode" type="hidden" id="hdCode" value="0">
+    <input name="hdDate" type="hidden" id="hdDate">
+    
+</div>
+</form>
+
+
+</body></html>
